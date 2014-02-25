@@ -94,7 +94,7 @@ var ui = {
 
     /**
      * 弹窗（需要手动关闭点X才能关闭与上面的messagebox的区别）
-     * @author  zhoumengkang
+     * @author  zhoumengkang <i@zhoumengkang.com>
      * @param   string  title   弹窗标题
      * @param   string  content 信息内容
      * @param   integer height  自定义个高端
