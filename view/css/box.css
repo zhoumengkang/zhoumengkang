@@ -1,0 +1,122 @@
+/*提示信息*/
+.boxy-modal-blackout{
+	position: absolute; 
+	left: 0; 
+	top: 0;
+	background:rgba(0,0,0,.6);
+	
+}
+.html_clew_box {
+	width: 200px;
+	height: 40px;
+	color:#2ecc71;
+    font-family: "Open Sans",Arial,"Hiragino Sans GB","Microsoft YaHei","微软雅黑","STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif;
+	background: url(../images/mayer2.png) 0 0 repeat;
+	position:absolute;
+	z-index:999999;
+	float:left;
+	-webkit-box-shadow:0 2px 5px 1px rgba(0,0,0,.1);
+	-moz-box-shadow:0 2px 5px 1px rgba(0,0,0,.1);
+	-khtml-box-shadow:0 2px 5px 1px rgba(0,0,0,.1);
+	-ms-box-shadow:0 2px 5px 1px rgba(0,0,0,.1);
+	box-shadow:0 2px 5px 1px rgba(0,0,0,.1);
+	padding: 4px;
+	border-radius: 5px;
+}
+.clew_error {
+	color:#DD0000;
+}
+.html_clew_box_close { 
+	clear:both;
+	display:none;
+}
+.html_clew_box_close a {
+	background: url(image/pop_ico_x.gif) no-repeat 0 0;
+	width:8px; 
+	height:8px; 
+	overflow: hidden; 
+	text-indent: 10px; 
+	display: block; 
+	float: right;
+}
+.html_clew_box_con {
+	text-align: center;
+	line-height: 40px;
+	background: #fff;
+	font-size:14px;
+	white-space: nowrap;
+}
+.ico_waiting { background:url(image/icon_waiting.gif) no-repeat 0 0; height:32px; line-height:32px; display:inline-block; padding-left:40px; }
+.boxy-content { text-align:left; padding:10px; }
+#input_dismissed { margin:10px 0 10px 0; }
+
+.ts_confirm{clear:left;margin-top:20px;*margin-top:0px;position:absolute;z-index:9;background-color:#fff;padding:10px 20px;line-height:30px;border:#eee solid 1px;border-bottom-width:2px}
+.ts_confirm .del{position:absolute;right:5px;top:5px}
+/*页面弹出层*/
+
+.popbox {
+    float:left;/*这样写了弹窗的宽度就是最小宽度了，高端*/
+    background: url(../images/mayer2.png) 0 0 repeat;
+    -webkit-box-shadow:0 2px 5px 1px rgba(0,0,0,.1);
+    -moz-box-shadow:0 2px 5px 1px rgba(0,0,0,.1);
+    -khtml-box-shadow:0 2px 5px 1px rgba(0,0,0,.1);
+    -ms-box-shadow:0 2px 5px 1px rgba(0,0,0,.1);
+    box-shadow:0 2px 5px 1px rgba(0,0,0,.1);
+    padding: 4px;
+    border-radius: 5px;
+    min-width: 300px;
+}
+.popbox .title {
+    background: none repeat scroll 0 0 #F8F8F8;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    position: relative;
+}
+.popbox .content{
+    padding: 10px;
+}
+
+.popbox .btn-close {
+    color: #929292;
+    display: inline-block;
+    font-family: SimSun,"宋体";
+    font-size: 20px;
+    line-height: 30px;
+    margin: 0;
+    text-align: center;
+    width: 20px;
+    float: right;
+}
+#poptitle {
+    float:left;
+}
+.popbox a:link, a:visited {
+    text-decoration: none;
+}
+.innerpopbox {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #DADADA;
+    border-radius: 1px;
+    height: auto;
+    max-width: 600px;
+    _width:600px;
+}
+.popbackground{
+    filter: alpha(opacity=30);
+    background-color: rgb(0, 0, 0);
+    opacity: 0.3;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 998;
+}
+.confirm{
+    text-align: center;
+    margin: 10px;
+}
+.confirm button{
+    margin:0 10px;
+}
