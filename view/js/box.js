@@ -48,9 +48,17 @@ var ui = {
 			});
 		} , 1000);
 	},
+    /**
+     * 成功提示框
+     * @return void
+     */
     success: function(msg){
         ui.showMessage(msg,0);
     },
+    /**
+     * 失败提示框
+     * @return void
+     */
     error: function(msg){
         ui.showMessage(msg,0);
     },
