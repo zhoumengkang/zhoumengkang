@@ -157,8 +157,6 @@ var ui = {
      * @param callback _callback2
      */
     confirm:function(content,_callback1,_callback2){
-        //console.log(typeof(_callback1));
-
         var popbackground= '<div class="popbackground" id="popbackground"></div>';
         $(popbackground).appendTo(document.body);
         var boxdiv = '<div class="popbox" id="popbox">\
