@@ -62,6 +62,23 @@ var ui = {
     error: function(msg){
         ui.showMessage(msg,1);
     },
+    /**
+     * 处理ajax返回数据之后的刷新操作
+     * @param   object obj  ajax返回的数据 {'data':xxx,'info':'xxxx','status':1}
+     */
+    ajaxReload: function(obj,callback){
+        if("undefined" == typeof(callback)){
+            callback = "location.href = location.href";
+        }else{
+            callback = 'eval('+callback+')';
+        }
+        if(obj.status == 1){
+            ui.success(obj.data);
+            setTimeout(callback,1500);
+        }else{
+            ui.error(obj.data);
+        }
+    },
 	/**
 	 * 添加提示框
 	 * @return void
@@ -69,14 +86,14 @@ var ui = {
 	showblackout: function() {
 		if($('.boxy-modal-blackout').length > 0) {
 			// TODO:???
-    	} else {
-    		var height = $('body').height() > $(window).height() ? $('body').height() : $(window).height();
-    		$('<div class ="boxy-modal-blackout" ><iframe style="z-index:-1;position: absolute;visibility:inherit;width:'+$('body').width()+'px;height:'+height+'px;top:0;left:0;filter=\'progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)\'"'+
+	    } else {
+	    	var height = $('body').height() > $(window).height() ? $('body').height() : $(window).height();
+	    	$('<div class ="boxy-modal-blackout" ><iframe style="z-index:-1;position: absolute;visibility:inherit;width:'+$('body').width()+'px;height:'+height+'px;top:0;left:0;filter=\'progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)\'"'+
 		 'src="about:blank"  border="0" frameborder="0"></iframe></div>')
-        	.css({
-        	    height:height+'px',width:$('body').width()+'px',zIndex: 999, opacity: 0.5
-        	}).appendTo(document.body);
-    	}
+		.css({
+		    height:height+'px',width:$('body').width()+'px',zIndex: 999, opacity: 0.5
+		}).appendTo(document.body);
+	    }
 	},
 	/**
 	 * 移除提示框
