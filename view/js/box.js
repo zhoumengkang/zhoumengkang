@@ -60,7 +60,7 @@ var ui = {
      * @return void
      */
     error: function(msg){
-        ui.showMessage(msg,0);
+        ui.showMessage(msg,1);
     },
 	/**
 	 * 添加提示框
