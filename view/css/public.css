@@ -17,13 +17,15 @@ body, div, ul, li{
 	position: relative;
 }
 .logo{
-	font-size:28px;
-	color: #CACACA;
-	padding-top:20px;
+    float: left;
+    font-size: 40px;
+    font-weight: 800;
+    color: #2e9fff;
+    line-height: 95px;
 }
 .description{
-	padding-left:40px;
-	padding-top:5px;
+    padding-left: 140px;
+    padding-top: 20px;
 }
 a:link, a:visited {
 	text-decoration:none;
