@@ -6,13 +6,15 @@ $(function() {
             if($("#intro").css('display')=="block"){
                 return false;
             }else{
-                $("#intro").fadeIn('slow');
+                $(".sign").fadeOut('100',function(){
+                    $("#intro").fadeIn('slow')
+                });
                 $("#header").removeClass('fixed_top').addClass('header_relatvie').animate({
                  "height": "96px"
                  }).find(".logo").animate({
                  "font-size": "40px",
                  "line-height": "96px"
-                 }).parent().find(".nav").animate({
+                 }).parent().parent().find(".nav").animate({
                         "line-height": "40px",
                         "padding":0,
                         "margin-top":"28px",
@@ -28,13 +30,15 @@ $(function() {
             },500).find(".logo").animate({
                     "font-size": "28px",
                     "line-height": "46px"
-                }).parent().find(".nav").animate({
+                }).parent().parent().find(".nav").animate({
                     "line-height": "46px",
                     "padding":0,
                     "margin-top":0,
                     "margin-bottom":0
                 });
-            $("#intro").fadeOut('slow');
+            $("#intro").fadeOut('100',function(){
+                $(".sign").css({"padding-top":"15px"}).show();
+            });
         }
     })
 

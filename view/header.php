@@ -36,9 +36,9 @@
 <!--这里增加header_relatvie样式是为了保证header底边的css样式能显示出来-->
 <div id="header" class="header_relatvie">
 	<a id="top"></a>
-	<span class="logo" id="logo">
-        北剅轩
-	</span>
+    <a href="<?php echo SITE_URL ;?>"><span class="logo" id="logo">
+        胡场北剅轩
+	</span></a>
 	<div class="description" id="intro">
         <pre>
 /**
@@ -47,42 +47,20 @@
  */
         </pre>
     </div>
+    <span class="sign">代码，生活，只言片语皆回忆。</span>
     <div class="nav" id="nav">
     <ul>
-        <li><a href=""><span>厂里</span></a></li>
-        <li><a href=""><span>出租屋</span></a></li>
-        <li><a href=""><span>操场</span></a></li>
-
+        <?php
+        if (is_array($this->nav)) {
+            foreach($this->nav as $k =>$v){
+                if($v['pid']==0){
+                    echo '<li><a href="'.U('Blog/index',array('nav'=>$v['id'])).'" title="'.$v['name'].'"><span>'.$v['name'].'</span></a></li>';
+                }
+            }
+        }
+        ?>
     </ul>
     </div>
     <div class="clear"></div>
-	<!--<div class="navbg">
-	  <div class="col960">
-		<ul id="navul" class="cl">
-		  <li class="navhome"><a href="<?php /*echo SITE_URL ;*/?>">首页</a></li>
-		  <?php
-/*		  if (is_array($this->nav)) {
-		  	foreach($this->nav as $k =>$v){
-				if($v['pid']==0){
-				  echo '<li><a href="'.U('Blog/index',array('nav'=>$v['id'])).'" title="'.$v['name'].'">'.$v['name'].'</a>';
-				  echo '<ul>';
-				  foreach($this->nav as $key =>$value){
-					if($value['pid']==$v['id']){
-					  echo '<li><a href="'.U('Blog/index',array('nav'=>$value['id'])).'" title="'.$value['name'].'">'.$value['name'].'</a></li>';
-					}
-				  }
-				  echo '</ul>';
-				  echo '</li>';
-				}
-			  }
-		  }
-		  
-		  */?>
-		</ul>
-	  </div>
-	</div>
-	<script  type="text/javascript">
-	$(".navbg").capacityFixed();
-	</script>-->
 </div>
 <div id="content">

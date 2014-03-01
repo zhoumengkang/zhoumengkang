@@ -15,7 +15,7 @@ class Action{
 		$this->tags = d()->q("select * from z_tags");
 		//dump($this->tags);
 		$this->info = d()->q("select * from z_info");
-		$this->title = '北剅轩-往(网)事多记于此-周梦康';
+		$this->title = '胡场北剅轩-周梦康';
 	}
 	public function init(){
 		//获取a参数的值
