@@ -8,21 +8,31 @@ $(function() {
             }else{
                 $("#intro").fadeIn('slow');
                 $("#header").removeClass('fixed_top').addClass('header_relatvie').animate({
-                 "height": "95px"
+                 "height": "96px"
                  }).find(".logo").animate({
                  "font-size": "40px",
-                 "line-height": "95px"
-                 });
+                 "line-height": "96px"
+                 }).parent().find(".nav").animate({
+                        "line-height": "40px",
+                        "padding":0,
+                        "margin-top":"28px",
+                        "margin-bottom":"28px"
+                    });
             }
         }else{
             if($("#header").hasClass('fixed_top')){
                 return false;
             }
             $("#header").removeClass('header_relatvie').addClass('fixed_top').animate({
-                "height": "45px"
+                "height": "46px"
             },500).find(".logo").animate({
                     "font-size": "28px",
-                    "line-height": "45px"
+                    "line-height": "46px"
+                }).parent().find(".nav").animate({
+                    "line-height": "46px",
+                    "padding":0,
+                    "margin-top":0,
+                    "margin-bottom":0
                 });
             $("#intro").fadeOut('slow');
         }

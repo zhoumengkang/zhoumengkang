@@ -9,14 +9,26 @@
 	<script type="text/javascript" src="./view/js/msgBox.js"></script>
     <style type="text/css">
         #nav{
-            height: 40px;
-            color: #ffffff;
-            background-color: #2e9fff;
-            border-color: #2e9fff;
+            float:right;
         }
+
         #nav ul li{
             float: left;
+            padding: 0 10px;
+            margin: 0 10px;
+
         }
+        #nav span{
+            color: #2e9fff;
+            font-size: 20px;
+        }
+        #nav span:hover{color: #323232}
+        .nav{
+            height: 40px;
+            line-height: 40px;
+            margin: 28px 50px;
+        }
+
 
     </style>
 </head>
@@ -35,14 +47,15 @@
  */
         </pre>
     </div>
-<!--    <div id="nav">
-<ul>
-    <li>1</li>
-    <li>1</li>
-    <li>1</li>
-    <li>1</li>
-</ul>
-    </div>-->
+    <div class="nav" id="nav">
+    <ul>
+        <li><a href=""><span>厂里</span></a></li>
+        <li><a href=""><span>出租屋</span></a></li>
+        <li><a href=""><span>操场</span></a></li>
+
+    </ul>
+    </div>
+    <div class="clear"></div>
 	<!--<div class="navbg">
 	  <div class="col960">
 		<ul id="navul" class="cl">

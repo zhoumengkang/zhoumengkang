@@ -3,7 +3,6 @@ body{
     background: #ffffff;
 	line-height:25px;
 	font-size:14px;
-
 	color: #323232; 
 	text-align:left; 
 }
@@ -11,16 +10,27 @@ body, div, ul, li{
 	margin:0;
 	padding:0;
 }
+/*导航开始*/
 #header{
     -webkit-box-shadow: 0 2px 0 0 rgba(53, 58, 61, 0.05);
     box-shadow: 0 2px 0 0 rgba(53, 58, 61, 0.05);
     background-color:#ffffff;
 }
-.header_relatvie{position: relative;}
+.clear{
+    clear: both;
+}
+.header_relatvie{
+    position: relative;
+}
 .fixed_top{
     position: fixed;
     top:0;
     width: 100%;
+}
+.description{
+    float: left;
+    padding-left: 20px;
+    padding-top: 20px;
 }
 .description pre{
     font-style: italic;
@@ -29,21 +39,15 @@ body, div, ul, li{
     font-size: 12px;
     line-height: 14px;
 }
-
-#content{background:#f1f1f1 url(../images/body.gif) repeat;}
-
 .logo{
     float: left;
     font-size: 40px;
     font-weight: 800;
     color: #2e9fff;
     padding:0 20px 0 40px;
-    line-height: 95px;
+    line-height: 96px;
 }
-.description{
-    padding-left: 140px;
-    padding-top: 20px;
-}
+/*导航结束*/
 a:link, a:visited {
 	text-decoration:none;
 	color:#333333;
@@ -60,7 +64,7 @@ ul, ul li {
 .cl {
 	zoom:1;
 }
-
+#content{background:#f1f1f1 url(../images/body.gif) repeat;}
 
 
 /*网站头部*/
@@ -283,9 +287,7 @@ ul, ul li {
 	border: 1px dashed #BEB0B0;
 	padding: 5px; 
 }
-.clear{
-	clear: both;
-}
+
 .messageBox{
 	padding: 20px;
 	border-radius:16px;
