@@ -1,5 +1,12 @@
 </div>
 <div style="clear:both;"></div>
+<style type="text/css">
+    #footer{
+        background-color: #546673;
+        height:96px;
+        margin:0;
+    }
+</style>
 <div id="footer">
 	<div class="login">
 	<?php

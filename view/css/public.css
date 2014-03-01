@@ -65,6 +65,30 @@ body, div, ul, li{
 
 /*主体内容结束*/
 
+/*底部开始*/
+
+#footer span{color:#CACACA}
+.backToTop {
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    display: none;
+    width: 18px;
+    line-height: 1.2;
+    padding: 5px 0;
+    background-color: #000;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    position: fixed;
+    _position: absolute;
+    right: 10px;
+    bottom: 100px;
+    _bottom: "auto";
+    cursor: pointer;
+    opacity: .6;
+    filter: Alpha(opacity=60);
+}
+/*底部结束*/
+
 a:link, a:visited {
 	text-decoration:none;
 	color:#333333;
@@ -139,35 +163,8 @@ ul, ul li {
 .list_view .article_manage{display:inline; float:right; padding:0 !important; line-height:30px !important; text-align:right !important; white-space:nowrap;}
 .list_view .article_description{display:none !important;}
 .list_view .article_manage span{margin:0 !important;}
-#footer {
-	margin: 10px 5px 0 5px; 
-	padding-top: 10px;
-	padding-bottom: 5px; 
-	text-align: right;
-	color:#CACACA; 
-	overflow: hidden; 
-	border-top: 1px solid #E2DDDE;
-}
-#footer span{color:#CACACA}
-.backToTop {
-	font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-    display: none;
-    width: 18px;
-    line-height: 1.2;
-    padding: 5px 0;
-    background-color: #000;
-    color: #fff;
-    font-size: 12px;
-    text-align: center;
-    position: fixed;
-    _position: absolute;
-    right: 10px;
-    bottom: 100px;
-    _bottom: "auto";
-    cursor: pointer;
-    opacity: .6;
-    filter: Alpha(opacity=60);
-}
+
+
 .content{
 	padding:10px;
 }

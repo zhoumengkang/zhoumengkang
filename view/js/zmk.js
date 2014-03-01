@@ -11,6 +11,7 @@ $(function() {
                 });
                 $("#header").removeClass('fixed_top').addClass('header_relatvie').animate({
                  "height": "96px"
+
                  }).find(".logo").animate({
                  "font-size": "40px",
                  "line-height": "96px"
@@ -41,6 +42,15 @@ $(function() {
             });
         }
     })
+
+
+    //footer吸底效果
+    var _ch = $("#content").height();
+    var _wh = $(window).height();
+    console.log("window's height",_wh,"content's height",_ch,"_wh - _ch:",_wh - _ch);
+    if(_wh - _ch > 190){
+        $("#content").css("height",(_wh-192)+"px");
+    }
 
 
 	var $backToTopTxt = "返回顶部", $backToTopEle = $('<div class="backToTop"></div>').appendTo($("body"))
