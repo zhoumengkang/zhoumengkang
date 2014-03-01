@@ -1,4 +1,34 @@
 $(function() {
+    //顶部效果
+    $(window).scroll(function() {
+        if($(window).scrollTop()==0){
+            //恢复
+            if($("#intro").css('display')=="block"){
+                return false;
+            }else{
+                $("#intro").fadeIn('slow');
+                $("#header").removeClass('fixed_top').addClass('header_relatvie').animate({
+                 "height": "95px"
+                 }).find(".logo").animate({
+                 "font-size": "40px",
+                 "line-height": "95px"
+                 });
+            }
+        }else{
+            if($("#header").hasClass('fixed_top')){
+                return false;
+            }
+            $("#header").removeClass('header_relatvie').addClass('fixed_top').animate({
+                "height": "45px"
+            },500).find(".logo").animate({
+                    "font-size": "28px",
+                    "line-height": "45px"
+                });
+            $("#intro").fadeOut('slow');
+        }
+    })
+
+
 	var $backToTopTxt = "返回顶部", $backToTopEle = $('<div class="backToTop"></div>').appendTo($("body"))
 		.text($backToTopTxt).attr("title", $backToTopTxt).click(function() {
 			$("html, body").animate({ scrollTop: 0 }, 120);

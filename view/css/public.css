@@ -1,8 +1,9 @@
 body{
-	font-family:"微软雅黑", Arial, Helvetica, sans-serif;
+    font-family:"微软雅黑", Arial, Helvetica, sans-serif;
+    background: #ffffff;
 	line-height:25px;
 	font-size:14px;
-	background:#f1f1f1 url(../images/body.gif) repeat; 
+
 	color: #323232; 
 	text-align:left; 
 }
@@ -10,17 +11,33 @@ body, div, ul, li{
 	margin:0;
 	padding:0;
 }
-.top{
-	text-align:left;
-	height:95px;
-	padding-left:40px;
-	position: relative;
+#header{
+    -webkit-box-shadow: 0 2px 0 0 rgba(53, 58, 61, 0.05);
+    box-shadow: 0 2px 0 0 rgba(53, 58, 61, 0.05);
+    background-color:#ffffff;
 }
+.header_relatvie{position: relative;}
+.fixed_top{
+    position: fixed;
+    top:0;
+    width: 100%;
+}
+.description pre{
+    font-style: italic;
+    margin: 0;
+    color: #CCCCCC;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+#content{background:#f1f1f1 url(../images/body.gif) repeat;}
+
 .logo{
     float: left;
     font-size: 40px;
     font-weight: 800;
     color: #2e9fff;
+    padding:0 20px 0 40px;
     line-height: 95px;
 }
 .description{
@@ -44,6 +61,8 @@ ul, ul li {
 	zoom:1;
 }
 
+
+
 /*网站头部*/
 .col960 {width:100%;margin:auto;}
 .navbg {height:40px;width: 100%;background: #08A5E0;box-shadow: 1px 1px 7px #999;position:absolute;z-index:99;left:0;}
@@ -58,8 +77,8 @@ ul, ul li {
 #navul li.navmoon ul {display:block;}
 #navul li.navmoon ul a {display:block;width:98px;height:28px;line-height:28px;}
 #navul li.navmoon ul a:hover {background:#000000;}
-#header{margin-bottom:50px}
-#wrap{text-align:left; margin: 0px auto 0px; padding: 0px;min-height:750px}
+#header{margin-bottom:0px}
+#wrap{text-align:left; margin: 0px auto; padding: 15px;min-height:750px}
 #side{float:left; width:250px; margin-left: 10px;line-height:120%;}
 .side{border-radius:6px;background-color:white;border:1px solid #E2E2E2;box-shadow:0px 0px 10px 1px rgba(0,0,0,0.05);overflow:hidden;padding-bottom:10px;margin-bottom:10px}
 .side_title{font-size:16px;color: #CACACA;padding-left:10px;}

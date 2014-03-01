@@ -5,13 +5,9 @@
 	<meta name="description" content="周梦康的博客，记录着我的学习笔记，也记录着我的生活琐事。"/>
 	<link rel="stylesheet" href="./view/css/public.css" type="text/css">
 	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.7.2/jquery.js"></script>
-	<script type="text/javascript" src="./view/js/work.js"></script>
+	<script type="text/javascript" src="./view/js/zmk.js"></script>
 	<script type="text/javascript" src="./view/js/msgBox.js"></script>
     <style type="text/css">
-        body{
-            font-family:"微软雅黑", Arial, Helvetica, sans-serif;
-            background: #fafcfc;
-        }
         #nav{
             height: 40px;
             color: #ffffff;
@@ -21,23 +17,17 @@
         #nav ul li{
             float: left;
         }
-        .description pre{
-            font-style: italic;
-            margin: 0;
-            color: #CCCCCC;
-            font-size: 12px;
-            line-height: 14px;
-        }
+
     </style>
 </head>
 <body>
-<div id="header">
-	<div class="top">
+<!--这里增加header_relatvie样式是为了保证header底边的css样式能显示出来-->
+<div id="header" class="header_relatvie">
 	<a id="top"></a>
-	<span class="logo">
+	<span class="logo" id="logo">
         北剅轩
 	</span>
-	<div class="description">
+	<div class="description" id="intro">
         <pre>
 /**
  * @description 欲诉诸笔端，顾视，无可置者。故，多记于此。
@@ -45,15 +35,14 @@
  */
         </pre>
     </div>
-	</div>
-    <div id="nav">
+<!--    <div id="nav">
 <ul>
     <li>1</li>
     <li>1</li>
     <li>1</li>
     <li>1</li>
 </ul>
-    </div>
+    </div>-->
 	<!--<div class="navbg">
 	  <div class="col960">
 		<ul id="navul" class="cl">
@@ -83,3 +72,4 @@
 	$(".navbg").capacityFixed();
 	</script>-->
 </div>
+<div id="content">
