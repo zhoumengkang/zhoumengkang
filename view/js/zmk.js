@@ -6,13 +6,13 @@ $(function() {
             $("#console").animate({
                 right:"-96px"
             },function(){
-                ele.text("《《").addClass('showConsole');
+                ele.text("《《").removeClass('xx').addClass('showConsole');
             });
         }else{
             $("#console").animate({
                 right:"20px"
             },function(){
-                ele.removeClass('showConsole').text("X");
+                ele.removeClass('showConsole').addClass('xx').text("X");
             });
         }
 
@@ -57,7 +57,7 @@ $(function() {
                     "margin-top":0,
                     "margin-bottom":0
                 });
-            $("#intro").fadeOut('100',function(){
+            $("#intro").hide(function(){
                 $(".sign").css({"padding-top":"15px"}).show();
             });
         }

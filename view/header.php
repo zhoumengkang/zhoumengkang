@@ -47,7 +47,7 @@
     ?>
     <!--博主控制台-->
     <div class="console" id="console">
-        <a href="javascript:void(0)" title="隐藏控制台" name="consoleHide" class="xx">X</a>
+        <a href="javascript:void(0)" title="隐藏控制台" name="consoleHide" class="showConsole">《《</a>
         <ul>
             <li><a href="<?php echo U('Blog/post')?>">书写博客</a></li>
             <li><a href="<?php echo U('Blog/rank')?>">最受欢迎</a></li>
