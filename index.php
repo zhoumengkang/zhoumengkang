@@ -11,7 +11,8 @@ function __autoload($name){
 require("./config.php");
 require("./function.php");
 ini_set('display_errors',true);
-error_reporting(E_ALL ^ E_NOTICE); 
+error_reporting(E_ALL ^ E_NOTICE);
+date_default_timezone_set('UTC');
 ob_start();
 header('Content-Type: text/html; charset=UTF-8');
 session_start();

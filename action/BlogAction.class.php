@@ -162,5 +162,7 @@ class BlogAction extends Action{
 		echo json_encode($nav);
 	}
 	
-	
+	public function about(){
+        echo 1;
+    }
 }
