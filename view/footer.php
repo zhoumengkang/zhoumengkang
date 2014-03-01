@@ -5,34 +5,33 @@
         background-color: #546673;
         height:96px;
         margin:0;
+        color: #e4e7ee;
+
+    }
+    #footer small{
+        -webkit-font-smoothing: antialiased;
+        line-height: 96px;
+    }
+    .copyright{
+        text-align: center;
     }
 </style>
-<div id="footer">
+<footer id="footer">
 	<div class="login">
-	<?php
-		if($_SESSION['uid']){
-	?>
-			<a href="<?php echo U('Blog/post')?>">写博客</a>
-			<a href="<?php echo U('Blog/rank')?>">最受欢迎的</a>
-			<a href="<?php echo U('Admin/info')?>">博客信息</a>
-			<a href="<?php echo U('Admin/links')?>">链接管理</a>
-			<!-- <a href="<?php echo U('Admin/tags')?>">标签管理</a> -->
-			<a href="<?php echo U('Admin/nav')?>">导航管理</a>
-			<a href="<?php echo U('Blog/logout') ?>">登出</a>
-	<?php	
-		}else{
-	?>
-			<a href="<?php echo U('Blog/login');?>">登陆</a>
-			<a href="<?php echo U('Blog/rank')?>">最受欢迎的</a>
-	<?php	
-		}
-	?>
+
 	</div>
 	<span></span>
-	<a href="http://www.miibeian.gov.cn" target="_blank"></a><span class="zhoumengkang">Powered by ZhouMengkang</span> 
+    <div class="clear"></div>
+    <div class="copyright">
+        <small>
+            <a href="<?php echo U('Blog/aboutme')?>">关于博主</a>
+            <a href="<?php echo U('Blog/login');?>">登堂入室</a>
+            本程序由<a href="">ZZPHP</a>勉强驱动 © 2013 - 2014 Mengkang Zhou 辽ICP备12007622号-1
+        </small>
+    </div>
+
 	<div class="messageBox"></div>
-</div>
-<script type="text/javascript" src="./view/js/zmk.js"></script>
+</footer>
 <div class="backToTop" title="返回顶部" style="display: none;">返回顶部</div>
 </body>
 </html>

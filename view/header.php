@@ -7,37 +7,13 @@
 	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.7.2/jquery.js"></script>
 	<script type="text/javascript" src="./view/js/zmk.js"></script>
 	<script type="text/javascript" src="./view/js/msgBox.js"></script>
-    <style type="text/css">
-        #nav{
-            float:right;
-        }
-
-        #nav ul li{
-            float: left;
-            padding: 0 10px;
-            margin: 0 10px;
-
-        }
-        #nav span{
-            color: #2e9fff;
-            font-size: 20px;
-        }
-        #nav span:hover{color: #323232}
-        .nav{
-            height: 40px;
-            line-height: 40px;
-            margin: 28px 50px;
-        }
-
-
-    </style>
 </head>
 <body>
 <!--这里增加header_relatvie样式是为了保证header底边的css样式能显示出来-->
-<div id="header" class="header_relatvie">
+<header id="header" class="header_relatvie">
 	<a id="top"></a>
     <a href="<?php echo SITE_URL ;?>"><span class="logo" id="logo">
-        胡场北剅轩
+        北剅轩
 	</span></a>
 	<div class="description" id="intro">
         <pre>
@@ -62,5 +38,27 @@
     </ul>
     </div>
     <div class="clear"></div>
-</div>
+</header>
 <div id="content">
+
+    <?php
+    //todo
+    $_SESSION['uid'] = 1;
+    if($_SESSION['uid']){
+    ?>
+    <!--博主控制台-->
+    <div class="console" id="console">
+        <a href="javascript:void(0)" title="隐藏控制台" name="consoleHide" class="xx">X</a>
+        <ul>
+            <li><a href="<?php echo U('Blog/post')?>">书写博客</a></li>
+            <li><a href="<?php echo U('Blog/rank')?>">最受欢迎</a></li>
+            <li><a href="<?php echo U('Admin/info')?>">博客信息</a></li>
+            <li><a href="<?php echo U('Admin/links')?>">链接管理</a></li>
+            <li><a href="<?php echo U('Admin/tags')?>">标签管理</a></li>
+            <li><a href="<?php echo U('Admin/nav')?>">导航管理</a></li>
+            <li><a href="<?php echo U('Blog/logout') ?>">退出管理</a></li>
+        </ul>
+    </div>
+    <?php
+    }
+    ?>

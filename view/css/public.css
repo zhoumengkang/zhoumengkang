@@ -22,7 +22,8 @@ body, div, ul, li{
     clear: both;
 }
 .header_relatvie{
-    position: relative;
+    width: 100%;
+    position: fixed;
 }
 .fixed_top{
     position: fixed;
@@ -55,6 +56,26 @@ body, div, ul, li{
     float:left;
     display: none;
 }
+#nav{
+    float:right;
+}
+
+#nav ul li{
+    float: left;
+    padding: 0 10px;
+    margin: 0 10px;
+
+}
+#nav span{
+    color: #2e9fff;
+    font-size: 20px;
+}
+#nav span:hover{color: #323232}
+.nav{
+    height: 40px;
+    line-height: 40px;
+    margin: 28px 50px;
+}
 /*导航结束*/
 /*主体内容开始*/
 #wrap{
@@ -62,7 +83,32 @@ body, div, ul, li{
     margin: 0px auto;
     padding: 15px;
 }
-
+.console{
+    background: #fff;
+    padding: 20px;
+    position: fixed;
+    z-index: 2;
+    right: 20px;
+    top: 120px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+.console .xx{
+    position: absolute;
+    left: -20px;
+    top: 20px;
+    padding: 0 6px;
+    background-color: #FFF;
+    display: block;
+    border-radius: 5px 0 0 5px;
+}
+.showConsole{
+    left: -40px!important;
+    padding: 0 7px 0 5px!important;
+    background-color: rgb(149, 224, 164)!important;
+    color: #fff!important;
+}
 /*主体内容结束*/
 
 /*底部开始*/
@@ -105,7 +151,10 @@ ul, ul li {
 .cl {
 	zoom:1;
 }
-#content{background:#f1f1f1 url(../images/body.gif) repeat;}
+#content{
+    padding-top: 98px;
+    background:#f1f1f1 url(../images/body.gif) repeat;
+}
 
 
 /*网站头部*/

@@ -1,4 +1,24 @@
 $(function() {
+    //控制台隐藏
+    $("a[name='consoleHide']").click( function(){
+        var ele = $(this);
+        if(parseInt($("#console").css("right"))>0){
+            $("#console").animate({
+                right:"-96px"
+            },function(){
+                ele.text("《《").addClass('showConsole');
+            });
+        }else{
+            $("#console").animate({
+                right:"20px"
+            },function(){
+                ele.removeClass('showConsole').text("X");
+            });
+        }
+
+
+    });
+
     //顶部效果
     $(window).scroll(function() {
         if($(window).scrollTop()==0){
@@ -48,9 +68,11 @@ $(function() {
     var _ch = $("#content").height();
     var _wh = $(window).height();
     console.log("window's height",_wh,"content's height",_ch,"_wh - _ch:",_wh - _ch);
-    if(_wh - _ch > 190){
+    if(_wh - _ch > 192){
         $("#content").css("height",(_wh-192)+"px");
     }
+
+
 
 
 	var $backToTopTxt = "返回顶部", $backToTopEle = $('<div class="backToTop"></div>').appendTo($("body"))
