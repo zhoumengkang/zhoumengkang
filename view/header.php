@@ -9,8 +9,7 @@
 	<script type="text/javascript" src="./view/js/msgBox.js"></script>
 </head>
 <body>
-<!--这里增加header_relatvie样式是为了保证header底边的css样式能显示出来-->
-<header id="header" class="header_relatvie">
+<header id="header" class="header_fixed">
 	<a id="top"></a>
     <a href="<?php echo SITE_URL ;?>"><span class="logo" id="logo">
         北剅轩

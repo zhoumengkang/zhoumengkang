@@ -21,7 +21,7 @@ body, div, ul, li{
 .clear{
     clear: both;
 }
-.header_relatvie{
+.header_fixed{
     width: 100%;
     position: fixed;
 }
