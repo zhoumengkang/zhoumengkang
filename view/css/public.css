@@ -114,6 +114,32 @@ body, div, ul, li{
     background-color: rgb(149, 224, 164)!important;
     color: #fff!important;
 }
+
+#content{
+    padding-top: 96px;
+    background:#f1f1f1 url(../images/body.gif) repeat;
+}
+
+
+#side{
+    float:right; width:250px; margin-left: 10px;line-height:120%;
+}
+.side{
+    border-radius:6px;background-color:white;border:1px solid #E2E2E2;box-shadow:0px 0px 10px 1px rgba(0,0,0,0.05);overflow:hidden;padding-bottom:10px;margin-bottom:10px
+}
+.side_title{
+    font-size:16px;color: #CACACA;padding-left:10px;
+}
+#main{
+    margin-right: 250px;
+}
+.main{
+padding:10px;overflow:hidden;border-radius:6px;background-color:white;border:1px solid #E2E2E2;box-shadow:0px 0px 10px 1px rgba(0,0,0,0.05);
+}
+#blog{
+    min-width:770px; margin-right:10px;margin-left:10px;overflow:hidden;border-radius:6px;background-color:white;border:1px solid #E2E2E2;box-shadow:0px 0px 10px 1px rgba(0,0,0,0.05);
+}
+
 /*主体内容结束*/
 
 /*底部开始*/
@@ -156,33 +182,6 @@ ul, ul li {
 .cl {
 	zoom:1;
 }
-#content{
-    padding-top: 96px;
-    background:#f1f1f1 url(../images/body.gif) repeat;
-}
-
-
-/*网站头部*/
-.col960 {width:100%;margin:auto;}
-.navbg {height:40px;width: 100%;background: #08A5E0;box-shadow: 1px 1px 7px #999;position:absolute;z-index:99;left:0;}
-#navul li {float: left;margin-right: 1px;width:100px;height:40px;position:relative;text-align:center;line-height:40px;}
-#navul li.navhome {text-align:left;padding:0 0px 0 40px;width:60px;}
-#navul li a:link, #navul li a:visited {color:#FFFFFF;}
-#navul li ul {display:none;position:absolute;z-index:10000;top:38px;left:0px;background:#089AD1;border-top:#089FF1 1px solid;}
-#navul li ul li {display:block;width:98px;float:none;margin-right:0px;height:28px;position:relative;line-height:28px;border-bottom:#089FF1 1px solid;font-size:12px;}
-#navul li.navmoon {background:#089AD1;width:98px;height:38px;line-height:38px;}
-#navul li.navmoon a {color:#FFFFFF;}
-#navul li.navhome a:hover {color:#FCFF00;}
-#navul li.navmoon ul {display:block;}
-#navul li.navmoon ul a {display:block;width:98px;height:28px;line-height:28px;}
-#navul li.navmoon ul a:hover {background:#000000;}
-
-#side{float:left; width:250px; margin-left: 10px;line-height:120%;}
-.side{border-radius:6px;background-color:white;border:1px solid #E2E2E2;box-shadow:0px 0px 10px 1px rgba(0,0,0,0.05);overflow:hidden;padding-bottom:10px;margin-bottom:10px}
-.side_title{font-size:16px;color: #CACACA;padding-left:10px;}
-#main{float:right; width:100%; margin-left:-270px;}
-#main .main{min-width:770px; margin-right:10px;margin-left:270px; padding:10px;overflow:hidden;border-radius:6px;background-color:white;border:1px solid #E2E2E2;box-shadow:0px 0px 10px 1px rgba(0,0,0,0.05); }
-#blog{min-width:770px; margin-right:10px;margin-left:10px;overflow:hidden;border-radius:6px;background-color:white;border:1px solid #E2E2E2;box-shadow:0px 0px 10px 1px rgba(0,0,0,0.05); }
 
 
 /* article style */

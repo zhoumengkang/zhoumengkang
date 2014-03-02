@@ -38,6 +38,9 @@ function pagelist($p,$total,$pre){
 			$url = $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'];
 		}
 		$pages = ceil($total/$pre) ;
+        if($pages < 2){
+            return '<div class="pages"></div>';
+        }
 		$str='<div class="pages">';
 		if($pages>11){
 				if($p<=6){
