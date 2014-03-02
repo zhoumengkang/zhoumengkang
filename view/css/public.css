@@ -143,7 +143,24 @@ padding:10px;overflow:hidden;border-radius:6px;background-color:white;border:1px
 /*主体内容结束*/
 
 /*底部开始*/
+#footer{
+    background-color: #546673;
+    height:96px;
+    margin:0;
+    color: #e4e7ee;
 
+}
+#footer small{
+    -webkit-font-smoothing: antialiased;
+    line-height: 96px;
+}
+
+.copyright{
+    text-align: center;
+}
+.copyright a{
+    padding: 0 4px;
+}
 #footer span{color:#CACACA}
 .backToTop {
     font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -164,7 +181,44 @@ padding:10px;overflow:hidden;border-radius:6px;background-color:white;border:1px
     opacity: .6;
     filter: Alpha(opacity=60);
 }
+/*登录框*/
+.login{
+    display: none;
+    position: absolute;
+    z-index: 3;
+}
+.loginBox{
+    display: none;
+}
+.password{
+    height: 60px;
+    text-align: center;
+}
+.password input{
+    height: 20px;
+    font-size: 20px;
+}
+.password div{
+    padding-top: 10px;
+}
+.password div a{
+    margin:0 5px;
+    color: #FFFFFF;
+    background-color:#A8F3AB;
+    padding: 5px 20px;
+    border-radius: 20px;
+}
+.password div a:hover{
+    color: #FFFFFF;
+    background-color:#A2A2A2;
+}
+.closeLoginBox{
+    background-color: #A4F6F3!important;
+}
+/*登录框*/
 /*底部结束*/
+
+
 
 a:link, a:visited {
 	text-decoration:none;
@@ -286,22 +340,7 @@ ul, ul li {
 .wrong .btn{margin-top:30px}
 .gotoback{border-radius:10px;background:#DDD;padding:5px;}
 .gotoback:hover{color:#FFF;border-radius:10px;background:#08A5E0;padding:5px;}
-.login{
-	float:left;
-	margin-left: 5px;
-}
-.login a{
-	background-color:#DDD; 
-	color:#CACACA;
-	padding:5px 10px 5px 10px;
-	border-radius:10px;
-}
-.login a:hover{
-	background-color:#08A5E0; 
-	color:#FFF;
-	padding:5px 10px 5px 10px;
-	border-radius:10px;
-}
+
 .inputstyle{
     cursor: pointer;
     font-size: 24px;
@@ -312,21 +351,6 @@ ul, ul li {
 }
 .inputClass{
 	position:relative;
-}
-#login{
-	margin: auto 0;
-	text-align: center;
-	min-height: 420px;
-	padding-top: 30px;
-}
-.password {
-	border: 0px;
-	height: 38px;
-	width: 160px;
-	padding-left: 10px;
-	border-radius:6px;
-	border:1px dashed #BEB0B0;
-	background-color: #FFF;
 }
 .sub{
 	margin-top: 20px;

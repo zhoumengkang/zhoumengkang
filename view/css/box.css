@@ -96,7 +96,6 @@
 }
 .innerpopbox {
     background: none repeat scroll 0 0 #FFFFFF;
-    border: 1px solid #DADADA;
     border-radius: 1px;
     height: auto;
     max-width: 600px;
@@ -111,7 +110,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 998;
+    z-index: 4;
 }
 .confirm{
     text-align: center;

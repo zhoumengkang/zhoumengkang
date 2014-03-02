@@ -73,8 +73,48 @@ $(function() {
     }
 
 
+    //ajax登录
+    //显示登录框
+    $("a[name='login']").click( function(){
 
+        $("#login").fadeIn('slow');
+        var _w = $('#loginBox').width();
+        var _h = $('#loginBox').height();
+        // 获取定位值
+        var left = ($('body').width() - _w)/2 ;
+        var top  = ($(window).height()-_h)/2;
+        // 添加弹窗样式与动画效果（出现）
+        $('.loginBox').css({
+            position:'fixed',
+            left:left + "px",
+            top:top + "px",
+            zIndex:5
+        }).fadeIn("slow");
+    })
+    //登录操作
+    $(".loginActive").click(function(){
 
+        $.post(U('Blog/login'),{password:$("input[name='password']").val()},function(data){
+            if(parseInt(data)==1){
+                ui.success('登录成功');
+                setTimeout(function(){
+                    $('.loginBox').fadeOut('slow',function(){
+                        $("#login").hide();
+                    });
+                },500);
+            }else{
+                ui.error('登录失败');
+            }
+        })
+    })
+    //返回操作
+    $(".closeLoginBox").click(function(){
+        $('.loginBox').fadeOut('slow',function(){
+            $("#login").hide();
+        });
+    })
+
+    //回到顶部
 	var $backToTopTxt = "返回顶部", $backToTopEle = $('<div class="backToTop"></div>').appendTo($("body"))
 		.text($backToTopTxt).attr("title", $backToTopTxt).click(function() {
 			$("html, body").animate({ scrollTop: 0 }, 120);

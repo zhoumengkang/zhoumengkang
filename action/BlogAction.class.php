@@ -45,19 +45,13 @@ class BlogAction extends Action{
 	}
 	//登陆和退出
 	public function login(){
-		if($_POST){
-			$res = d()->q('select id from z_user where id =1 and password ="'.md5(addslashes($_POST['password'])).'"');
-			if($res[0]['id']==1){
-				$url = U('Blog/index');
-				header("Location: {$url}");
-				$_SESSION['uid']=1;
-			}else{
-				$url = U('Blog/login',array('flag'=>1));
-				header("Location: {$url}");
-			}
-		}else{
-			include './view/login.php';
-		}
+        $res = d()->q('select id from z_user where id =1 and password ="'.md5(addslashes($_POST['password'])).'"');
+        if($res[0]['id']==1){
+            $_SESSION['uid']=1;
+            echo 1;
+        }else{
+            echo 0;
+        }
 	}
 	public function logout(){
 		session_destroy();
