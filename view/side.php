@@ -31,7 +31,8 @@
     ?>
 </div>
 <div class="side">
-    <p class="side_title">标签云</p>
+    <p class="side_title" style="float: left;">最常用的标签</p>
+    <a href="<?php echo U('Blog/tags')?>" style=" padding: 16px; font-size: 13px; float: right; color: #bbb; ">更多 》》</a>
     <?php
     if($top){
         foreach($top as $k =>$v){

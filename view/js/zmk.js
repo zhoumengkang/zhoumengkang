@@ -20,11 +20,13 @@ $(function() {
     });
 
     //顶部效果
+    //TODO:BUG越来越严重了，我擦！
     $(window).scroll(function() {
         if($(window).scrollTop()==0){
             //恢复
-
-             $(".sign").hide();
+             $(".sign").hide(function(){
+                 $("#intro").fadeIn('slow');
+             });
              $("#header").removeClass('fixed_top').animate({
                  "height": "96px"
              }).find(".logo").animate({
@@ -35,11 +37,8 @@ $(function() {
                     "padding":0,
                     "margin-top":"28px",
                     "margin-bottom":"28px"
-                },function(){
-                    $("#intro").fadeIn('slow');
                 });
         }else{
-
             $("#header").addClass('fixed_top').animate({
                 "height": "46px"
             },500).find(".logo").animate({

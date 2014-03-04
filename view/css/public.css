@@ -335,11 +335,10 @@ ul, ul li {
 .wrong{background:#FFF;padding-bottom:10px;text-align: center;}
 .wrong>p>img{width:406px;height:380px}
 .wrong_num{font-size:116px;line-height:120px;font-weight:bolder;color:#dc181e;margin:0px 0 20px}
-.sorry{font-size:30px;color:#b3b3b3;font-family:Microsoft Yahei}
+.sorry{font-size:30px;color:#b3b3b3;}
 .wrong .btn{margin-top:30px}
-.gotoback{border-radius:10px;background:#DDD;padding:5px;}
-.gotoback:hover{color:#FFF;border-radius:10px;background:#08A5E0;padding:5px;}
-
+.gotoback{border-radius:15px;padding:5px 10px;}
+.gotoback:hover{color: #FFFFFF;}
 .inputstyle{
     cursor: pointer;
     font-size: 24px;

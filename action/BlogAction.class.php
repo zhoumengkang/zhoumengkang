@@ -6,14 +6,14 @@ class BlogAction extends Action{
 	//列表页
 	public function index(){
 		//顶置的帖子
-		$top = d()->q('select * from z_blog where status = 2 order by toptime desc limit 10');
-		$links = d()->q('select * from z_link order by rank asc');
+		$top = d()->q('select * from z_blog where `status` = 2 order by toptime desc limit 10');
+		$links = d()->q('select * from z_link where `status` > 0 order by rank asc');
 		$num = PERPAGES;
 		$page = (int)$_GET['p']?(int)$_GET['p']:1;
 		$start = ($page-1)*$num;
 		if($_GET['tag']){
 			$res = d()->q('select * from z_blog a,z_blog_to_tags b where a.status >0 and a.id = b.blog_id and b.tag_id = '.addslashes($_GET['tag']).' order by a.id desc limit '.$start.','.$num);
-			$totalNum = d()->q('select count(*) as num from z_blog a,z_blog_to_tags b where a.status >0 and a.id = b.blog_id and b.tag_id = '.$_GET['tag']);
+			$totalNum = d()->q('select count(*) as num from z_blog a,z_blog_to_tags b where a.status >0 and a.id = b.blog_id and b.tag_id = '.addslashes($_GET['tag']));
 		}elseif($_GET['nav']){
 			$res = d()->q("select * from z_blog where status > 0 and nav =".intval($_GET['nav'])." or `type` = ".intval($_GET['nav'])." order by id desc limit ".$start.','.$num);
 			$totalNum = d()->q("select count(*) as num from z_blog where status > 0 and nav =".intval($_GET['nav'])." or `type = `".intval($_GET['nav']));
@@ -158,5 +158,10 @@ class BlogAction extends Action{
 	
 	public function about(){
         echo 1;
+    }
+
+    public function tags(){
+        $tags = d()->q("SELECT a.id, a.name, COUNT( b.tag_id ) AS linktimes FROM  `z_tags` a LEFT JOIN `z_blog_to_tags` b  ON b.tag_id = a.id GROUP BY b.tag_id ORDER BY linktimes DESC LIMIT 300");
+        include './view/tagsList.php';
     }
 }
