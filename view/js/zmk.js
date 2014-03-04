@@ -107,7 +107,9 @@ $(function() {
         })
     };
 
-    $(".loginActive").click(loginFun());
+    $(".loginActive").click(function(){
+        loginFun();
+    });
     $(".loginActive").bind('keydown', function(e) {
         var key = e.which;
         if(key == 13) {
