@@ -92,8 +92,7 @@ $(function() {
         }).fadeIn("slow");
     })
     //登录操作
-    $(".loginActive").click(function(){
-
+    var loginFun = function(){
         $.post(U('Blog/login'),{password:$("input[name='password']").val()},function(data){
             if(parseInt(data)==1){
                 ui.success('登录成功');
@@ -106,7 +105,16 @@ $(function() {
                 ui.error('登录失败');
             }
         })
-    })
+    };
+
+    $(".loginActive").click(loginFun());
+    $(".loginActive").bind('keydown', function(e) {
+        var key = e.which;
+        if(key == 13) {
+            loginFun();
+        }
+    });
+
     //返回操作
     $(".closeLoginBox").click(function(){
         $('.loginBox').fadeOut('slow',function(){
