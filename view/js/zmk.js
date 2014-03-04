@@ -110,7 +110,7 @@ $(function() {
     $(".loginActive").click(function(){
         loginFun();
     });
-    $(".loginActive").bind('keydown', function(e) {
+    $("input[name='password']").bind('keydown', function(e) {
         var key = e.which;
         if(key == 13) {
             loginFun();
