@@ -1,7 +1,8 @@
 <?php
 //Action的控制基类
 class Action{
-	protected $nav =null;
+	protected $nav  = null;
+    protected $tags = null;
 	/**
 	 *action初始化方法(在这个方法里根据参数a的值决定调用对应的方法)
 	 *
@@ -30,4 +31,9 @@ class Action{
             //die("没有找到{$a}对应的方法");
 		}
 	}
+
+    //跳转
+    public function jump($info,$jumpUrl=null){
+        include './view/jump.php';
+    }
 }

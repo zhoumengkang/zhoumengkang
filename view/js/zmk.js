@@ -91,7 +91,9 @@ $(function() {
                 ui.success('登录成功');
                 setTimeout(function(){
                     $('.loginBox').fadeOut('slow',function(){
-                        $("#login").hide();
+                        $("#login").hide(function(){
+                            location.reload();
+                        });
                     });
                 },500);
             }else{

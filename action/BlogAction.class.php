@@ -75,7 +75,6 @@ class BlogAction extends Action{
 			header("Location: {$url}");
 		}
 		//先存文章
-		$type=$_POST['type'];
 		$nav=$_POST['nav']?$_POST['nav']:null;
 		//存标签
 		//dump($_POST);
@@ -90,8 +89,8 @@ class BlogAction extends Action{
 			$tags2=explode(',',$tags2);
 			//dump($tags2);
 			foreach($tags2 as $k=>$v){
-				$id = d()->q('select id from z_tags where name = "'.$v.'"' );
-				$ddd = d()->lastsql();
+				$id = d()->q('select id from z_tags where name = "'.trim($v).'"' );
+				//$ddd = d()->lastsql();
 				//dump($ddd);
 				if($id[0]>0){
 					$tags[]=$id[0]['id'];
@@ -108,10 +107,10 @@ class BlogAction extends Action{
 		//dump($tags1);
 		$title = $_POST['title'];
 		$content = addslashes($_POST['content']);
-		$sql = 'insert into z_blog (`type`,`nav`,`title`,`content`,`ctime`)values("'.$type.'","'.$nav.'","'.$title.'","'.$content.'",'.time().')';
+		$sql = 'insert into z_blog (`nav`,`title`,`content`,`ctime`)values("'.$nav.'","'.$title.'","'.$content.'",'.time().')';
 		$res = d()->q($sql);
 		if ($res < 0) {
-			exit('文章发表失败');
+            $this->jump('文章发表失败');
 		}
 		//往文章和标签的关系表里写数据
 		if (count($tags1)) {
@@ -121,9 +120,9 @@ class BlogAction extends Action{
 			}
 	 		if(array_product($result)){
 				$url = U('Blog/blog/',array('id'=>$res));
-				header("Location: {$url}");
+                $this->jump('文章发表成功',$url);
 			}else{
-				exit('文章发表失败');
+				$this->jump('文章发表失败');
 			}
 		} else {
 			$url = U('Blog/blog/',array('id'=>$res));
@@ -149,15 +148,15 @@ class BlogAction extends Action{
 		d()->q($sql);
 	}
 	
-	public function getNav(){
+	/*public function getNav(){
 		$id = addslashes($_POST['id']);
 		$sql = "select * from z_nav where status = 1 and pid = $id";
 		$nav = d()->q($sql);
 		echo json_encode($nav);
-	}
+	}*/
 	
 	public function about(){
-        echo 1;
+        $this->success('发表成功',U('Blog/index'));
     }
 
     public function tags(){

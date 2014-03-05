@@ -146,7 +146,7 @@ class AdminAction extends Action{
 		$result2 = array_diff($tags1,$original_tags);//新增的标签
 
 		//dump($result);
-		dump($result2);
+		//dump($result2);
 		foreach ($result as $k => $v) {
 			d()->q("delete from z_blog_to_tags where blog_id={$_POST['id']} and tag_id={$v}");
 		}
@@ -155,11 +155,8 @@ class AdminAction extends Action{
 		}
 		//标签处理完毕
 		//更新文章
-		if ($_POST['nav']) {
-			$sql ="update z_blog set `title`='{$_POST['title']}',`type`={$_POST['type']},`nav`={$nav},`content`='{$_POST['content']}' where id=".$_POST['id'];
-		} else {
-			$sql ="update z_blog set `title`='{$_POST['title']}',`type`={$_POST['type']},`content`='{$_POST['content']}' where id=".$_POST['id'];
-		}
+		$sql ="update z_blog set `title`='{$_POST['title']}',`nav`={$_POST['nav']},`content`='{$_POST['content']}' where id=".$_POST['id'];
+
 		
 		//dump($sql);
 		$res =d()->q($sql);

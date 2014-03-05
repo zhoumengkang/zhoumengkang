@@ -136,9 +136,23 @@ body, div, ul, li{
 padding:10px;overflow:hidden;border-radius:6px;background-color:white;border:1px solid #E2E2E2;box-shadow:0px 0px 10px 1px rgba(0,0,0,0.05);
 }
 #blog{
-    min-width:770px; margin-right:10px;margin-left:10px;overflow:hidden;border-radius:6px;background-color:white;border:1px solid #E2E2E2;box-shadow:0px 0px 10px 1px rgba(0,0,0,0.05);
+    overflow:hidden;border-radius:6px;background-color:white;border:1px solid #E2E2E2;box-shadow:0px 0px 10px 1px rgba(0,0,0,0.05);
 }
-
+    /*post 页面*/
+    .post_title{
+        width: 1000px;
+        height: 24px;
+        font-size: 18px;
+        line-height: 24px;
+    }
+    /*post 页面*/
+    /*jump 跳转页面*/
+    .center{text-align: center;}
+    .jump{
+        padding-top: 80px;
+        font-size: 30px;
+    }
+    /*jump 跳转页面*/
 /*主体内容结束*/
 
 /*底部开始*/
@@ -243,13 +257,13 @@ ul, ul li {
 .list{margin:20px 20px 0 20px;}
 
 /* title style on list */
-.article_title{display:block; margin: 5px 0 0 10px; color:#000; font:normal 20px/30px  'Microsoft YaHei';}
+.article_title{display:block; margin: 5px 0 0 10px; color:#000; font-size:20px;}
 .article_title:after{content:"."; display:block; height:0; clear:both; visibility:hidden;}
 
 
 
 /* article title */
-.article_title h3{display:inline; font:normal 20px/30px  'Microsoft YaHei'; vertical-align:middle;}
+.article_title h3{display:inline; ; vertical-align:middle;}
 
 
 

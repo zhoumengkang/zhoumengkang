@@ -33,36 +33,32 @@ include 'header.php';
 <form class="myform" name="myBlogForm" action="" method="post" enctype="multipart/form-data">
 	<div>类型：<br/>
 	<!--nav type-->
-	<select name="type" id="type" >
+	<select name="nav" >
 		<?php
-			echo "<option >请选择</option>\r\n";
+			echo "<option>请选择</option>\r\n";
 			foreach($this->nav as $k=>$v){
-				if ($v['pid']==0) {
-					if($blog[0]['type']==$v['id']){
-						echo '<option value="'.$v['id'].'" selected="selected">'.$v['name'].'</option>';
-					}else{
-						//
-						echo '<option value="'.$v['id'].'">'.$v['name'].'</option>';
-					}
-				}
-				
+                if($blog[0]['nav']==$v['id']){
+                    echo '<option value="'.$v['id'].'" selected="selected">'.$v['name'].'</option>';
+                }else{
+                    echo '<option value="'.$v['id'].'">'.$v['name'].'</option>';
+                }
 			}
 		?>
 	</select>
-	<select name="nav" id="nav" style="display:none" ></select>
 	<div>标题：<br/>
-	<input type="text" name="title" class="password" style="width:600px" value="<?php echo $blog[0]['title'];?>"/>
+	<input type="text" name="title" class="post_title"  value="<?php echo $blog[0]['title'];?>"/>
 	</div>
-	
+
 	<div class="tags">标签：<br/>
 		<?php
 		if (is_array($this->tags)) {
 			foreach($this->tags as $k=>$v ){
-				echo '<span id="tags'.$v['id'].'" onclick="addTag(id)">'.$v['name'].'</span>';
+				echo '<span id="tags'.$v['id'].'" onclick="addTag(this)">'.$v['name'].'</span>';
 			}
 		}
 		?>
 	</div>
+
 	<div>
 		<div class="modify selectedTags">
 		<?php if(is_array($selectedTags)){
@@ -75,7 +71,7 @@ include 'header.php';
 		<input type="hidden" name="selected_tags"  value="">
 	</div>
 	<div>直接输入标签名以及添加新的标签:<br/>
-		<input type="text" name="tags" value="" class="password" style="width:600px"><br/>(标签中间用","隔开)
+		<input type="text" name="tags" value="" class="post_title" ><br/>(标签中间用","隔开)
 	</div>
 	<div>内容：<br/>
 		<textarea name="content" style="width:100%;height:200px;visibility:hidden;"><?php if(isset($blog)){
@@ -89,49 +85,46 @@ include 'header.php';
     </div>
 	<?php }?>
     <div class="inputClass">
-    	<div style="text-align:center;margin-top:10px;font-size:15px;font-weight:800;background-color: #08A5E0;width:70px;color:#FFF;">发布</div>
-    	<input type="button" value="提交" class="inputstyle" onclick="checkAndPost('<?php echo $action;?>')" />
+        <a href="javascript:void(0)" onclick="checkAndPost('post')" style="
+    display: inline-block;
+    background: #7EF0FF;
+    padding: 1px 10px;
+    margin-top: 10px;
+">提交</a>
     </div>
 
 </form>
 </div>
 <script>
-	$("#type").change(function(){
-		var typeId = $(this).val();
-		var url = "<?php echo U('Blog/getNav') ?>";
-		$.post(url,{id:typeId},function(data){
-			//data = eval(data);//没有给$.post()函数传最后一个格式参数json的时候需要使用eval把字符串转成对象
-			if (data) {
-				$("#nav").fadeIn();
-				var newOption = "";
-				for (var i = data.length - 1; i >= 0; i--) {
-				 	newOption += '<option value="'+data[i]['id']+'">'+data[i]['name']+'</option>';
+    function addTag(e){
+        var tagName = $(e).html();
+        var id = $(e).attr('id');
+        if($("#add"+id).text()){
+            ui.error('该标签已添加');
+            return false;
+        }
+        $(".selectedTags").append('<span class="addedTags" id="add'+id+'">'+tagName+' <a href="javascript:void(0)" name="deleteTags" title="取消添加该标签">X</a></span>');
+    }
 
-				}; 
-				$("#nav").html(newOption);
-			} else{
-				$("#nav").html('');
-				$("#nav").fadeOut();
-			};
-			
-		},'json');	
-	})
-	function addTag(id){
-		tagName = $('#'+id).html();
-		//console.log(tagName);
-		$(".selectedTags").append('<span class="addedTags" id="add'+id+'">'+tagName+' <a href="javascript:void(0)" name="deleteTags" title="取消添加该标签">X</a></span>');
-	}
+
+
 	$('a[name="deleteTags"]').live('click',function(){
 		$(this).parent().remove();
 	})
 	function checkAndPost(a){
-		
+		if(!$("select[name='nav']").val() || $("select[name='nav']").val()=='请选择'){
+            ui.error('请选择文章分类');
+            return false;
+        }
+        if(!$.trim($("input[name='title']").val())){
+            ui.error('标题不能为空');
+            return false;
+        }
 		var tagValue ="";
 		$("span[id*=addtags]").each(function(){
 			var tagId = $(this).attr('id');
 			tagValue += tagId;
 		})
-		//console.log(tagValue);
 		$("input[name='selected_tags']").attr('value',tagValue);
 		//执行编辑器的sync()方法
 		editor.sync();
