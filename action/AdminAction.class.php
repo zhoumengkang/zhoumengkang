@@ -95,7 +95,7 @@ class AdminAction extends Action{
 		$sql = "select * from z_blog where id=$id";
 		$blog = d()->q($sql);
 		//dump($blog);
-		$sql ="select b.id,b.name from z_blog_to_tags a , z_tags b where a.blog_id=$id and a.tag_id = b.id";
+		$sql ="select b.id,b.name from z_blog_to_tags a , z_tags b where a.blog_id=$id and a.tag_id = b.id group by a.tag_id";
 		$selectedTags=d()->q($sql);
 		//dump($selectedTags);
 		$selectedTags_str='';

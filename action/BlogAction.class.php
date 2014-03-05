@@ -12,8 +12,8 @@ class BlogAction extends Action{
 		$page = (int)$_GET['p']?(int)$_GET['p']:1;
 		$start = ($page-1)*$num;
 		if($_GET['tag']){
-			$res = d()->q('select * from z_blog a,z_blog_to_tags b where a.status >0 and a.id = b.blog_id and b.tag_id = '.addslashes($_GET['tag']).' order by a.id desc limit '.$start.','.$num);
-			$totalNum = d()->q('select count(*) as num from z_blog a,z_blog_to_tags b where a.status >0 and a.id = b.blog_id and b.tag_id = '.addslashes($_GET['tag']));
+			$res = d()->q('select * from z_blog a,z_blog_to_tags b where a.status >0 and a.id = b.blog_id and b.tag_id = '.intval($_GET['tag']).' group by a.id order by a.id desc limit '.$start.','.$num);
+			$totalNum = d()->q('select count(*) as num from z_blog where id in ( select a.id from z_blog a,z_blog_to_tags b where a.status >0 and a.id = b.blog_id and b.tag_id = '.intval($_GET['tag']).' group by a.id)');
 		}elseif($_GET['nav']){
 			$res = d()->q("select * from z_blog where status > 0 and nav =".intval($_GET['nav'])." or `type` = ".intval($_GET['nav'])." order by id desc limit ".$start.','.$num);
 			$totalNum = d()->q("select count(*) as num from z_blog where status > 0 and nav =".intval($_GET['nav'])." or `type = `".intval($_GET['nav']));
@@ -126,7 +126,7 @@ class BlogAction extends Action{
 			}
 		} else {
 			$url = U('Blog/blog/',array('id'=>$res));
-			header("Location: {$url}");
+            $this->jump('文章发表成功',$url);
 		}
 	}
 
@@ -134,7 +134,7 @@ class BlogAction extends Action{
 	public function blog(){
 		$id = intval($_GET['id']);
 		$res =d()->q("select * from z_blog where id = {$id} and `status`>0");
-		$tags = d()->q("select b.name,b.id from z_blog_to_tags a,z_tags b where a.blog_id =".$id." and a.tag_id=b.id");
+		$tags = d()->q("select b.name,b.id from z_blog_to_tags a,z_tags b where a.blog_id =".$id." and a.tag_id=b.id group by a.tag_id");
 		//dump($tags);
 
 		if($res){

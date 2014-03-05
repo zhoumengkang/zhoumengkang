@@ -45,24 +45,22 @@ $(function(){ prettyPrint(); });
 					<span class="link_view" title="阅读次数"><a href="<?php echo U('Blog/blog',array('id'=>$v['id']));?>" title="阅读次数">阅读</a>(<?php echo $v['count']?>)</span>
 					
 					<?php if($_SESSION['uid']){ ?>
-					<span class="link_edit"><a href="<?php echo U('Admin/modifyBlog',array('id'=>$_GET['id']))?>" title="编辑">编辑</a></span>
-					<span class="link_edit"><a href="javascript:void(0);"  title="recommendBlog" recommendId="<?php echo $v['id']?>">顶置</a></span>
-					<span class="link_delete"><a href="javascript:void(0);" deleteId="<?php echo $v['id']?>" title="deletdBlog">删除</a></span>
+                        <span class="link_edit"><a href="<?php echo U('Admin/modifyBlog',array('id'=>$_GET['id']))?>" title="编辑">编辑</a></span>
+                        <span class="link_edit"><a href="javascript:void(0);"  title="recommendBlog" recommendId="<?php echo $v['id']?>">顶置</a></span>
+                        <span class="link_delete"><a href="javascript:void(0);" deleteId="<?php echo $v['id']?>" title="deletdBlog">删除</a></span>
 					<?php } ?>
 				</div>
 			</div>
 			<div class="content">
 				<style type="text/css">
-					.tags{
-						margin-left: 0px;
-					}
+
 				</style>
 				<?php if (is_array($tags)){ ?>
-					<div class="login tags">
+					<div class="tags">
 					标签 : 
 					<?php
 						foreach ($tags as $key => $value) {
-							echo '<a href="'.U('Blog/index',array('tag'=>$value['id'])).'" style="padding:0 5px;margin-left:3px;">'.$value['name'].'</a>';
+							echo '<a href="'.U('Blog/index',array('tag'=>$value['id'])).'" >'.$value['name'].'</a>';
 						}
 					?>
 					</div><br/>
@@ -73,7 +71,7 @@ $(function(){ prettyPrint(); });
 			<?php
 				}
 			}
-			if($modify){
+			if(is_array($modify)){
 			?>
 			<!--下面是修改记录(如果有的话)-->
 			<div id="modify">

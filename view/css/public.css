@@ -138,21 +138,33 @@ padding:10px;overflow:hidden;border-radius:6px;background-color:white;border:1px
 #blog{
     overflow:hidden;border-radius:6px;background-color:white;border:1px solid #E2E2E2;box-shadow:0px 0px 10px 1px rgba(0,0,0,0.05);
 }
-    /*post 页面*/
-    .post_title{
-        width: 1000px;
-        height: 24px;
-        font-size: 18px;
-        line-height: 24px;
-    }
-    /*post 页面*/
-    /*jump 跳转页面*/
-    .center{text-align: center;}
-    .jump{
-        padding-top: 80px;
-        font-size: 30px;
-    }
-    /*jump 跳转页面*/
+/*post 页面*/
+.post_title{
+    width: 1000px;
+    height: 24px;
+    font-size: 18px;
+    line-height: 24px;
+}
+/*post 页面*/
+/*jump 跳转页面*/
+.center{text-align: center;}
+.jump{
+    padding-top: 80px;
+    font-size: 30px;
+}
+/*jump 跳转页面*/
+/*标签*/
+.tags a{
+    margin-left: 0px;
+    margin: 0 5px;
+    color: #FFFFFF!important;
+    background-color: #76CEFF;
+    padding: 5px 20px;
+    border-radius: 20px;
+}
+.tags a:hover{
+    background-color: #959797;
+}
 /*主体内容结束*/
 
 /*底部开始*/
