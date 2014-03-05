@@ -147,11 +147,9 @@ $(function() {
 		var id = $(this).attr('recommendId');
 		$.post( U('Admin/recommend'),{id:id},function(data){
 			if(data==1){
-				msg = '顶置成功';
-				showMsg(msg);
+				ui.success('顶置成功');
 			}else{
-				msg = '操作失败';
-				showMsg(msg);
+				ui.error('操作失败');
 			}
 		})
 	})
@@ -161,8 +159,7 @@ $(function() {
 		if (confirm("确定删除?")) {
 			$.post(U('Admin/deleteBlog'),{id:id},function(data){
 				if(data ==1){
-					msg = '删除成功';
-					showMsg(msg);
+					ui.success('删除成功');
 					var blog = $('div[blogId="'+id+'"]').html();
 					if(blog!=null){
 						$("div[blogId='"+id+"']").fadeOut('slow');
@@ -172,8 +169,7 @@ $(function() {
 						},1500)
 					}
 				}else{
-					msg = '操作失败';
-					showMsg(msg);
+                    ui.error('操作失败');
 				}
 			})	
 		}

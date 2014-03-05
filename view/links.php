@@ -20,9 +20,9 @@ include 'header.php';
 <div class="info" style="width:600px;float:left">
 <form action="" method="post">
 	<input type="hidden" name="id" value="">
-	网站名称：<input type="text" name="name"  class="password " ><br/><br/>
-	网站地址：<input type="text" name="url" class="password info_des" ><br/><br/>
-	前台排名：<input type="text" name="rank" class="password" style="width:50px" ><br/>
+	网站名称：<input type="text" name="name"  class="link_input" ><br/><br/>
+	网站地址：<input type="text" name="url" class="link_input info_des" ><br/><br/>
+	前台排名：<input type="text" name="rank" class="link_input" style="width:50px" ><br/>
 	<input type="submit" name="添加" class="sub"  >
 </form>
 	<div style="padding-top:10px">

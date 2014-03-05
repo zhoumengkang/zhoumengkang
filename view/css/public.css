@@ -153,6 +153,10 @@ padding:10px;overflow:hidden;border-radius:6px;background-color:white;border:1px
     font-size: 30px;
 }
 /*jump 跳转页面*/
+.link_input{
+    line-height: 24px;
+    font-size: 20px;
+}
 /*标签*/
 .tags a{
     margin-left: 0px;
