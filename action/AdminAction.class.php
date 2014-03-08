@@ -165,12 +165,12 @@ class AdminAction extends Action{
 		$sql = "insert into z_modify(`blog_id`,`reason`,`mtime`)values(".$_POST['id'].",'".$_POST['modifyLog']."',".time().")";
 		$modifyRes=d()->q($sql);	
 
-        if($modifyRes){
+        if($res){
         	$url = U('Blog/blog/',array('id'=>$_POST['id']));
-			header("Location: {$url}");
+            $this->jump('文章发表成功',$url);
         }else{
         	$url = U('Admin/modifyBlog/',array('id'=>$_POST['id']));
-			header("Location: {$url}");
+            $this->jump('文章发表失败',$url);
         }
 	}
 }

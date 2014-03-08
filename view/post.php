@@ -85,7 +85,7 @@ include 'header.php';
     </div>
 	<?php }?>
     <div class="inputClass">
-        <a href="javascript:void(0)" onclick="checkAndPost('post')" style="
+        <a href="javascript:void(0)" onclick="checkAndPost('<?php echo $action; ?>')" style="
     display: inline-block;
     background: #7EF0FF;
     padding: 1px 10px;

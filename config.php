@@ -5,6 +5,6 @@ define('DB_USER','root');
 
 define('DB_PASSWD','zmkzmk');
 
-define('DB_NAME','zmkang');
+define('DB_NAME','zhoumengkang');
 
 define('PERPAGES',15);

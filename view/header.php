@@ -8,7 +8,6 @@
 	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.7.2/jquery.js"></script>
 	<script type="text/javascript" src="./view/js/zmk.js"></script>
 	<script type="text/javascript" src="./view/js/box.js"></script>
-	<script type="text/javascript" src="./view/js/msgBox.js"></script>
 </head>
 <body>
 <header id="header" class="header_fixed">
