@@ -8,6 +8,8 @@ class BlogAction extends Action{
 		//顶置的帖子
 		$top = d()->q('select * from z_blog where `status` = 2 order by toptime desc limit 10');
 		$links = d()->q('select * from z_link where `status` > 0 order by rank asc');
+        $tags = d()->q("SELECT a.id, a.name, COUNT( b.tag_id ) AS linktimes FROM  `z_tags` a LEFT JOIN `z_blog_to_tags` b  ON b.tag_id = a.id GROUP BY b.tag_id ORDER BY linktimes DESC LIMIT 20");
+        //dump($tags);exit;
 		$num = PERPAGES;
 		$page = (int)$_GET['p']?(int)$_GET['p']:1;
 		$start = ($page-1)*$num;
