@@ -165,7 +165,7 @@ $(function() {
 						$("div[blogId='"+id+"']").fadeOut('slow');
 					}else{
 						setTimeout(function(){
-							location="<?php echo U('Blog/index')?>";
+							location.href="<?php echo U('Blog/index')?>";
 						},1500)
 					}
 				}else{
