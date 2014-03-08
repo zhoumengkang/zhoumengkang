@@ -18,7 +18,7 @@
 	<div class="description" id="intro">
         <pre>
 /**
- * @description 欲诉诸笔端，顾视，无可置者。故，多记于此。
+ * @description 乐观的屌丝码农，总有一天我会强大起来的！
  * @author      周梦康 < i@zhoumengkang.com >
  */
         </pre>
