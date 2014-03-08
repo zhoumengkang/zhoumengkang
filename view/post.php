@@ -9,7 +9,8 @@ include 'header.php';
 <script>
 	KindEditor.ready(function(K) {
 		editor = K.create('textarea[name="content"]', {
-			cssPath : './editor/kindeditor-4.1.7/plugins/code/prettify.css',
+            height : "800px",
+            cssPath : './editor/kindeditor-4.1.7/plugins/code/prettify.css',
 			uploadJson : './editor/kindeditor-4.1.7/php/upload_json.php',
 			fileManagerJson : './editor/kindeditor-4.1.7/php/file_manager_json.php',
 			allowFileManager : true,
