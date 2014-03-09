@@ -107,7 +107,8 @@
 #popcontent img{
     float: none;
     margin: 0px auto;
-    max-width: 480px;
+    max-width: 1200px;
+    _width:1200px;
     display: block;
     cursor: pointer;
 }
