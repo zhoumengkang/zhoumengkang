@@ -141,9 +141,8 @@ padding:10px;overflow:hidden;border-radius:6px;background-color:white;border:1px
 /*post 页面*/
 .post_title{
     width: 1000px;
-    height: 24px;
+    padding: 5px;
     font-size: 18px;
-    line-height: 24px;
 }
 /*post 页面*/
 /*jump 跳转页面*/
