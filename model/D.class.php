@@ -6,9 +6,9 @@
  * @date 2013-7-13
  */
 class D{
-	protected $link=null; //数据库连接资源
+	protected $link    = null; //数据库连接资源
 	protected $queryId = null;
-	protected $lastSql = null;//刚执行的sql语句,方便排错
+	public    $lastSql = null;//刚执行的sql语句,方便排错
 	/**
 	 *构造方法：实现数据库连接，表字段信息的获取。
 	 *@param string $tablename 被操作的表名

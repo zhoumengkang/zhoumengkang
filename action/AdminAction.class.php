@@ -157,9 +157,11 @@ class AdminAction extends Action{
 		//更新文章
 		$sql ="update z_blog set `title`='{$_POST['title']}',`nav`={$_POST['nav']},`content`='{$_POST['content']}' where id=".$_POST['id'];
 
-		
+
 		//dump($sql);
-		$res =d()->q($sql);
+        $model = d();
+		$res =$model->q($sql);
+		dump($res);dump($model->lastsql());exit;
 		//修改日志记录
 
 		$sql = "insert into z_modify(`blog_id`,`reason`,`mtime`)values(".$_POST['id'].",'".$_POST['modifyLog']."',".time().")";
@@ -167,10 +169,10 @@ class AdminAction extends Action{
 
         if($res){
         	$url = U('Blog/blog/',array('id'=>$_POST['id']));
-            $this->jump('文章发表成功',$url);
+            $this->jump('文章修改成功',$url);
         }else{
         	$url = U('Admin/modifyBlog/',array('id'=>$_POST['id']));
-            $this->jump('文章发表失败',$url);
+            $this->jump('文章修改失败',$url);
         }
 	}
 }
