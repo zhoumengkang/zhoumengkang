@@ -1,8 +1,8 @@
 <div class="side">
 	<p class="side_title">被围观次数最多的帖子</p>
 	<?php
-	if($top){
-		foreach($top as $k =>$v){
+	if(is_array($maxRead)){
+		foreach($maxRead as $k =>$v){
 	?>
 	<div class="list_item list_view" style="margin-left:10px">			
 		<div class="article_title">
