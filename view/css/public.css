@@ -377,7 +377,11 @@ ul, ul li {
     top: -5px;
 }
 .inputClass{
-	position:relative;
+    display: inline-block;
+    background: #7EF0FF;
+    padding: 1px 20px;
+    margin-top: 10px;
+    border-radius: 15px;
 }
 .sub{
 	margin-top: 20px;

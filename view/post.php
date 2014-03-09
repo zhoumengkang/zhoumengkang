@@ -86,12 +86,7 @@ include 'header.php';
     </div>
 	<?php }?>
     <div class="inputClass">
-        <a href="javascript:void(0)" onclick="checkAndPost('<?php echo $action; ?>')" style="
-    display: inline-block;
-    background: #7EF0FF;
-    padding: 1px 10px;
-    margin-top: 10px;
-">提交</a>
+        <a href="javascript:void(0)" onclick="checkAndPost('<?php echo $action; ?>')">提交</a>
     </div>
 
 </form>
