@@ -158,12 +158,8 @@ class AdminAction extends Action{
         $title = htmlspecialchars($_POST['title'],ENT_QUOTES);
         $content = htmlspecialchars($_POST['content'],ENT_QUOTES);
 		$sql ="update z_blog set `title`='{$title}',`nav`={$_POST['nav']},`content`='{$content}' where id=".$_POST['id'];
-
-
 		//dump($sql);
-        $model = d();
-		$res =$model->q($sql);
-		dump($res);dump($model->lastsql());exit;
+		$res =d()->q($sql);
 		//修改日志记录
 
 		$sql = "insert into z_modify(`blog_id`,`reason`,`mtime`)values(".$_POST['id'].",'".$_POST['modifyLog']."',".time().")";

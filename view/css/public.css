@@ -45,7 +45,7 @@ body, div, ul, li{
     float: left;
     font-size: 40px;
     font-weight: 800;
-    color: #2e9fff;
+    color: #76CEFF;
     padding:0 20px 0 40px;
     line-height: 96px;
 }
@@ -66,7 +66,7 @@ body, div, ul, li{
 
 }
 #nav span{
-    color: #2e9fff;
+    color: #76CEFF;
     font-size: 20px;
 }
 #nav span:hover{color: #323232}
