@@ -17,7 +17,7 @@ include 'header.php';
                     <div class="list_item list_view" blogId="<?php echo $v['id'] ?>">
                         <div class="article_title left">
                             <h3>
-                                <a href="<?php echo U('Blog/blog',array('id'=>$v['id']));?>"><span><?php echo msubstr($v['title'],0,50);?></span></a><span class="viewtimes" title="阅读次数">(<?php echo $v['count']?>)</span>
+                                <a href="<?php echo U('Blog/blog',array('id'=>$v['id']));?>"><span><?php echo msubstr(htmlspecialchars_decode($v['title']),0,50);?></span></a><span class="viewtimes" title="阅读次数">(<?php echo $v['count']?>)</span>
                             </h3>
                         </div>
                         <div class="article_manage">

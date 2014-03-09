@@ -109,8 +109,8 @@ class BlogAction extends Action{
 			$tags1=array_merge($tags,$tags1);
 		}
 		//dump($tags1);
-		$title = $_POST['title'];
-		$content = addslashes($_POST['content']);
+		$title = htmlspecialchars($_POST['title']);
+		$content = htmlspecialchars($_POST['content']);
 		$sql = 'insert into z_blog (`nav`,`title`,`content`,`ctime`)values("'.$nav.'","'.$title.'","'.$content.'",'.time().')';
 		$res = d()->q($sql);
 		if ($res < 0) {
