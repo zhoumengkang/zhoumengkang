@@ -303,6 +303,13 @@ ul, ul li {
 .content{
 	padding:10px;
 }
+.content img{
+    float: none;
+    margin: 0px auto;
+    max-width: 480px;
+    display: block;
+    cursor: pointer;
+}
 .link_delete{
 	padding-right:10px;
 }
@@ -378,7 +385,7 @@ ul, ul li {
 }
 .inputClass{
     display: inline-block;
-    background: #7EF0FF;
+    background: #CA8BE2;
     padding: 1px 20px;
     margin-top: 10px;
     border-radius: 15px;
