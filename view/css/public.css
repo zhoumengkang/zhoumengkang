@@ -367,7 +367,7 @@ ul, ul li {
 .wrong_num{font-size:116px;line-height:120px;font-weight:bolder;color:#dc181e;margin:0px 0 20px}
 .sorry{font-size:30px;color:#b3b3b3;}
 .wrong .btn{margin-top:30px}
-.gotoback{border-radius:15px;padding:5px 10px;}
+.gotoback{border-radius:15px;padding:5px 10px;background-color: #E6EBEA!important;}
 .gotoback:hover{color: #FFFFFF;}
 .inputstyle{
     cursor: pointer;
