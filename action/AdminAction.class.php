@@ -155,7 +155,9 @@ class AdminAction extends Action{
 		}
 		//标签处理完毕
 		//更新文章
-		$sql ="update z_blog set `title`='{$_POST['title']}',`nav`={$_POST['nav']},`content`='{$_POST['content']}' where id=".$_POST['id'];
+        $title = htmlspecialchars($_POST['title']);
+        $content = htmlspecialchars($_POST['content']);
+		$sql ="update z_blog set `title`='{$title}',`nav`={$_POST['nav']},`content`='{$content}' where id=".$_POST['id'];
 
 
 		//dump($sql);
