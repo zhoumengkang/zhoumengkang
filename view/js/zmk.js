@@ -175,4 +175,10 @@ $(function() {
 		}
 		
 	})
+
+    //查看原图
+    $("img").click(function(){
+        var img = '<img src="'+$(this).attr('src')+'">';
+        ui.box('查看图片',img);
+    })
 });
