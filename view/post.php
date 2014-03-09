@@ -85,9 +85,9 @@ include 'header.php';
 		<input type="text" name="modifyLog" style="width:99%" class="password"  />
     </div>
 	<?php }?>
-    <div class="inputClass">
-        <a href="javascript:void(0)" onclick="checkAndPost('<?php echo $action; ?>')">提交</a>
-    </div>
+        <a href="javascript:void(0)" onclick="checkAndPost('<?php echo $action; ?>')"><div class="inputClass">
+        提交
+    </div></a>
 
 </form>
 </div>
