@@ -98,8 +98,18 @@
     background: none repeat scroll 0 0 #FFFFFF;
     border-radius: 1px;
     height: auto;
-    max-width: 600px;
-    _width:600px;
+    max-width: 1200px;
+    _width:1200px;
+}
+#popcontent{
+    padding: 10px;
+}
+#popcontent img{
+    float: none;
+    margin: 0px auto;
+    max-width: 480px;
+    display: block;
+    cursor: pointer;
 }
 .popbackground{
     filter: alpha(opacity=30);

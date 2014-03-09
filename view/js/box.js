@@ -129,7 +129,7 @@ var ui = {
                     <div id="poptitle"></div>\
                     <a class="btn-close popclose" href="javascript:void(0);">×</a>\
                 </div>\
-                <div class="content" id="popcontent"></div>\
+                <div id="popcontent"></div>\
             </div>\
         </div>';
 
