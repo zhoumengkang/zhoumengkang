@@ -87,7 +87,14 @@ $(function(){ prettyPrint(); });
 			}
 			?>
 			</div>
+
+            <div id="comment">
+                <div><input type="email" name="email" placeholder="留个邮箱吧" /></div>
+                <div><input type="text" name="yourname" placeholder="你的大名" /></div>
+                <div><textarea name="comment" cols="50" rows="5" placeholder="说点什么吧"></textarea></div>
+            </div>
 	</div>
+
 </div>
 <?php
 include 'footer.php';
