@@ -46,8 +46,8 @@
     </div>
 
 </div>
-<div class="side">
-	<p class="side_title">收藏的站点</p>
+<div class="side" id="friendlinks">
+	<p class="side_title">友情链接</p>
 	<ul class="links">
 	<?php
 	if(is_array($links)){

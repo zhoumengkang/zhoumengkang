@@ -18,7 +18,7 @@
 	<div class="description" id="intro">
         <pre>
 /**
- * @description 乐观的屌丝码农，总有一天我会强大起来的！
+ * @description 笔记和生活！
  * @author      周梦康 < i@zhoumengkang.com >
  */
         </pre>
