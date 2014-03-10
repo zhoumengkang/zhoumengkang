@@ -89,8 +89,8 @@ $(function(){ prettyPrint(); });
 			</div>
 
             <div id="comment">
-                <div><input type="email" name="email" placeholder="留个邮箱吧" /></div>
-                <div><input type="text" name="yourname" placeholder="你的大名" /></div>
+                <div style=" margin-left: 2px; "><input type="email" name="email" placeholder="留个邮箱吧" style=" height: 20px; width: 150px;margin-bottom: 5px; " /></div>
+                <div style=" margin-left: 2px; "><input type="text" name="yourname" placeholder="你的大名" style=" height: 20px; width: 150px;margin-bottom: 5px; " /></div>
                 <div><textarea name="comment" cols="50" rows="5" placeholder="说点什么吧"></textarea></div>
             </div>
 	</div>
