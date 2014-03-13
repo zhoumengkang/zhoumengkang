@@ -133,14 +133,7 @@ $(function() {
 	};
 	$(window).bind("scroll", $backToTopFun);
 	$(function() { $backToTopFun(); });
-	//定义js里的U函数
-	var U = function(str){
-		var oldUrl = location.href;
-		var path = oldUrl.split('?');
-		var parameters = str.split('/');
-		var newUrl = path[0]+'?'+'m='+parameters[0]+'&a='+parameters[1];
-		return newUrl;
-	}
+
 
 	//文章顶置功能
 	$('a[title="recommendBlog"]').click(function(){
@@ -181,4 +174,34 @@ $(function() {
         var img = '<img src="'+$(this).attr('src')+'">';
         ui.box('查看图片',img);
     })
+
+
+
 });
+//定义js里的U函数
+var U = function(str){
+    var oldUrl = location.href;
+    var path = oldUrl.split('?');
+    var parameters = str.split('/');
+    var newUrl = path[0]+'?'+'m='+parameters[0]+'&a='+parameters[1];
+    return newUrl;
+}
+//执行评论
+var post_comment = function(){
+    if(!$("input[name='email']").val().match(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)){
+        ui.error('邮箱格式不正确');
+        return false;
+    }
+    if($("textarea[name='comment']").val().length < 1){
+        ui.error('...说点什么吧');
+        return false;
+    }
+    $.post(U('Comment/doComment'),{
+        blogid: $("input[name='blogid']").val(),
+        content: $("textarea[name='comment']").val(),
+        email: $("input[name='email']").val(),
+        name: $("input[name='yourname']").val()
+    },function(data){
+
+    })
+}

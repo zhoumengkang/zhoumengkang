@@ -6,6 +6,14 @@ body{
 	color: #323232; 
 	text-align:left; 
 }
+input,textarea{
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
 body, div, ul, li{
 	margin:0;
 	padding:0;
@@ -475,3 +483,29 @@ ul, ul li {
 	padding-left: 10px;
 	color:#aaa;
 }
+/**留言框**/
+.comment_input{
+    width: 180px;
+    line-height: 20px;
+    height: 20px;
+    font-size: 14px;
+    padding: 4px;
+    margin-right: 10px;
+}
+.comment_textarea{
+    width: 680px;
+    line-height: 20px;
+    height: 120px;
+    font-size: 14px;
+    padding: 4px;
+}
+#post_comment{
+    padding: 7px 15px;
+    background-color: rgb(149, 224, 164);
+    color: #fff!important;
+    border-radius: 2px;
+}
+#post_comment:hover{
+    background-color: #08A5E0;
+}
+/**留言框**/

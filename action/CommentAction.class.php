@@ -13,8 +13,29 @@ class CommentAction extends Action{
      * AJAX请求地址
      * 执行评论操作
      */
+    //todo
     public function doComment(){
+        /*if(!$_POST['name']){
+            $this->ajaxReturn();
+        }
+        if(!$_POST['email']){
 
+        }
+        if(!$_POST['content']){
+
+        }
+        if(!$_POST['blogid']){
+
+        }*/
+        $blogid = intval($_POST['blogid']);
+        $email = htmlspecialchars($_POST['email']);
+        $username = htmlspecialchars($_POST['name']);
+        $content = htmlspecialchars($_POST['content']);
+        $sql = "insert into z_comment(`blogid`,`email`,`username`,`content`,`posttime`) values ({$blogid},'{$email}','{$username}','{$content}',".time().")";
+        $model = d();
+        $res = $model->q($sql);
+        //echo $model->lastsql();
+        echo $res;
     }
 
     /**

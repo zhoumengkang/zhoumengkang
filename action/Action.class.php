@@ -36,4 +36,9 @@ class Action{
     public function jump($info,$jumpUrl=null){
         include './view/jump.php';
     }
+    //AJAX返回
+    //TODO
+    public function ajaxReturn(){
+
+    }
 }

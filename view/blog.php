@@ -89,10 +89,23 @@ $(function(){ prettyPrint(); });
 			</div>
 
             <div id="comment">
-                <div style=" margin-left: 2px; "><input type="email" name="email" placeholder="留个邮箱吧" style=" height: 20px; width: 150px;margin-bottom: 5px; " /></div>
-                <div style=" margin-left: 2px; "><input type="text" name="yourname" placeholder="你的大名" style=" height: 20px; width: 150px;margin-bottom: 5px; " /></div>
-                <div><textarea name="comment" cols="50" rows="5" placeholder="说点什么吧"></textarea></div>
+                <div>
+                    <input type="hidden" name="blogid" value="<?php echo $res[0]['id']; ?>"/>
+                    <textarea name="comment" cols="50" rows="5" placeholder="说点什么吧，可以使用`xxxx`来插入简短的代码碎片（模仿的markdown你懂的）" class="comment_textarea"></textarea></div>
+                <div style=" margin:5px 0; "><input type="email" name="email" placeholder="留个邮箱吧" class="comment_input" /><input type="text" name="yourname" placeholder="你的大名" class="comment_input" /><a
+                        href="javascript:void(0)" id="post_comment" issending="false">提交</a></div>
             </div>
+            <script type="text/javascript">
+                $("#post_comment").click(function(){
+                    post_comment();
+                })
+                $(this).bind('keydown',function(e){
+                    var key = e.which;
+                    if(key == 13) {
+                        post_comment();
+                    }
+                })
+            </script>
 	</div>
 
 </div>
