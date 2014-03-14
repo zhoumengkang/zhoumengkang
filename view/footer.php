@@ -32,5 +32,9 @@
 	<div class="messageBox"></div>
     <div class="backToTop" title="返回顶部" style="display: none;">返回顶部</div>
 </footer>
+<script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd2adf0c061d575a2921e4a7c41fe9cd6' type='text/javascript'%3E%3C/script%3E"));
+</script>
 </body>
 </html>
