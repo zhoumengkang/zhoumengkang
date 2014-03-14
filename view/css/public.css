@@ -332,6 +332,8 @@ ul, ul li {
 
 .content{
 	padding:10px;
+    line-height: 12px;
+    font-size: 16px;
 }
 .content img{
     float: none;
