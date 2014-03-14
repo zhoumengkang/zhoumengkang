@@ -142,7 +142,7 @@ class BlogAction extends Action{
 		//dump($tags);
         $comment = d()->q("select * from z_comment where `blogid` = {$id} and`status` > 0 order by `posttime` desc ");
 
-        dump($comment);
+        //dump($comment);
 
         if($res){
 			$this->title = $res[0]['title'].'_周梦康的博客';
