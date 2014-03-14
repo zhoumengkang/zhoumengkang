@@ -1,4 +1,5 @@
 pre.prettyprint {
+    letter-spacing: 1px;
     border: 1px dashed #CACACA;
     border-radius: 5px;
     font-family: Arial,"Courier New" , Courier , monospace;
