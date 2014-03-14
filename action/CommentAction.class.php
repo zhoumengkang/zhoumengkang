@@ -28,10 +28,10 @@ class CommentAction extends Action{
 
         }*/
         $blogid = intval($_POST['blogid']);
-        $email = htmlspecialchars($_POST['email']);
-        $username = htmlspecialchars($_POST['name']);
-        $content = htmlspecialchars($_POST['content']);
-        $link = htmlspecialchars($_POST['blog']);
+        $email = htmlspecialchars(strip_tags($_POST['email']));
+        $username = htmlspecialchars(strip_tags($_POST['name']));
+        $content = htmlspecialchars(strip_tags($_POST['content']));
+        $link = htmlspecialchars(strip_tags($_POST['blog']));
         $sql = "insert into z_comment(`blogid`,`email`,`username`,`link`,`content`,`posttime`) values ({$blogid},'{$email}','{$username}','{$link}','{$content}',".time().")";
         $model = d();
         $res = $model->q($sql);
