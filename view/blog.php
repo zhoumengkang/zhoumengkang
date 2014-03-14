@@ -89,11 +89,25 @@ $(function(){ prettyPrint(); });
 			</div>
 
             <div id="comment">
+                <div id="commentList">
+                    <?php
+                    if(is_array($comment)){
+                        foreach($comment as $k=>$v){
+
+                        echo '<div class="commentlist"><div><a href="'.$v['link'].'">'.$v['username'].'</a>'.date("Y-m-d H:i:s",time()).'</div>'.$v['content'].'</div>';
+
+                        }
+                    }
+                    ?>
+                </div>
                 <div>
                     <input type="hidden" name="blogid" value="<?php echo $res[0]['id']; ?>"/>
                     <textarea name="comment" cols="50" rows="5" placeholder="说点什么吧，可以使用`xxxx`来插入简短的代码碎片（模仿的markdown你懂的）" class="comment_textarea"></textarea></div>
-                <div style=" margin:5px 0; "><input type="email" name="email" placeholder="留个邮箱吧" class="comment_input" /><input type="text" name="yourname" placeholder="你的大名" class="comment_input" /><a
-                        href="javascript:void(0)" id="post_comment" issending="false">提交</a></div>
+                <div style=" margin:5px 0; ">
+                    <input type="email" name="email" placeholder="留个邮箱吧" class="comment_input" />
+                    <input type="text" name="yourname" placeholder="你的大名" class="comment_input" />
+                    <input type="text" name="blog" placeholder="你的博客地址" class="comment_input" />
+                    <a href="javascript:void(0)" id="post_comment" issending="false">提交</a></div>
             </div>
             <script type="text/javascript">
                 $("#post_comment").click(function(){

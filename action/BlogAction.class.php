@@ -140,8 +140,11 @@ class BlogAction extends Action{
 		$res =d()->q("select * from z_blog where id = {$id} and `status`>0");
 		$tags = d()->q("select b.name,b.id from z_blog_to_tags a,z_tags b where a.blog_id =".$id." and a.tag_id=b.id group by a.tag_id");
 		//dump($tags);
+        $comment = d()->q("select * from z_comment where `blogid` = {$id} and`status` > 0 order by `posttime` desc ");
 
-		if($res){
+        dump($comment);
+
+        if($res){
 			$this->title = $res[0]['title'].'_周梦康的博客';
 			$modify = d()->q("select * from z_modify where blog_id={$id} order by id asc");
 			include './view/blog.php';

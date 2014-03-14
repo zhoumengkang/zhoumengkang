@@ -489,7 +489,6 @@ ul, ul li {
 .comment_input{
     width: 180px;
     line-height: 20px;
-    height: 20px;
     font-size: 14px;
     padding: 4px;
     margin-right: 10px;
@@ -509,5 +508,18 @@ ul, ul li {
 }
 #post_comment:hover{
     background-color: #08A5E0;
+}
+.commentlist{
+    background: url(../images/line_1.gif) repeat-x bottom;
+    margin-bottom: 5px;
+}
+.commentlist div{
+    color: #CACACA;
+    font-size: 13px;
+}
+.commentlist a{
+    color: #CACACA;
+    font-size: 13px;
+    padding-right: 10px;
 }
 /**留言框**/

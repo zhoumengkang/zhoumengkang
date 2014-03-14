@@ -196,12 +196,24 @@ var post_comment = function(){
         ui.error('...说点什么吧');
         return false;
     }
+    var blogurl = $("input[name='blog']").val();
+    if(blogurl){
+        var blogUrlArr = blogurl.split('://');
+        if(blogUrlArr.length < 2){
+            blogurl = 'http://'+blogurl;
+        }
+    }
+
     $.post(U('Comment/doComment'),{
         blogid: $("input[name='blogid']").val(),
+        blog:blogurl,
         content: $("textarea[name='comment']").val(),
         email: $("input[name='email']").val(),
         name: $("input[name='yourname']").val()
     },function(data){
-
+        if(parseInt(data)>0){
+            ui.success('评论成功');
+            $("#commentList").append('<div class="commentlist"><div><a href="'+blogurl+'">'+$("input[name='yourname']").val()+'</a>刚刚</div>'+$("textarea[name='comment']").val()+'</div>');
+        }
     })
 }

@@ -31,7 +31,8 @@ class CommentAction extends Action{
         $email = htmlspecialchars($_POST['email']);
         $username = htmlspecialchars($_POST['name']);
         $content = htmlspecialchars($_POST['content']);
-        $sql = "insert into z_comment(`blogid`,`email`,`username`,`content`,`posttime`) values ({$blogid},'{$email}','{$username}','{$content}',".time().")";
+        $link = htmlspecialchars($_POST['blog']);
+        $sql = "insert into z_comment(`blogid`,`email`,`username`,`link`,`content`,`posttime`) values ({$blogid},'{$email}','{$username}','{$link}','{$content}',".time().")";
         $model = d();
         $res = $model->q($sql);
         //echo $model->lastsql();
