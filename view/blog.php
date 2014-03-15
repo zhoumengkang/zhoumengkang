@@ -52,9 +52,6 @@ $(function(){ prettyPrint(); });
 				</div>
 			</div>
 			<div class="content">
-				<style type="text/css">
-
-				</style>
 				<?php if (is_array($tags)){ ?>
 					<div class="tags">
 					标签 : 
@@ -63,7 +60,7 @@ $(function(){ prettyPrint(); });
 							echo '<a href="'.U('Blog/index',array('tag'=>$value['id'])).'" style="display: inline;" >'.$value['name'].'</a>';
 						}
 					?>
-					</div><br/>
+					</div>
 				<?php }?>
 				
 			<?php echo htmlspecialchars_decode($v['content']);?>
