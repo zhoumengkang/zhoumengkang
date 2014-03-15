@@ -186,14 +186,32 @@ var U = function(str){
     var newUrl = path[0]+'?'+'m='+parameters[0]+'&a='+parameters[1];
     return newUrl;
 }
+//Cookie操作函数
+function setcookie(name,value){
+    var Days = 365;
+    var exp  = new Date();
+    exp.setTime(exp.getTime() + Days*24*60*60*1000);
+    document.cookie = name + "="+ value + ";expires=" + exp.toGMTString();
+}
+
+function getcookie(name){
+    var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+    if(arr != null){
+        return (arr[2]);
+    }else{
+        return "";
+    }
+}
+
 //执行评论
 var post_comment = function(){
-    if(!$("input[name='email']").val().match(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)){
-        ui.error('邮箱格式不正确');
-        return false;
-    }
+
     if($("textarea[name='comment']").val().length < 1){
         ui.error('...说点什么吧');
+        return false;
+    }
+    if(!$("input[name='email']").val().match(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)){
+        ui.error('邮箱格式不正确');
         return false;
     }
     var blogurl = $("input[name='blog']").val();
@@ -203,7 +221,16 @@ var post_comment = function(){
             blogurl = 'http://'+blogurl;
         }
     }
-
+    //第一次留言，则把用户的邮箱、称呼、博客地址存到客户端cookie里方便下次调用，而不用浏览的人手动输入了
+    if(!getcookie('yourname')){
+        setcookie('yourname',$("input[name='yourname']").val());
+    }
+    if(!getcookie('email')){
+        setcookie('email',$("input[name='email']").val());
+    }
+    if(!getcookie('blog')){
+        setcookie('blog',$("input[name='blog']").val());
+    }
     $.post(U('Comment/doComment'),{
         blogid: $("input[name='blogid']").val(),
         blog:blogurl,
@@ -214,6 +241,7 @@ var post_comment = function(){
         if(parseInt(data)>0){
             ui.success('评论成功');
             $("#commentList").append('<div class="commentlist"><div><a href="'+blogurl+'">'+$("input[name='yourname']").val()+'</a>刚刚</div>'+$("textarea[name='comment']").val()+'</div>');
+            $("textarea[name='comment']").val('');
         }
     })
 }

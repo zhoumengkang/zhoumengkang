@@ -110,6 +110,24 @@ $(function(){ prettyPrint(); });
                     <a href="javascript:void(0)" id="post_comment" issending="false">提交</a></div>
             </div>
             <script type="text/javascript">
+                $("textarea[name='comment']").focus(function(){
+                    //先自动填下留言表单，为留言做准备
+                    var email = getcookie('email');
+                    if(email){
+                        $("input[name='email']").val(email);
+                    }
+                    var yourname = getcookie('yourname');
+                    if(yourname){
+                        $("input[name='yourname']").val(yourname);
+                    }
+                    var blog = getcookie('blog');
+                    if(blog){
+                        $("input[name='blog']").val(blog);
+                    }
+                })
+
+
+
                 $("#post_comment").click(function(){
                     post_comment();
                 })
