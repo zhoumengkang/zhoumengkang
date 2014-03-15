@@ -21,7 +21,7 @@ include 'header.php';
                             </h3>
                         </div>
                         <div class="article_manage">
-                            <span class="link_postdate"><?php echo date('Y-m-d H:m:s',$v['ctime'])?></span>
+                            <span class="link_postdate"><?php echo date('Y-m-d H:i:s',$v['ctime'])?></span>
 
                             <?php if($_SESSION['uid']){ ?>
                                 <span class="link_edit"><a href="<?php echo U('Admin/modifyBlog',array('id'=>$v['id']));?>" title="编辑">编辑</a></span>
