@@ -41,7 +41,7 @@ $(function(){ prettyPrint(); });
 						</script>
 						<!-- Baidu Button END -->
 					</div>
-					<span class="link_postdate"><?php echo date('Y-m-d H:m:s',$v['ctime'])?></span>
+					<span class="link_postdate"><?php echo date('Y-m-d H:i:s',$v['ctime'])?></span>
 					<span class="link_view" title="阅读次数"><a href="<?php echo U('Blog/blog',array('id'=>$v['id']));?>" title="阅读次数">阅读</a>(<?php echo $v['count']?>)</span>
 					
 					<?php if($_SESSION['uid']){ ?>
