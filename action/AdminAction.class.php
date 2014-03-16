@@ -162,9 +162,11 @@ class AdminAction extends Action{
 		//dump($sql);
 		$res =d()->q($sql);
 		//修改日志记录
+        if(trim($_POST['modifyLog'])){
+            $sql = "insert into z_modify(`blog_id`,`reason`,`mtime`)values(".intval($_POST['id']).",'".htmlspecialchars($_POST['modifyLog'])."',".time().")";
+            $modifyRes=d()->q($sql);
+        }
 
-		$sql = "insert into z_modify(`blog_id`,`reason`,`mtime`)values(".$_POST['id'].",'".$_POST['modifyLog']."',".time().")";
-		$modifyRes=d()->q($sql);	
 
         if($res || $tags_res1 || $tags_res2){
         	$url = U('Blog/blog/',array('id'=>$_POST['id']));
