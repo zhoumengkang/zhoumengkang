@@ -91,7 +91,7 @@ var ui = {
 	    	$('<div class ="boxy-modal-blackout" ><iframe style="z-index:-1;position: absolute;visibility:inherit;width:'+$('body').width()+'px;height:'+height+'px;top:0;left:0;filter=\'progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)\'"'+
 		 'src="about:blank"  border="0" frameborder="0"></iframe></div>')
 		.css({
-		    height:height+'px',width:$('body').width()+'px',zIndex: 999, opacity: 0.5
+		    height:height+'px',width:$('body').width()+'px',zIndex: 999, opacity: 0.2
 		}).appendTo(document.body);
 	    }
 	},

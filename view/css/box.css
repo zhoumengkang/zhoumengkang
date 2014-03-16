@@ -8,7 +8,7 @@
 }
 .html_clew_box {
 	width: 200px;
-	height: 40px;
+	height: 80px;
 	color:#2ecc71;
     font-family: "Open Sans",Arial,"Hiragino Sans GB","Microsoft YaHei","微软雅黑","STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif;
 	background: url(../images/mayer2.png) 0 0 repeat;
@@ -20,8 +20,8 @@
 	-khtml-box-shadow:0 2px 5px 1px rgba(0,0,0,.1);
 	-ms-box-shadow:0 2px 5px 1px rgba(0,0,0,.1);
 	box-shadow:0 2px 5px 1px rgba(0,0,0,.1);
-	padding: 4px;
-	border-radius: 5px;
+	padding: 3px;
+	border-radius: 4px;
 }
 .clew_error {
 	color:#DD0000;
@@ -41,9 +41,9 @@
 }
 .html_clew_box_con {
 	text-align: center;
-	line-height: 40px;
+	line-height: 80px;
 	background: #fff;
-	font-size:14px;
+	font-size:16px;
 	white-space: nowrap;
 }
 .ico_waiting { background:url(image/icon_waiting.gif) no-repeat 0 0; height:32px; line-height:32px; display:inline-block; padding-left:40px; }
