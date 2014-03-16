@@ -33,7 +33,7 @@ KindEditor.plugin('code', function(K) {
 				'<option value="">Other</option>',
 				'</select>',
 				'</div>',
-				'<textarea class="ke-textarea" style="width:640px;height:480px;"></textarea>',
+				'<textarea class="ke-textarea" style="width:408px;height:260px;"></textarea>',
 				'</div>'].join(''),
 			dialog = self.createDialog({
 				name : name,
