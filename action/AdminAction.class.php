@@ -148,11 +148,12 @@ class AdminAction extends Action{
 		//dump($result);
 		//dump($result2);
 		foreach ($result as $k => $v) {
-			d()->q("delete from z_blog_to_tags where blog_id={$_POST['id']} and tag_id={$v}");
+			$tags_res1 = d()->q("delete from z_blog_to_tags where blog_id={$_POST['id']} and tag_id={$v}");
 		}
 		foreach ($result2 as $k => $v) {
-			d()->q("insert into z_blog_to_tags (`blog_id`,`tag_id`) values({$_POST['id']},{$v})");
+            $tags_res2 = d()->q("insert into z_blog_to_tags (`blog_id`,`tag_id`) values({$_POST['id']},{$v})");
 		}
+
 		//标签处理完毕
 		//更新文章
         $title = htmlspecialchars($_POST['title'],ENT_QUOTES);
@@ -165,7 +166,7 @@ class AdminAction extends Action{
 		$sql = "insert into z_modify(`blog_id`,`reason`,`mtime`)values(".$_POST['id'].",'".$_POST['modifyLog']."',".time().")";
 		$modifyRes=d()->q($sql);	
 
-        if($res){
+        if($res || $tags_res1 || $tags_res2){
         	$url = U('Blog/blog/',array('id'=>$_POST['id']));
             $this->jump('文章修改成功',$url);
         }else{

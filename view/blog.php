@@ -53,7 +53,7 @@ $(function(){ prettyPrint(); });
 			</div>
 			<div class="content">
 				<?php if (is_array($tags)){ ?>
-					<div class="tags">
+					<div class="tags" style="margin-bottom: 5px;">
 					标签 : 
 					<?php
 						foreach ($tags as $key => $value) {
@@ -61,29 +61,31 @@ $(function(){ prettyPrint(); });
 						}
 					?>
 					</div>
-				<?php }?>
-				
+				<?php
+                    }
+                    if(is_array($modify)){
+                ?>
+                    <!--下面是修改记录(如果有的话)-->
+                    <div id="modify">
+                        <?php
+                        foreach($modify as $kk =>$vv){
+                            ?>
+                            <div class="modify">
+                                <div class="modify_time">更新时间：<i><?php echo date('Y-m-d H:i:s',$vv['mtime']); ?></i></div>
+                                <div class="modify_reason">修改原因：<?php echo $vv['reason']; ?></div>
+                            </div>
+                    <?php
+                        }
+                    }
+                    ?>
+                    </div>
 			<?php echo htmlspecialchars_decode($v['content']);?>
 			</div>
 			<?php
 				}
 			}
-			if(is_array($modify)){
 			?>
-			<!--下面是修改记录(如果有的话)-->
-			<div id="modify">
-			<?php
-				foreach($modify as $kk =>$vv){
-			?>
-				<div class="modify">
-					<div class="modify_time">修改时间：<i><?php echo date('Y-m-d H:m:s',$vv['mtime']); ?></i></div>
-					<div class="modify_reason">修改原因：<?php echo $vv['reason']; ?></div>
-				</div>
-			<?php	
-				}
-			}
-			?>
-			</div>
+
 
             <div id="comment">
                 <div id="commentList">
