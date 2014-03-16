@@ -144,9 +144,12 @@ class BlogAction extends Action{
 		$res =d()->q("select * from z_blog where id = {$id} and `status`>0");
 		$tags = d()->q("select b.name,b.id from z_blog_to_tags a,z_tags b where a.blog_id =".$id." and a.tag_id=b.id group by a.tag_id");
 		//dump($tags);
-        $comment = d()->q("select * from z_comment where `blogid` = {$id} and`status` > 0 order by `posttime` desc ");
+        $num = 3;
+        $page = (int)$_GET['p']?(int)$_GET['p']:1;
+        $start = ($page-1)*$num;
+        $comment = d()->q("select * from z_comment where `blogid` = {$id} and`status` > 0 order by `posttime` desc limit ".$start.",".$num);
+        $totalNum = d()->q("select count(*) as num from z_comment where `blogid` = {$id} and`status` > 0");
 
-        //dump($comment);
 
         if($res){
 			$this->title = $res[0]['title'].'_周梦康的博客';

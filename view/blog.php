@@ -94,10 +94,11 @@ $(function(){ prettyPrint(); });
                     echo '<div class="commentlist"><div><a href="'.$v['link'].'">'.$v['username'].'</a>'.date("Y-m-d H:i:s",time()).'</div>'.$v['content'].'</div>';
 
                 }
+                echo pagelist($page,$totalNum[0]['num'],3);
             }
             ?>
         </div>
-        <div>
+        <div style=" margin-top: 10px; ">
             <input type="hidden" name="blogid" value="<?php echo $res[0]['id']; ?>"/>
             <textarea name="comment" cols="50" rows="5" placeholder="说点什么吧，可以使用`xxxx`来插入简短的代码碎片（模仿的markdown你懂的）" class="comment_textarea"></textarea>
         </div>
