@@ -83,59 +83,60 @@ $(function(){ prettyPrint(); });
 			?>
 
 
-            <div id="comment">
-                <div id="commentList">
-                    <?php
-                    if(is_array($comment)){
-                        foreach($comment as $k=>$v){
 
-                        echo '<div class="commentlist"><div><a href="'.$v['link'].'">'.$v['username'].'</a>'.date("Y-m-d H:i:s",time()).'</div>'.$v['content'].'</div>';
-
-                        }
-                    }
-                    ?>
-                </div>
-                <div>
-                    <input type="hidden" name="blogid" value="<?php echo $res[0]['id']; ?>"/>
-                    <textarea name="comment" cols="50" rows="5" placeholder="说点什么吧，可以使用`xxxx`来插入简短的代码碎片（模仿的markdown你懂的）" class="comment_textarea"></textarea>
-                </div>
-                <div style=" margin:5px 0; ">
-                    <input type="email" name="email" placeholder="留个邮箱吧" class="comment_input" />
-                    <input type="text" name="yourname" placeholder="你的大名" class="comment_input" />
-                    <input type="text" name="blog" placeholder="你的博客地址" class="comment_input" />
-                    <a href="javascript:void(0)" id="post_comment" issending="false">提交</a>
-                </div>
-            </div>
-            <script type="text/javascript">
-                $("textarea[name='comment']").focus(function(){
-                    //先自动填下留言表单，为留言做准备
-                    var email = getcookie('email');
-                    if(email){
-                        $("input[name='email']").val(email);
-                    }
-                    var yourname = getcookie('yourname');
-                    if(yourname){
-                        $("input[name='yourname']").val(yourname);
-                    }
-                    var blog = getcookie('blog');
-                    if(blog){
-                        $("input[name='blog']").val(blog);
-                    }
-                })
-
-
-
-                $("#post_comment").click(function(){
-                    post_comment();
-                })
-                $(this).bind('keydown',function(e){
-                    var key = e.which;
-                    if(key == 13) {
-                        post_comment();
-                    }
-                })
-            </script>
 	</div>
+    <div id="comment">
+        <div id="commentList">
+            <?php
+            if(is_array($comment)){
+                foreach($comment as $k=>$v){
+
+                    echo '<div class="commentlist"><div><a href="'.$v['link'].'">'.$v['username'].'</a>'.date("Y-m-d H:i:s",time()).'</div>'.$v['content'].'</div>';
+
+                }
+            }
+            ?>
+        </div>
+        <div>
+            <input type="hidden" name="blogid" value="<?php echo $res[0]['id']; ?>"/>
+            <textarea name="comment" cols="50" rows="5" placeholder="说点什么吧，可以使用`xxxx`来插入简短的代码碎片（模仿的markdown你懂的）" class="comment_textarea"></textarea>
+        </div>
+        <div style=" margin:5px 0; ">
+            <input type="email" name="email" placeholder="留个邮箱吧" class="comment_input" />
+            <input type="text" name="yourname" placeholder="你的大名" class="comment_input" />
+            <input type="text" name="blog" placeholder="你的博客地址" class="comment_input" />
+            <a href="javascript:void(0)" id="post_comment" issending="false">提交</a>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $("textarea[name='comment']").focus(function(){
+            //先自动填下留言表单，为留言做准备
+            var email = getcookie('email');
+            if(email){
+                $("input[name='email']").val(email);
+            }
+            var yourname = getcookie('yourname');
+            if(yourname){
+                $("input[name='yourname']").val(yourname);
+            }
+            var blog = getcookie('blog');
+            if(blog){
+                $("input[name='blog']").val(blog);
+            }
+        })
+
+
+
+        $("#post_comment").click(function(){
+            post_comment();
+        })
+        $(this).bind('keydown',function(e){
+            var key = e.which;
+            if(key == 13) {
+                post_comment();
+            }
+        })
+    </script>
 
 </div>
 <?php

@@ -376,29 +376,26 @@ ul, ul li {
 	text-align:center;
 }
 .pages a{
-	margin:0 5px;
+	margin:0 2px;
 }
 .pages span{
 	background: #DDD;
-	padding:1px 4px;
-	border-radius:6px;
+	padding:4px 8px;
+	border-radius:8px;
 }
 .pages span:hover{
-	background:#08A5E0;
-	padding:1px 4px;
-	border-radius:6px;
+	background:#89EAEE;
+
 }
 .pages a:hover{
 	color:#FFF;
-	background:#08A5E0;
-	cursor:pointer;
-	border-radius:6px;
+	background:#89EAEE;
 }
 .pages .active{
 	color:#FFF;
 	background:#08A5E0;
 	cursor:pointer;
-	border-radius:6px;
+	border-radius:8px;
 }
 .wrong{background:#FFF;padding-bottom:10px;text-align: center;}
 .wrong>p>img{width:406px;height:380px}
