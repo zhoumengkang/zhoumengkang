@@ -8,14 +8,15 @@ include 'header.php';
 	<th>排名</th>
 	<th>操作</th>
 </tr>
-<?php foreach($links as $v){ ?>
+<?php if(is_array($links)){
+    foreach($links as $v){ ?>
 <tr trid="<?php echo $v['id']?>">
 	<td nametd="<?php echo $v['id']?>"><?php echo $v['name'] ?></td>
 	<td urltd="<?php echo $v['id']?>"><?php echo $v['url'] ?></td>
 	<td ranktd="<?php echo $v['id']?>"><?php echo $v['rank'] ?></td>
 	<td><a href="javascript:void(0);" title="<?php echo $v['id']?>" class="modify_links">修改</a> | <a href="javascript:void(0);" title="<?php echo $v['id']?>" class="del_links">删除</a></td>
 </tr>
-<?php } ?>
+<?php }} ?>
 </table>
 <div class="info" style="width:600px;float:left">
 <form action="" method="post">

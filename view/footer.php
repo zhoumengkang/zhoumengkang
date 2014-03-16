@@ -25,7 +25,7 @@
             <a href="<?php echo U('Blog/about')?>">关于博主</a>
             <a href="javascript:void(0)" name="login">登堂入室</a>
             本程序由
-            <a href="">ZzBlog</a>
+            <a href="<?php echo U('Blog/index',array('tag'=>6));?>" title="关于开发本博客的文章">ZzBlog</a>
             勉强驱动 © 2013 - 2014 Mengkang Zhou 辽ICP备12007622号-1
         </small>
     </div>
