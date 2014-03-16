@@ -62,23 +62,19 @@ $(function(){ prettyPrint(); });
 					?>
 					</div>
 				<?php
-                    }
-                    if(is_array($modify)){
+                }
+                if(is_array($modify)){
                 ?>
                     <!--下面是修改记录(如果有的话)-->
                     <div id="modify">
-                        <?php
-                        foreach($modify as $kk =>$vv){
-                            ?>
+                        <?php foreach($modify as $kk =>$vv){ ?>
                             <div class="modify">
                                 <div class="modify_time">更新时间：<i><?php echo date('Y-m-d H:i:s',$vv['mtime']); ?></i></div>
                                 <div class="modify_reason">修改原因：<?php echo $vv['reason']; ?></div>
                             </div>
-                    <?php
-                        }
-                    }
-                    ?>
+                        <?php } ?>
                     </div>
+                <?php } ?>
 			<?php echo htmlspecialchars_decode($v['content']);?>
 			</div>
 			<?php
@@ -101,12 +97,14 @@ $(function(){ prettyPrint(); });
                 </div>
                 <div>
                     <input type="hidden" name="blogid" value="<?php echo $res[0]['id']; ?>"/>
-                    <textarea name="comment" cols="50" rows="5" placeholder="说点什么吧，可以使用`xxxx`来插入简短的代码碎片（模仿的markdown你懂的）" class="comment_textarea"></textarea></div>
+                    <textarea name="comment" cols="50" rows="5" placeholder="说点什么吧，可以使用`xxxx`来插入简短的代码碎片（模仿的markdown你懂的）" class="comment_textarea"></textarea>
+                </div>
                 <div style=" margin:5px 0; ">
                     <input type="email" name="email" placeholder="留个邮箱吧" class="comment_input" />
                     <input type="text" name="yourname" placeholder="你的大名" class="comment_input" />
                     <input type="text" name="blog" placeholder="你的博客地址" class="comment_input" />
-                    <a href="javascript:void(0)" id="post_comment" issending="false">提交</a></div>
+                    <a href="javascript:void(0)" id="post_comment" issending="false">提交</a>
+                </div>
             </div>
             <script type="text/javascript">
                 $("textarea[name='comment']").focus(function(){
