@@ -19,7 +19,7 @@ $(function(){ prettyPrint(); });
 					</h3>
 				</div>
 				<div class="article_manage">
-					<div style="margin-left:6px">
+					<div style="margin-left:1px">
 						<!-- Baidu Button BEGIN -->
 						<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
 						<a class="bds_qzone"></a>

@@ -41,4 +41,8 @@ class Action{
     public function ajaxReturn(){
 
     }
+    //随着模板文件的增加，才发现分目录的必要性，所以用一个display来封装include，然后在其中指定规定的模板路径是非常必要的
+    public function display(){
+
+    }
 }

@@ -313,7 +313,7 @@ ul, ul li {
 
 
 /* article control area */
-.article_manage{padding:5px 0; color:#999; font:normal 12px/24px Arial; text-align:right;}
+.article_manage{padding:5px; color:#999; font:normal 12px/24px Arial; text-align:right;}
 .article_manage span{margin:0 5px;}
 /*.article_manage a{color:#ff2a00;}*/
 .article_manage .link_postdate{margin:0 5px 0 0;}
