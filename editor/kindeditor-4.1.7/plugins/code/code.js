@@ -33,7 +33,7 @@ KindEditor.plugin('code', function(K) {
 				'<option value="">Other</option>',
 				'</select>',
 				'</div>',
-				'<textarea class="ke-textarea" style="width:408px;height:260px;"></textarea>',
+				'<textarea class="ke-textarea" style="width:640px;height:480px;"></textarea>',
 				'</div>'].join(''),
 			dialog = self.createDialog({
 				name : name,
@@ -46,7 +46,7 @@ KindEditor.plugin('code', function(K) {
 						var type = K('.ke-code-type', dialog.div).val(),
 							code = textarea.val(),
 							cls = type === '' ? '' :  ' lang-' + type,
-							html = '<pre class="prettyprint' + cls + '">\n' + K.escape(code) + '</pre> ';
+							html = '<pre class="prettyprint linenums' + cls + '">\n' + K.escape(code) + '</pre> ';
 						if (K.trim(code) === '') {
 							alert(lang.pleaseInput);
 							textarea[0].focus();
