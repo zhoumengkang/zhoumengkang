@@ -187,10 +187,14 @@ var U = function(str){
     return newUrl;
 }
 //Cookie操作函数
-function setcookie(name,value){
-    var Days = 365;
+function setcookie(name,value,days){
+    if("undefined" == typeof(days)){
+        days = 30;
+    }else{
+        days = parseInt(days);
+    }
     var exp  = new Date();
-    exp.setTime(exp.getTime() + Days*24*60*60*1000);
+    exp.setTime(exp.getTime() + days*24*60*60*1000);
     document.cookie = name + "="+ value + ";expires=" + exp.toGMTString();
 }
 
