@@ -10,16 +10,52 @@ function d(){
 }
 //生成Url地址
 function U($url,$params=false){
-	$url=explode('/',$url);
-	$site_url   =   SITE_URL.'?m='.$url[0].'&a='.$url[1];
-	if($params){
-        if(is_array($params)){
-            $params =   http_build_query($params);
-            $params =   urldecode($params);
+    //是否开启路由
+    if(ROTUE){
+        //TODO
+        //路由规则里全写成小写吧
+        $router_key = strtolower(trim($url));
+        $router_ruler   =   include(dirname(__FILE__).'/router.php');
+        if(isset($router_ruler[$router_key])){
+            $real_url   =   $router_ruler[$router_key];
+            if($params){
+                parse_str($params,$r);
+                foreach($r as $k=>$v){
+                    //判断是否为二级路由
+                    if(is_array($real_url)){
+                        foreach($real_url as $key => $value){
+                            if(is_array($value)){
+                                if($key == $k){
+                                    //二级路由命中
+                                    $real_url = $value[$v];
+                                }
+                            }else{
+                                if(strpos($real_url,'['.$key.']')){
+                                    $real_url   =   str_replace('['.$key.']',$v,$real_url);
+                                }
+                            }
+                        }
+                    }else{
+                        if(strpos($real_url,'['.$k.']')){
+                            $real_url   =   str_replace('['.$k.']',$v,$real_url);
+                        }
+                    }
+                }
+            }
         }
-        $site_url   .=  '&'.$params;
+    }else{
+        $url=explode('/',$url);
+        $real_url   =   SITE_URL.'?m='.$url[0].'&a='.$url[1];
+        if($params){
+            if(is_array($params)){
+                $params =   http_build_query($params);
+                $params =   urldecode($params);
+            }
+            $real_url   .=  '&'.$params;
+        }
     }
-	return $site_url;
+
+	return $real_url;
 }
 
 /**
