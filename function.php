@@ -11,7 +11,7 @@ function d(){
 //生成Url地址
 function U($url,$params=false){
     //是否开启路由
-    if(ROTUE){
+    if(ROUTE){
         //TODO
         //路由规则里全写成小写吧
         $router_key = strtolower(trim($url));
