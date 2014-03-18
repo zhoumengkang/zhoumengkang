@@ -15,7 +15,7 @@ function U($url,$params=false){
         //TODO
         //路由规则里全写成小写吧
         $router_key = strtolower(trim($url));
-        $router_ruler   =   include(dirname(__FILE__).'/router.php');
+        $router_ruler   =   include(dirname(__FILE__).'/route.php');
         if(isset($router_ruler[$router_key])){
             $real_url   =   $router_ruler[$router_key];
             if($params){
