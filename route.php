@@ -14,6 +14,6 @@ return array(
                             '2'=>'homesick.html',
                             '3'=>'playground.html',
                         ),
-                        'tags'=>'tags_[tags].html'
+                        'tag'=>'tag_[tag].html'
                     ),
 );

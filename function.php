@@ -15,30 +15,55 @@ function U($url,$params=false){
         //TODO
         //路由规则里全写成小写吧
         $router_key = strtolower(trim($url));
+        //导入路由
         $router_ruler   =   include(dirname(__FILE__).'/route.php');
+        //路由命中
         if(isset($router_ruler[$router_key])){
-            $real_url   =   $router_ruler[$router_key];
-            if($params){
-                parse_str($params,$r);
-                foreach($r as $k=>$v){
+            //eg $router_key = 'blog/index';
+            $real_url = $router_ruler[$router_key];
+            if(is_array($params)){
+                //$params = array('tag'=>1);
+                foreach($params as $k=>$v){
                     //判断是否为二级路由
                     if(is_array($real_url)){
+//                      $real_url = array(
+//                                    'nav'=>array(
+//                                        '1' => 'note.html',
+//                                        '2' => 'home.html',
+//                                        '3' => 'xxxx.html'
+//                                    ),
+//                                    'tag'=>'tag_[tag].html'
+//                                );
+                        //$params = array('nav'=>1);
                         foreach($real_url as $key => $value){
+                            //$value = array('1'=>'note.html','2'=>'home.html');
                             if(is_array($value)){
+                                //$k = nav
                                 if($key == $k){
                                     //二级路由命中
                                     $real_url = $value[$v];
                                 }
                             }else{
-                                if(strpos($real_url,'['.$key.']')){
-                                    $real_url   =   str_replace('['.$key.']',$v,$real_url);
+                                if($key == $k){
+                                    //$value = 'tag_[tag].html';
+                                    if(strstr($value,'['.$k.']')){
+                                        $real_url   =   str_replace('['.$k.']',$v,$value);
+                                    }
+                                    //针对参数传递不完整的，比如传了id，但是没有传p（默认为第一页，所以需要给一个默认值）
+                                    $real_url = preg_replace('/(\[.*?\])/',1,$real_url);
                                 }
+
                             }
                         }
                     }else{
-                        if(strpos($real_url,'['.$k.']')){
+                        //$params = array('id'=>1,'p'=>2);
+                        //$real_url;//'[id]_[p].html'
+                        //'['.$k.']';//[id]
+                        if(strstr($real_url,'['.$k.']')){
                             $real_url   =   str_replace('['.$k.']',$v,$real_url);
                         }
+                        //针对参数传递不完整的，比如传了id，但是没有传p（默认为第一页，所以需要给一个默认值）
+                        $real_url = preg_replace('/(\[.*?\])/',1,$real_url);
                     }
                 }
             }
