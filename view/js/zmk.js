@@ -180,10 +180,8 @@ $(function() {
 });
 //定义js里的U函数
 var U = function(str){
-    var oldUrl = location.href;
-    var path = oldUrl.split('?');
     var parameters = str.split('/');
-    var newUrl = path[0]+'?'+'m='+parameters[0]+'&a='+parameters[1];
+    var newUrl = SITE_URL+'?'+'m='+parameters[0]+'&a='+parameters[1];
     return newUrl;
 }
 //Cookie操作函数

@@ -67,6 +67,16 @@ function U($url,$params=false){
                     }
                 }
             }
+        }else{
+            $url=explode('/',$url);
+            $real_url   =   SITE_URL.'?m='.$url[0].'&a='.$url[1];
+            if($params){
+                if(is_array($params)){
+                    $params =   http_build_query($params);
+                    $params =   urldecode($params);
+                }
+                $real_url   .=  '&'.$params;
+            }
         }
     }else{
         $url=explode('/',$url);
