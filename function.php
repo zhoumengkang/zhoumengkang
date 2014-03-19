@@ -69,8 +69,10 @@ function U($url,$params=null){
                     }
                 }
             }else{
-                //没传参数的情况
-                $real_url = $real_url['null'];
+                //没传参数的情况且为多级路由
+                if(is_array($real_url)){
+                    $real_url = $real_url['null'];
+                }
             }
         }else{
             $real_url = urlBuild($url,$params);
