@@ -20,7 +20,7 @@ function U($url,$params=null){
     if(ROUTE){
         //TODO
         //路由规则里全写成小写吧
-        $router_key = strtolower(trim($url));
+        $router_key = strtolower(trim(trim($url),'/'));
         //导入路由
         $router_ruler   =   include(dirname(__FILE__).'/route.php');
         //路由命中
