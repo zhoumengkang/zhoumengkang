@@ -27,6 +27,7 @@ function U($url,$params=null){
         if(isset($router_ruler[$router_key])){
             //eg $router_key = 'blog/index';
             $real_url = $router_ruler[$router_key];
+            //由于规定参数格式必须是数组，所以这里只存在是数组和不是数组（为空）的情况
             if(is_array($params)){
                 //$params = array('tag'=>1);
                 foreach($params as $k=>$v){
@@ -67,6 +68,9 @@ function U($url,$params=null){
                         $real_url = routeReg($real_url,$k,$v);
                     }
                 }
+            }else{
+                //没传参数的情况
+                $real_url = $real_url['null'];
             }
         }else{
             $real_url = urlBuild($url,$params);
