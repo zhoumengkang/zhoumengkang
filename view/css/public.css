@@ -494,6 +494,7 @@ ul, ul li {
     margin-right: 10px;
 }
 .comment_textarea{
+    font-family: "微软雅黑", Arial, Helvetica, sans-serif;
     width: 680px;
     line-height: 20px;
     height: 120px;
