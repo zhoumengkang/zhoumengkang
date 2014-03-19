@@ -8,3 +8,5 @@ define('DB_PASSWD','zmkzmk');
 define('DB_NAME','zhoumengkang');
 
 define('PERPAGES',15);
+
+define('ROUTE',false);

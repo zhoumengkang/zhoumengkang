@@ -16,11 +16,10 @@ include 'header.php';
         </style>
         <div>
             <?php
-                if(!$tags){
-                    return false;
-                }
-                foreach($tags as $k=>$v){
-                    echo '<div class="tagslist"><a href="'.U('Blog/index',array('tag'=>$v['id'])).'">'.$v['name'].'</a><span>('.$v['linktimes'].')次</span></div>';
+                if(is_array($tags)){
+                    foreach($tags as $k=>$v){
+                        echo '<div class="tagslist"><a href="'.U('Blog/index',array('tag'=>$v['id'])).'">'.$v['name'].'</a><span>('.$v['linktimes'].')次</span></div>';
+                    }
                 }
             ?>
         </div>

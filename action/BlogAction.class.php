@@ -16,8 +16,8 @@ class BlogAction extends Action{
 		$page = (int)$_GET['p']?(int)$_GET['p']:1;
 		$start = ($page-1)*$num;
 		if($_GET['tag']){
-			$res = d()->q('select * from z_blog a,z_blog_to_tags b where a.status >0 and a.id = b.blog_id and b.tag_id = '.intval($_GET['tag']).' group by a.id order by a.id desc limit '.$start.','.$num);
-			$totalNum = d()->q('select count(distinct b.blog_id) from z_blog a,z_blog_to_tags b where a.status >0 and a.id = b.blog_id and b.tag_id = '.intval($_GET['tag']));
+			$res = d()->q('select * from z_blog a,z_blog_to_tags b where a.status = 1 and a.id = b.blog_id and b.tag_id = '.intval($_GET['tag']).' group by a.id order by a.id desc limit '.$start.','.$num);
+			$totalNum = d()->q('select count(distinct b.blog_id) from z_blog a,z_blog_to_tags b where a.status = 1 and a.id = b.blog_id and b.tag_id = '.intval($_GET['tag']));
 		}/*elseif($_GET['nav']){
 			$res = d()->q("select * from z_blog where status > 0 and nav =".intval($_GET['nav'])." order by id desc limit ".$start.','.$num);
 			$totalNum = d()->q("select count(*) as num from z_blog where status > 0 and nav =".intval($_GET['nav']));
@@ -26,8 +26,8 @@ class BlogAction extends Action{
 			$totalNum = d()->q('select count(*) as num from z_blog where status >0');
 		}*/else{
             if(!$_GET['nav']){$_GET['nav']=1;}
-            $res = d()->q("select * from z_blog where status > 0 and nav =".intval($_GET['nav'])." order by id desc limit ".$start.','.$num);
-            $totalNum = d()->q("select count(*) as num from z_blog where status > 0 and nav =".intval($_GET['nav']));
+            $res = d()->q("select * from z_blog where status = 1 and nav =".intval($_GET['nav'])." order by id desc limit ".$start.','.$num);
+            $totalNum = d()->q("select count(*) as num from z_blog where status = 1 and nav =".intval($_GET['nav']));
         }
 		
 		if(is_array($res)){

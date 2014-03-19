@@ -14,22 +14,22 @@
 	}	
 	?>
 </div>
-<div class="side">
+<!--<div class="side">
     <p class="side_title">我希望得到您点评的帖子</p>
     <?php
-    if(is_array($top)){
+/*    if(is_array($top)){
         foreach($top as $k =>$v){
-            ?>
+            */?>
             <div class="list_item list_view" style="margin-left:10px">
                 <div class="article_title">
-                    <h3><a href="<?php echo U('Blog/blog',array('id'=>$v['id']));?>"><span><?php echo msubstr($v['title'],0,17);?></span></a></h3>
+                    <h3><a href="<?php /*echo U('Blog/blog',array('id'=>$v['id']));*/?>"><span><?php /*echo msubstr($v['title'],0,17);*/?></span></a></h3>
                 </div>
             </div>
         <?php
-        }
+/*        }
     }
-    ?>
-</div>
+    */?>
+</div>-->
 <div class="side">
     <p class="side_title" style="float: left;">最常用的标签</p>
     <a href="<?php echo U('Blog/tags')?>" style=" padding: 16px; font-size: 13px; float: right; color: #bbb; ">更多 》》</a>

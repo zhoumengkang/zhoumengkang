@@ -37,9 +37,19 @@ class Action{
         include './view/jump.php';
     }
     //AJAX返回
-    //TODO
-    public function ajaxReturn(){
-
+    /**
+     * @param  bool    $flag 状态标识
+     * @param  string  $info 返回提示信息
+     * @param  mixed   $res  返回数据
+     * @return string  $output
+     */
+    protected function ajaxReturn($flag,$info,$res=null){
+        $data['flag'] = $flag;
+        $data['info'] = $info;
+        $data['data'] = $res;
+        header('Content-Type:application/json; charset=utf-8');
+        echo json_encode($data);
+        exit;
     }
     //随着模板文件的增加，才发现分目录的必要性，所以用一个display来封装include，然后在其中指定规定的模板路径是非常必要的
     public function display(){

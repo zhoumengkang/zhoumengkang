@@ -77,11 +77,22 @@ class AdminAction extends Action{
 		
 	}
 	public function recommend(){
-		$sql = "update z_blog set `status` = 2 ,`toptime`=".time()." where `id`= ".intval($_POST['id']);
+        if($_POST['status']>2 || $_POST['status']<1){
+            $this->ajaxReturn(0,'申请修改的参数不合法');
+        }
+        if($_POST['status'] == 2){
+            $newStatus = 1;
+        }else{
+            $newStatus = 2;
+        }
+		$sql = "update z_blog set `status` = ".$newStatus." ,`toptime`=".time()." where `id`= ".intval($_POST['id']);
 		//echo $sql;
 		$res = d()->q($sql);
-		//dump(d()->lastsql()) ;
-		echo $res;
+        if($res){
+            $this->ajaxReturn(1,'更新成功',$res);
+        }else{
+            $this->ajaxReturn(0,'更新失败',$res);
+        }
 	}
 	public function deleteBlog(){
 		$sql = "update z_blog set `status` = 0 where `id`= ".intval($_POST['id']);

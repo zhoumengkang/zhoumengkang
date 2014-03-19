@@ -30,7 +30,7 @@
             ?>
             本程序由
             <a href="<?php echo U('Blog/index',array('tag'=>6));?>" title="关于开发本博客的文章">ZzBlog</a>
-            勉强驱动 © 2013 - 2014 Mengkang Zhou 辽ICP备12007622号-1
+            勉强驱动 © 2013 - 2014 辽ICP备12007622号-1
         </small>
     </div>
 	<div class="messageBox"></div>

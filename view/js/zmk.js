@@ -138,13 +138,14 @@ $(function() {
 	//文章顶置功能
 	$('a[title="recommendBlog"]').click(function(){
 		var id = $(this).attr('recommendId');
-		$.post( U('Admin/recommend'),{id:id},function(data){
-			if(data==1){
-				ui.success('顶置成功');
+        var status = $(this).attr('status');
+		$.post( U('Admin/recommend'),{id:id,status:status},function(data){
+			if(parseInt(data.flag)==1){
+				ui.success(data.info);
 			}else{
-				ui.error('操作失败');
+				ui.error(data.info);
 			}
-		})
+		},'json');
 	})
 	//文章的删除
 	$('a[title="deletdBlog"]').click(function(){

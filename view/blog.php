@@ -46,7 +46,7 @@ $(function(){ prettyPrint(); });
 					
 					<?php if($_SESSION['uid']){ ?>
                         <span class="link_edit"><a href="<?php echo U('Admin/modifyBlog',array('id'=>$_GET['id']))?>" title="编辑">编辑</a></span>
-                        <span class="link_edit"><a href="javascript:void(0);"  title="recommendBlog" recommendId="<?php echo $v['id']?>">顶置</a></span>
+                        <span class="link_edit"><a href="javascript:void(0);"  title="recommendBlog" recommendId="<?php echo $v['id']?>" status="<?php echo $v['status'];?>"><?php if($v['status']==2){echo '取消推荐';}else{echo '推荐';}?></a></span>
                         <span class="link_delete"><a href="javascript:void(0);" deleteId="<?php echo $v['id']?>" title="deletdBlog">删除</a></span>
 					<?php } ?>
 				</div>
@@ -103,10 +103,12 @@ $(function(){ prettyPrint(); });
             <textarea name="comment" cols="50" rows="5" placeholder="说点什么吧，可以使用`xxxx`来插入简短的代码碎片（模仿的markdown你懂的）" class="comment_textarea"></textarea>
         </div>
         <div style=" margin:5px 0; ">
-            <input type="email" name="email" placeholder="留个邮箱吧" class="comment_input" />
-            <input type="text" name="yourname" placeholder="你的大名" class="comment_input" />
-            <input type="text" name="blog" placeholder="你的博客地址" class="comment_input" />
-            <a href="javascript:void(0)" id="post_comment" issending="false">提交</a>
+            <form name="comment">
+                <input type="email" name="email" placeholder="留个邮箱吧" class="comment_input" />
+                <input type="text" name="yourname" placeholder="你的大名" class="comment_input" />
+                <input type="text" name="blog" placeholder="你的博客地址" class="comment_input" />
+                <a href="javascript:void(0)" id="post_comment" issending="false">提交</a>
+            </form>
         </div>
     </div>
     <script type="text/javascript">
@@ -131,7 +133,7 @@ $(function(){ prettyPrint(); });
         $("#post_comment").click(function(){
             post_comment();
         })
-        $(this).bind('keydown',function(e){
+        $('form[name="comment"]').bind('keydown',function(e){
             var key = e.which;
             if(key == 13) {
                 post_comment();
