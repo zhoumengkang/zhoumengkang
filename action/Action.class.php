@@ -20,6 +20,7 @@ class Action{
 		$this->title = '北剅轩-周梦康';
 	}
 	public function init(){
+        $this->initUser();
 		//获取a参数的值
 		$a  = isset($_GET["a"])?$_GET["a"]:"index"; //默认值为index
 		//判断当前Action是否存在此方法
@@ -32,6 +33,16 @@ class Action{
 		}
 	}
 
+    //用户初始化实现自动登录
+    protected function initUser(){
+        if($_COOKIE['blogmaster']){
+            $time = d()->q('select `lastlogin` from z_user where id = 1');
+            $authorizeCode = md5($time[0]['lastlogin'].'zmk');
+            if($_COOKIE['blogmaster'] == $authorizeCode){
+                $_SESSION['uid'] = 1;
+            }
+        }
+    }
     //跳转
     public function jump($info,$jumpUrl=null){
         include './view/jump.php';

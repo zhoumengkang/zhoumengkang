@@ -94,10 +94,11 @@ $(function(){ prettyPrint(); });
                     echo '<div class="commentlist"><div><a href="'.$v['link'].'">'.$v['username'].'</a>'.date("Y-m-d H:i:s",time()).'</div>'.$v['content'].'</div>';
 
                 }
-                echo pagelist($page,$totalNum[0]['num'],3);
+
             }
             ?>
         </div>
+        <?php if(is_array($comment)){echo pagelist($page,$totalNum[0]['num'],3);}?>
         <div style=" margin-top: 10px; ">
             <input type="hidden" name="blogid" value="<?php echo $res[0]['id']; ?>"/>
             <textarea name="comment" cols="50" rows="5" placeholder="说点什么吧，可以使用`xxxx`来插入简短的代码碎片（模仿的markdown你懂的）" class="comment_textarea"></textarea>
@@ -133,7 +134,7 @@ $(function(){ prettyPrint(); });
         $("#post_comment").click(function(){
             post_comment();
         })
-        $('form[name="comment"]').bind('keydown',function(e){
+        $('input[name="blog"]').bind('keydown',function(e){
             var key = e.which;
             if(key == 13) {
                 post_comment();

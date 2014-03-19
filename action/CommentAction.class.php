@@ -30,13 +30,14 @@ class CommentAction extends Action{
         $blogid = intval($_POST['blogid']);
         $email = htmlspecialchars(strip_tags($_POST['email']));
         $username = htmlspecialchars(strip_tags($_POST['name']));
+        $_POST['content'] = str_replace('·','`',$_POST['content']);
         $content = htmlspecialchars(strip_tags($_POST['content']));
         $link = htmlspecialchars(strip_tags($_POST['blog']));
         $sql = "insert into z_comment(`blogid`,`email`,`username`,`link`,`content`,`posttime`) values ({$blogid},'{$email}','{$username}','{$link}','{$content}',".time().")";
         $model = d();
         $res = $model->q($sql);
-        //echo $model->lastsql();
-        echo $res;
+        $data = preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$content);
+        $this->ajaxReturn($res,'评论成功',$data);
     }
 
     /**

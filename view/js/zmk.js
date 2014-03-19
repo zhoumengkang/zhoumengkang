@@ -241,9 +241,9 @@ var post_comment = function(){
         email: $("input[name='email']").val(),
         name: $("input[name='yourname']").val()
     },function(data){
-        if(parseInt(data)>0){
-            ui.success('评论成功');
-            $("#commentList").append('<div class="commentlist"><div><a href="'+blogurl+'">'+$("input[name='yourname']").val()+'</a>刚刚</div>'+$("textarea[name='comment']").val()+'</div>');
+        if(parseInt(data.flag)>0){
+            ui.success(data.info);
+            $("#commentList").append('<div class="commentlist"><div><a href="'+blogurl+'">'+$("input[name='yourname']").val()+'</a>刚刚</div>'+data.data+'</div>');
             $("textarea[name='comment']").val('');
         }
     })

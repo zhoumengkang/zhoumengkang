@@ -56,6 +56,11 @@ class BlogAction extends Action{
         $res = d()->q('select id from z_user where id =1 and password ="'.md5(addslashes($_POST['password'])).'"');
         if($res[0]['id']==1){
             $_SESSION['uid']=1;
+            //做一个简单的cookie加密
+            $time = time();
+            d()->q('update z_user set `lastlogin` = '.$time.' where id = 1');
+            $cookie = md5($time.'zmk');
+            setcookie('blogmaster',$cookie,time()+30*3600*24);
             echo 1;
         }else{
             echo 0;
@@ -63,6 +68,7 @@ class BlogAction extends Action{
 	}
 	public function logout(){
 		session_destroy();
+        setcookie('blogmaster',null,time()-1);
 		$url = U('Blog/index');
 		header("Location: {$url}");
 	}
