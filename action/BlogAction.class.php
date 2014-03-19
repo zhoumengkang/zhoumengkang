@@ -142,6 +142,7 @@ class BlogAction extends Action{
 	public function blog(){
 		$id = intval($_GET['id']);
 		$res =d()->q("select * from z_blog where id = {$id} and `status`>0");
+        $res[0]['content'] = preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$res[0]['content']);
 		$tags = d()->q("select b.name,b.id from z_blog_to_tags a,z_tags b where a.blog_id =".$id." and a.tag_id=b.id group by a.tag_id");
 		//dump($tags);
         $num = 3;
@@ -151,10 +152,12 @@ class BlogAction extends Action{
         /*$comment = array_map(function($data){
             preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$data['content']);
         },$comment);*/
-        foreach($comment as $k =>$v){
-            $comment[$k]['content'] = preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$v['content']);
+        if(is_array($comment)){
+            foreach($comment as $k =>$v){
+                $comment[$k]['content'] = preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$v['content']);
+            }
         }
-        //dump($comment);exit;
+
         $totalNum = d()->q("select count(*) as num from z_comment where `blogid` = {$id} and`status` > 0");
 
 
