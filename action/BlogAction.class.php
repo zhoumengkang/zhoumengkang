@@ -148,6 +148,13 @@ class BlogAction extends Action{
         $page = (int)$_GET['p']?(int)$_GET['p']:1;
         $start = ($page-1)*$num;
         $comment = d()->q("select * from z_comment where `blogid` = {$id} and`status` > 0 order by `posttime` desc limit ".$start.",".$num);
+        /*$comment = array_map(function($data){
+            preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$data['content']);
+        },$comment);*/
+        foreach($comment as $k =>$v){
+            $comment[$k]['content'] = preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$v['content']);
+        }
+        //dump($comment);exit;
         $totalNum = d()->q("select count(*) as num from z_comment where `blogid` = {$id} and`status` > 0");
 
 

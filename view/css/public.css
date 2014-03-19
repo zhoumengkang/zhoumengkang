@@ -523,3 +523,17 @@ ul, ul li {
     padding-right: 10px;
 }
 /**留言框**/
+.markdownTags{
+    white-space: nowrap;
+    border: 1px solid #ddd;
+    padding: 1px 5px;
+    margin: 0 3px;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    max-width: 100%;
+    overflow: auto;
+    vertical-align: middle;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    font-size: 12px;
+    color: #777;
+}
