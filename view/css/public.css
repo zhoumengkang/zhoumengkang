@@ -477,6 +477,10 @@ ul, ul li {
 	line-height: 150%;
 	font: normal 12px/30px Arial !important;
 }
+.links li{
+    float: left;
+    padding-right: 10px;
+}
 .viewtimes{
 	padding-left: 10px;
 	color:#aaa;
