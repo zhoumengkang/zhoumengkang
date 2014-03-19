@@ -8,8 +8,14 @@ function d(){
 	//这里我本来想了好就，思考是不是应该把D.class.php包含进来，但是想到我这走的是index.php，则会自动去加载D.class.php了，事实证明的确如此
 	return new D();
 }
-//生成Url地址
-function U($url,$params=false){
+
+/**
+ * Url地址构造函数
+ * @param  string $url      控制器和方法 'Blog/blog'
+ * @param  array  $params   array('id'=>1,'p'=>3)
+ * @return string $real_url 伪静态地址 或者真实的$_SERVER['QUERY_STRING']
+ */
+function U($url,$params=null){
     //是否开启路由
     if(ROUTE){
         //TODO
@@ -26,71 +32,84 @@ function U($url,$params=false){
                 foreach($params as $k=>$v){
                     //判断是否为二级路由
                     if(is_array($real_url)){
-//                      $real_url = array(
-//                                    'nav'=>array(
-//                                        '1' => 'note.html',
-//                                        '2' => 'home.html',
-//                                        '3' => 'xxxx.html'
-//                                    ),
-//                                    'tag'=>'tag_[tag].html'
-//                                );
-                        //$params = array('nav'=>1);
+                        //$real_url = array(
+                        //          'null'=>'./',
+                        //          'nav'=>array(
+                        //                  '1' => 'note.html',
+                        //                  '2' => 'home.html',
+                        //                  '3' => 'xxxx.html'
+                        //                  ),
+                        //          'tag'=>'tag_[tag].html'
+                        //          );
+
                         foreach($real_url as $key => $value){
+                            //$params = array('nav'=>1);
                             //$value = array('1'=>'note.html','2'=>'home.html');
                             if(is_array($value)){
-                                //$k = nav
                                 if($key == $k){
-                                    //二级路由命中
+                                    //$k = nav
+                                    //$key = nav
+                                    //三级路由命中
                                     $real_url = $value[$v];
                                 }
                             }else{
                                 if($key == $k){
+                                    //二级路由命中
                                     //$value = 'tag_[tag].html';
-                                    if(strstr($value,'['.$k.']')){
-                                        $real_url   =   str_replace('['.$k.']',$v,$value);
-                                    }
-                                    //针对参数传递不完整的，比如传了id，但是没有传p（默认为第一页，所以需要给一个默认值）
-                                    $real_url = preg_replace('/(\[.*?\])/',1,$real_url);
+                                    $real_url = routeReg($value,$k,$v);
                                 }
-
                             }
                         }
                     }else{
                         //$params = array('id'=>1,'p'=>2);
                         //$real_url;//'[id]_[p].html'
                         //'['.$k.']';//[id]
-                        if(strstr($real_url,'['.$k.']')){
-                            $real_url   =   str_replace('['.$k.']',$v,$real_url);
-                        }
-                        //针对参数传递不完整的，比如传了id，但是没有传p（默认为第一页，所以需要给一个默认值）
-                        $real_url = preg_replace('/(\[.*?\])/',1,$real_url);
+                        $real_url = routeReg($real_url,$k,$v);
                     }
                 }
             }
         }else{
-            $url=explode('/',$url);
-            $real_url   =   SITE_URL.'?m='.$url[0].'&a='.$url[1];
-            if($params){
-                if(is_array($params)){
-                    $params =   http_build_query($params);
-                    $params =   urldecode($params);
-                }
-                $real_url   .=  '&'.$params;
-            }
+            $real_url = urlBuild($url,$params);
         }
     }else{
-        $url=explode('/',$url);
-        $real_url   =   SITE_URL.'?m='.$url[0].'&a='.$url[1];
-        if($params){
-            if(is_array($params)){
-                $params =   http_build_query($params);
-                $params =   urldecode($params);
-            }
-            $real_url   .=  '&'.$params;
-        }
+        $real_url = urlBuild($url,$params);
     }
 
 	return $real_url;
+}
+
+/**
+ * 配合http_build_query实现正常的动态地址，类似于index.php?m=xxx&a=xxx&id=xxx&p=xxx
+ * @param  string $url      控制器和方法
+ * @param  array  $params   参数列表
+ * @return string $real_url 实际地址
+ */
+function urlBuild($url,$params){
+    $url=explode('/',$url);
+    $real_url   =   SITE_URL.'?m='.$url[0].'&a='.$url[1];
+    if($params){
+        if(is_array($params)){
+            $params =   http_build_query($params);
+            $params =   urldecode($params);
+        }
+        $real_url   .=  '&'.$params;
+    }
+    return $real_url;
+}
+
+/**
+ * @param string  $routeStr url正则字符串，类似于'tag'=>'tag_[tag].html'
+ * @param string  $key      url正则中的 [关键字],如上面的的tag
+ * @param string  $value    需要替换正则字符串里面的关键字的实际参数值
+ * @return string $url      返回最终匹配完的伪静态地址
+ */
+function routeReg($routeStr,$key,$value){
+    if(strstr($routeStr,'['.$key.']')){
+        $url   =   str_replace('['.$key.']',$value,$routeStr);
+    }
+    //针对参数传递不完整的，比如传了id，但是没有传p（默认为第一页，所以需要给一个默认值）
+    $url = preg_replace('/(\[.*?\])/',1,$url);
+    return $url;
 }
 
 /**
