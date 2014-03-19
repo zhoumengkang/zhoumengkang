@@ -170,8 +170,8 @@ class BlogAction extends Action{
 	}*/
 	
 	public function about(){
-        //echo '屌丝';
-        $this->jump('发表成功',U('Blog/index'));
+        echo '屌丝。。。';
+        //$this->jump('发表成功',U('Blog/index'));
     }
 
     public function tags(){
