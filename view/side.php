@@ -53,7 +53,7 @@
 	if(is_array($links)){
 		foreach($links as $k =>$v){
 	?>
-		<li ><a href="<?php echo $v['url'];?>" class="links_li"><?php echo $v['name'];?></a></li>
+		<li ><a href="<?php echo $v['url'];?>" class="links_li" target="_blank"><?php echo $v['name'];?></a></li>
 	<?php
 		}
 	}	
