@@ -15,7 +15,7 @@
 <body>
 <header id="header" class="header_fixed">
 	<a id="top"></a>
-    <a href="<?php echo SITE_URL ;?>"><span class="logo" id="logo">
+    <a href="./"><span class="logo" id="logo">
         北剅轩
 	</span></a>
 	<div class="description" id="intro">
