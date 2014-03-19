@@ -27,6 +27,7 @@ function U($url,$params=null){
         if(isset($router_ruler[$router_key])){
             //eg $router_key = 'blog/index';
             $real_url = $router_ruler[$router_key];
+            //至此，一级路由已经匹配完毕，下面开始匹配多级路由
             //由于规定参数格式必须是数组，所以这里只存在是数组和不是数组（为空）的情况
             if(is_array($params)){
                 //$params = array('tag'=>1);
