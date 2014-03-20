@@ -44,8 +44,6 @@ function route($router_ruler,$router_key,$params){
             //看其是不是索引数组
             if(array_map('is_numeric', array_keys($real_url))){
                 //二级路由
-                //$params = array('tag'=>1);
-                //$params = array('tag'=>1,'p'=>1);
                 if(is_array($params)){
                     $real_url = routeMatch($real_url[count($params)],$params);
                 }
