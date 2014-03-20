@@ -23,68 +23,48 @@ function U($url,$params=null){
         $router_key = strtolower(trim(trim($url),'/'));
         //导入路由
         $router_ruler   =   include(dirname(__FILE__).'/route.php');
-        //路由命中
-        if(isset($router_ruler[$router_key])){
-            //eg $router_key = 'blog/index';
-            $real_url = $router_ruler[$router_key];
-            //至此，一级路由已经匹配完毕，下面开始匹配多级路由
-            //由于规定参数格式必须是数组，所以这里只存在是数组和不是数组（为空）的情况
-            if(is_array($params)){
-                //$params = array('tag'=>1);
-                foreach($params as $k=>$v){
-                    //判断是否为二级路由
-                    if(is_array($real_url)){
-                        //$real_url = array(
-                        //          'null'=>'./',
-                        //          'nav'=>array(
-                        //                  '1' => 'note.html',
-                        //                  '2' => 'home.html',
-                        //                  '3' => 'xxxx.html'
-                        //                  ),
-                        //          'tag'=>'tag_[tag].html'
-                        //          );
-
-                        foreach($real_url as $key => $value){
-                            //$params = array('nav'=>1);
-                            //$value = array('1'=>'note.html','2'=>'home.html');
-                            if(is_array($value)){
-                                if($key == $k){
-                                    //$k = nav
-                                    //$key = nav
-                                    //三级路由命中
-                                    $real_url = $value[$v];
-                                }
-                            }else{
-                                if($key == $k){
-                                    //二级路由命中
-                                    //$value = 'tag_[tag].html';
-                                    $real_url = routeReg($value,$k,$v);
-                                }
-                            }
-                        }
-                    }else{
-                        //$params = array('id'=>1,'p'=>2);
-                        //$real_url;//'[id]_[p].html'
-                        //'['.$k.']';//[id]
-                        $real_url = routeReg($real_url,$k,$v);
-                    }
-                }
-            }else{
-                //没传参数的情况且为多级路由
-                if(is_array($real_url)){
-                    $real_url = $real_url['null'];
-                }
-            }
-        }else{
-            $real_url = urlBuild($url,$params);
-        }
+        $real_url = route($router_ruler,$router_key,$params);
     }else{
         $real_url = urlBuild($url,$params);
     }
-
 	return $real_url;
 }
 
+/**
+ * @param array  $router_ruler 路由表
+ * @param string $router_key   路由键
+ * @param array  $params       参数列表
+ */
+function route($router_ruler,$router_key,$params){
+    if(isset($router_ruler[$router_key])){
+        //一级路由
+        $real_url = $router_ruler[$router_key];
+        //由于规定参数格式必须是数组，所以这里只存在是数组和不是数组（为空）的情况
+        if(is_array($real_url)){
+            //看其是不是索引数组
+            if(array_map('is_numeric', array_keys($real_url))){
+                //二级路由
+                //$params = array('tag'=>1);
+                //$params = array('tag'=>1,'p'=>1);
+                if(is_array($params)){
+                    $real_url = routeMatch($real_url[count($params)],$params);
+                }
+            }else{
+                //三级路由
+                foreach($params as $k =>$v){
+                    if(array_key_exists($k,$real_url)){
+                        $routeReg = $real_url[$k][$v][count($params)];
+                        unset($params[$k]);
+                        $real_url = routeMatch($routeReg,$params);
+                    }
+                }
+            }
+        }
+    }else{
+        $real_url = urlBuild($router_ruler,$params);
+    }
+    return $real_url;
+}
 /**
  * 配合http_build_query实现正常的动态地址，类似于index.php?m=xxx&a=xxx&id=xxx&p=xxx
  * @param  string $url      控制器和方法
@@ -105,18 +85,18 @@ function urlBuild($url,$params){
 }
 
 /**
- * @param string  $routeStr url正则字符串，类似于'tag'=>'tag_[tag].html'
- * @param string  $key      url正则中的 [关键字],如上面的的tag
- * @param string  $value    需要替换正则字符串里面的关键字的实际参数值
- * @return string $url      返回最终匹配完的伪静态地址
+ * 路由匹配
+ * @param  string  $routeReg    路由规则字符串，类似于'tag'=>'tag_[tag].html'
+ * @param  string  $params      需要替换正则字符串里面的关键字的实际参数值
+ * @return string  $routeReg    返回最终匹配完的伪静态地址
  */
-function routeReg($routeStr,$key,$value){
-    if(strstr($routeStr,'['.$key.']')){
-        $url   =   str_replace('['.$key.']',$value,$routeStr);
+function routeMatch($routeReg,$params){
+    foreach($params as $key =>$value){
+        if(strstr($routeReg,'['.$key.']')){
+            $routeReg = str_replace('['.$key.']',$value,$routeReg);
+        }
     }
-    //针对参数传递不完整的，比如传了id，但是没有传p（默认为第一页，所以需要给一个默认值）
-    $url = preg_replace('/(\[.*?\])/',1,$url);
-    return $url;
+    return $routeReg;
 }
 
 /**

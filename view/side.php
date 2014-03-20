@@ -38,7 +38,7 @@
         if(is_array($tags)){
             foreach($tags as $k =>$v){
             ?>
-            <a href="<?php echo U('Blog/index',array('tag'=>$v['id']));?>"><?php echo $v['name'];?></a>
+            <a href="<?php echo U('Blog/readByTags',array('tag'=>$v['id']));?>"><?php echo $v['name'];?></a>
             <?php
             }
         }

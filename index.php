@@ -21,4 +21,4 @@ define('SITE_URL',$_SERVER['PHP_SELF']);
 $mod = isset($_GET['m'])?$_GET['m']:"Blog";
 $classname = $mod."Action";
 $action = new $classname();
-$action->init();
+$action->init($mod);

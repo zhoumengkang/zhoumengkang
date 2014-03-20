@@ -33,7 +33,7 @@
         if (is_array($this->nav)) {
             foreach($this->nav as $k =>$v){
                 if($v['pid']==0){
-                    echo '<li><a href="'.U('Blog/index',array('nav'=>$v['id'])).'" title="'.$v['name'].'"><span>'.$v['name'].'</span></a></li>';
+                    echo '<li><a href="'.U('Blog/blogList',array('nav'=>$v['id'])).'" title="'.$v['name'].'"><span>'.$v['name'].'</span></a></li>';
                 }
             }
         }

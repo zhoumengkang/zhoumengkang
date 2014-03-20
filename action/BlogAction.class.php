@@ -3,7 +3,7 @@ class BlogAction extends Action{
 	public function __construct(){
 		parent::__construct();
 	}
-	//列表页
+	//首页
 	public function index(){
 		//顶置的帖子
 		$top = d()->q('select * from z_blog where `status` = 2 order by toptime desc limit 10');
@@ -15,20 +15,9 @@ class BlogAction extends Action{
 		$num = PERPAGES;
 		$page = (int)$_GET['p']?(int)$_GET['p']:1;
 		$start = ($page-1)*$num;
-		if($_GET['tag']){
-			$res = d()->q('select * from z_blog a,z_blog_to_tags b where a.status = 1 and a.id = b.blog_id and b.tag_id = '.intval($_GET['tag']).' group by a.id order by a.id desc limit '.$start.','.$num);
-			$totalNum = d()->q('select count(distinct b.blog_id) from z_blog a,z_blog_to_tags b where a.status = 1 and a.id = b.blog_id and b.tag_id = '.intval($_GET['tag']));
-		}/*elseif($_GET['nav']){
-			$res = d()->q("select * from z_blog where status > 0 and nav =".intval($_GET['nav'])." order by id desc limit ".$start.','.$num);
-			$totalNum = d()->q("select count(*) as num from z_blog where status > 0 and nav =".intval($_GET['nav']));
-		}else{
-			$res = d()->q('select * from z_blog where status >0 order by id desc limit '.$start.','.$num);
-			$totalNum = d()->q('select count(*) as num from z_blog where status >0');
-		}*/else{
-            if(!$_GET['nav']){$_GET['nav']=1;}
-            $res = d()->q("select * from z_blog where status = 1 and nav =".intval($_GET['nav'])." order by id desc limit ".$start.','.$num);
-            $totalNum = d()->q("select count(*) as num from z_blog where status = 1 and nav =".intval($_GET['nav']));
-        }
+
+        $res = d()->q("select * from z_blog where status = 1 and nav = 1 order by id desc limit ".$start.','.$num);
+        $totalNum = d()->q("select count(*) as num from z_blog where status = 1 and nav = 1");
 		
 		if(is_array($res)){
 			include './view/index.php';	
@@ -37,7 +26,57 @@ class BlogAction extends Action{
 		}
 		
 	}
-	public function rank(){
+
+    /**
+     * 根据分类阅读
+     */
+    public function blogList(){
+         //顶置的帖子
+		$top = d()->q('select * from z_blog where `status` = 2 order by toptime desc limit 10');
+        //浏览的最多的帖子
+        $maxRead = d()->q('select * from z_blog where `status` > 0 order by `count` desc limit 10');
+		$links = d()->q('select * from z_link where `status` > 0 order by rank asc');
+        $tags = d()->q("SELECT a.id, a.name, COUNT( b.tag_id ) AS linktimes FROM  `z_tags` a LEFT JOIN `z_blog_to_tags` b  ON b.tag_id = a.id GROUP BY b.tag_id ORDER BY linktimes DESC LIMIT 20");
+        //dump($tags);exit;
+		$num = PERPAGES;
+		$page = (int)$_GET['p']?(int)$_GET['p']:1;
+		$start = ($page-1)*$num;
+        if(!$_GET['nav']){$_GET['nav']=1;}
+        $res = d()->q("select * from z_blog where status = 1 and nav =".intval($_GET['nav'])." order by id desc limit ".$start.','.$num);
+        $totalNum = d()->q("select count(*) as num from z_blog where status = 1 and nav =".intval($_GET['nav']));
+        if(is_array($res)){
+            include './view/blogList.php';
+        }else{
+            include './view/404.php';
+        }
+    }
+
+    /**
+     * 根据标签分类阅读
+     */
+    public function readByTags(){
+        //顶置的帖子
+        $top = d()->q('select * from z_blog where `status` = 2 order by toptime desc limit 10');
+        //浏览的最多的帖子
+        $maxRead = d()->q('select * from z_blog where `status` > 0 order by `count` desc limit 10');
+        $links = d()->q('select * from z_link where `status` > 0 order by rank asc');
+        $tags = d()->q("SELECT a.id, a.name, COUNT( b.tag_id ) AS linktimes FROM  `z_tags` a LEFT JOIN `z_blog_to_tags` b  ON b.tag_id = a.id GROUP BY b.tag_id ORDER BY linktimes DESC LIMIT 20");
+        //dump($tags);exit;
+        $num = PERPAGES;
+        $page = (int)$_GET['p']?(int)$_GET['p']:1;
+        $start = ($page-1)*$num;
+        if($_GET['tag']){
+            $res = d()->q('select * from z_blog a,z_blog_to_tags b where a.status = 1 and a.id = b.blog_id and b.tag_id = '.intval($_GET['tag']).' group by a.id order by a.id desc limit '.$start.','.$num);
+            $totalNum = d()->q('select count(distinct b.blog_id) from z_blog a,z_blog_to_tags b where a.status = 1 and a.id = b.blog_id and b.tag_id = '.intval($_GET['tag']));
+        }
+        if(is_array($res)){
+            include './view/blogList.php';
+        }else{
+            include './view/404.php';
+        }
+    }
+
+	/*public function rank(){
 		$top = d()->q('select * from z_blog where status = 2 order by toptime desc limit 10');
 		$links = d()->q('select * from z_link order by rank asc');
 		$num = PERPAGES;
@@ -50,7 +89,7 @@ class BlogAction extends Action{
 		}else{
 			include './view/404.php';	
 		}
-	}
+	}*/
 	//登陆和退出
 	public function login(){
         $res = d()->q('select id from z_user where id =1 and password ="'.md5(addslashes($_POST['password'])).'"');
