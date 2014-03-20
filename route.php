@@ -5,15 +5,20 @@
  * createTime   : 17/3/14 23:28
  */
 return array(
+    //一级路由
     'blog/index'=>'./',
     'blog/about'=>'about.html',
     'blog/tags' =>'tags.html',
-    //一级路由|规则路由
+    //二级路由
     'blog/blog' =>array(
         1=>'[id].html',
         2=>'[id]-[p].html'
     ),
-    //配置多级路由
+    'blog/readbytags'=>array(
+        1=>'tag-[tag].html',
+        2=>'tag-[tag]-[p].html'
+    ),
+    //三级路由
     'blog/bloglist'=>array(
         'nav'=>array(
             '1'=>array(
@@ -29,9 +34,5 @@ return array(
                 2=>'playground-[p].html',
             ),
         )
-    ),
-    'blog/readbytags'=>array(
-        1=>'tag-[tag].html',
-        2=>'tag-[tag]-[p].html'
-    ),
+    )
 );
