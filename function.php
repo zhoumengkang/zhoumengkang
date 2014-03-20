@@ -17,7 +17,7 @@ function d(){
  */
 function U($url,$params=null){
     //是否开启路由
-    if(ROUTE){
+    if(0){
         //TODO
         //路由规则里全写成小写吧
         $router_key = strtolower(trim(trim($url),'/'));
