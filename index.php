@@ -19,6 +19,6 @@ session_start();
 define('ROOT', dirname(__FILE__));
 define('SITE_URL',$_SERVER['PHP_SELF']);
 $mod = isset($_GET['m'])?$_GET['m']:"Blog";
-$classname = $mod."Action";
+$classname = ucwords($mod)."Action";
 $action = new $classname();
 $action->init($mod);
