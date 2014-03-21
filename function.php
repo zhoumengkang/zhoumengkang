@@ -18,12 +18,9 @@ function d(){
 function U($url,$params=null){
     //是否开启路由
     if(ROUTE){
-        //TODO
-        //路由规则里全写成小写吧
-        $router_key = strtolower(trim(trim($url),'/'));
         //导入路由
         $router_ruler   =   include(dirname(__FILE__).'/route.php');
-        $real_url = route($router_ruler,$router_key,$params);
+        $real_url = route($router_ruler,$url,$params);
     }else{
         $real_url = urlBuild($url,$params);
     }
@@ -32,10 +29,12 @@ function U($url,$params=null){
 
 /**
  * @param array  $router_ruler 路由表
- * @param string $router_key   路由键
+ * @param string $url          路由键
  * @param array  $params       参数列表
  */
-function route($router_ruler,$router_key,$params){
+function route($router_ruler,$url,$params){
+    //路由规则里全写成小写吧
+    $router_key = strtolower(trim(trim($url),'/'));
     if(isset($router_ruler[$router_key])){
         //一级路由
         $real_url = $router_ruler[$router_key];
@@ -59,7 +58,7 @@ function route($router_ruler,$router_key,$params){
             }
         }
     }else{
-        $real_url = urlBuild($router_key,$params);
+        $real_url = urlBuild($url,$params);
     }
     return $real_url;
 }
