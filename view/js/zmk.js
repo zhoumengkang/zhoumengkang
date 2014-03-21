@@ -245,6 +245,8 @@ var post_comment = function(){
             ui.success(data.info);
             $("#commentList").append('<div class="commentlist"><div><a href="'+blogurl+'">'+$("input[name='yourname']").val()+'</a>刚刚</div>'+data.data+'</div>');
             $("textarea[name='comment']").val('');
+        }else{
+            ui.error(data.info);
         }
     })
 }
