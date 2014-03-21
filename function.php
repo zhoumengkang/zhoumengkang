@@ -17,7 +17,7 @@ function d(){
  */
 function U($url,$params=null){
     //是否开启路由
-    if(0){
+    if(ROUTE){
         //TODO
         //路由规则里全写成小写吧
         $router_key = strtolower(trim(trim($url),'/'));
@@ -42,7 +42,7 @@ function route($router_ruler,$router_key,$params){
         //由于规定参数格式必须是数组，所以这里只存在是数组和不是数组（为空）的情况
         if(is_array($real_url)){
             //看其是不是索引数组
-            if(array_map('is_numeric', array_keys($real_url))){
+            if(array_product(array_map('is_numeric', array_keys($real_url)))==1){
                 //二级路由
                 if(is_array($params)){
                     $real_url = routeMatch($real_url[count($params)],$params);
