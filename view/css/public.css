@@ -502,7 +502,9 @@ ul, ul li {
     padding: 4px;
 }
 #post_comment{
-    padding: 7px 15px;
+    padding: 0 15px;
+    line-height: 29px;
+    display: inline-block;
     background-color: rgb(149, 224, 164);
     color: #fff!important;
     border-radius: 2px;
