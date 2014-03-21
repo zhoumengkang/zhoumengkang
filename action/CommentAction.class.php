@@ -13,20 +13,16 @@ class CommentAction extends Action{
      * AJAX请求地址
      * 执行评论操作
      */
-    //todo
     public function doComment(){
-        /*if(!$_POST['name']){
-            $this->ajaxReturn();
-        }
         if(!$_POST['email']){
-
+            $this->ajaxReturn(0,'邮箱不能为空');
         }
         if(!$_POST['content']){
-
+            $this->ajaxReturn(0,'内容不能为空');
         }
         if(!$_POST['blogid']){
-
-        }*/
+            $this->ajaxReturn(0,'评论哪篇文章？');
+        }
         $blogid = intval($_POST['blogid']);
         $email = htmlspecialchars(strip_tags($_POST['email']));
         $username = htmlspecialchars(strip_tags($_POST['name']),ENT_QUOTES);
@@ -38,9 +34,9 @@ class CommentAction extends Action{
         $res = $model->q($sql);
         $data = preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$content);
         if($res>0){
-            $this->ajaxReturn($res,'评论成功',$data);
+            $this->ajaxReturn(1,'评论成功',$data);
         }else{
-            $this->ajaxReturn($res,'评论失败',$data);
+            $this->ajaxReturn(0,'评论失败',$data);
         }
 
     }
@@ -50,6 +46,15 @@ class CommentAction extends Action{
      * 前台博主操作
      */
     public function del(){
-        //$res = M()->q();
+        if(!$_SESSION['uid']){
+            $this->ajaxReturn(0,'先登陆',$data);
+        }else{
+            $res = M()->q('update z_comment set `status` = 0 where id = '.intval($_POST['id']));
+            if($res>0){
+                $this->ajaxReturn(1,'删除成功',$res);
+            }else{
+                $this->ajaxReturn(0,'删除失败',$res);
+            }
+        }
     }
 }
