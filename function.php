@@ -59,7 +59,7 @@ function route($router_ruler,$router_key,$params){
             }
         }
     }else{
-        $real_url = urlBuild($router_ruler,$params);
+        $real_url = urlBuild($router_key,$params);
     }
     return $real_url;
 }
@@ -70,7 +70,7 @@ function route($router_ruler,$router_key,$params){
  * @return string $real_url 实际地址
  */
 function urlBuild($url,$params){
-    $url=explode('/',$url);
+    $url=explode('/',trim($url,'/'));
     $real_url   =   SITE_URL.'?m='.$url[0].'&a='.$url[1];
     if($params){
         if(is_array($params)){
