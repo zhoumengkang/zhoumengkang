@@ -29,15 +29,20 @@ class CommentAction extends Action{
         }*/
         $blogid = intval($_POST['blogid']);
         $email = htmlspecialchars(strip_tags($_POST['email']));
-        $username = htmlspecialchars(strip_tags($_POST['name']));
+        $username = htmlspecialchars(strip_tags($_POST['name']),ENT_QUOTES);
         $_POST['content'] = str_replace('·','`',$_POST['content']);
-        $content = htmlspecialchars(strip_tags($_POST['content']));
+        $content = htmlspecialchars(strip_tags($_POST['content']),ENT_QUOTES);
         $link = htmlspecialchars(strip_tags($_POST['blog']));
         $sql = "insert into z_comment(`blogid`,`email`,`username`,`link`,`content`,`posttime`) values ({$blogid},'{$email}','{$username}','{$link}','{$content}',".time().")";
         $model = d();
         $res = $model->q($sql);
         $data = preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$content);
-        $this->ajaxReturn($res,'评论成功',$data);
+        if($res>0){
+            $this->ajaxReturn($res,'评论成功',$data);
+        }else{
+            $this->ajaxReturn($res,'评论失败',$data);
+        }
+
     }
 
     /**
