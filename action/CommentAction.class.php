@@ -38,7 +38,8 @@ class CommentAction extends Action{
             //获取其楼层
             $floor = d()->q("select count(*) as num from z_comment where blogid = {$blogid} and `posttime` < {$res[0]['posttime']}");
             $floor = 1 + $floor[0]['num'];
-            $url = 'http://'.$_SERVER['HTTP_HOST'].U('Blog/blog',array('id'=>$blogid)).'#floor'.$floor;
+            //TODO 关于网站site_url还需要重新配置定义，目前的是不够用的
+            $url = 'http://'.$_SERVER['HTTP_HOST'].'/'.U('Blog/blog',array('id'=>$blogid)).'#floor'.$floor;
             $blogtitle = d()->q("select `title` from z_blog where id = {$blogid}");
             $mailBody = '<h3>'.$blogtitle[0]['title'].'&nbsp&nbsp有新的留言</h3>
                         <p>'.$username.' < '.$email.' >在评论中说：</p>
