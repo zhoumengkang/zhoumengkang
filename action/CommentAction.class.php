@@ -38,12 +38,11 @@ class CommentAction extends Action{
             //获取其楼层
             $floor = d()->q("select count(*) as num from z_comment where blogid = {$blogid} and `posttime` < {$res[0]['posttime']}");
             $floor = 1 + $floor[0]['num'];
-            $url = SITE_URL.'/'.$blogid.'html#floor'.$floor;
+            $url = 'http://'.$_SERVER['HTTP_HOST'].U('Blog/blog',array('id'=>$blogid)).'#floor'.$floor;
             $blogtitle = d()->q("select `title` from z_blog where id = {$blogid}");
-            $mailBody = '<p>'.$username.' < '.$email.' >对你的</p>
-                        <h3>'.$blogtitle[0]['title'].'</h3>
-                        <p>进行了评论。</p>
-                        <p>内容为：'.$content.'</p>
+            $mailBody = '<h3>'.$blogtitle[0]['title'].'&nbsp&nbsp有新的留言</h3>
+                        <p>'.$username.' < '.$email.' >在评论中说：</p>
+                        <div style="border-radius: 4px;margin: 10px 0 10px;border: 1px dashed #BEB0B0;padding: 8px;background: #F0F0F0;">'.$content.'</div>
                         <p><a href="'.$url.'">点击链接查看</a></p>';
             new MailModel('i@zhoumengkang.com','康哥',$mailBody,'主公，北剅轩有客来访');
             $this->ajaxReturn(1,'评论成功',$data);

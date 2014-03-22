@@ -207,7 +207,13 @@ function getcookie(name){
 }
 
 //执行评论
+var post_comment_flag = true;
 var post_comment = function(){
+    if(!post_comment_flag){
+        ui.error('...稍等一会，上一条还没发送过去哦');
+        return false;
+    }
+    post_comment_flag = false;
 
     if($("textarea[name='comment']").val().length < 1){
         ui.error('...说点什么吧');
@@ -241,6 +247,7 @@ var post_comment = function(){
         email: $("input[name='email']").val(),
         name: $("input[name='yourname']").val()
     },function(data){
+        post_comment_flag = true;
         if(parseInt(data.flag)>0){
             ui.success(data.info);
             $("#commentList").append('<div class="commentlist"><div><a href="'+blogurl+'">'+$("input[name='yourname']").val()+'</a>刚刚</div>'+data.data+'</div>');
