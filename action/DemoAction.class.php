@@ -15,4 +15,7 @@ class DemoAction extends Action{
 		include './view/header.php';
 		echo pagelist($_GET['p'],400,10);
 	}
+    public function sendEmail(){
+        $test = new MailModel('i@zhoumengkang.com','康哥','sss');
+    }
 }
