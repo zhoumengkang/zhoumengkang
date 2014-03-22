@@ -29,14 +29,15 @@ class CommentAction extends Action{
         $_POST['content'] = str_replace('·','`',$_POST['content']);
         $content = htmlspecialchars(strip_tags($_POST['content']),ENT_QUOTES);
         $link = htmlspecialchars(strip_tags($_POST['blog']));
-        $sql = "insert into z_comment(`blogid`,`email`,`username`,`link`,`content`,`posttime`) values ({$blogid},'{$email}','{$username}','{$link}','{$content}',".time().")";
+        $posttime = time();
+        $sql = "insert into z_comment(`blogid`,`email`,`username`,`link`,`content`,`posttime`) values ({$blogid},'{$email}','{$username}','{$link}','{$content}',".$posttime.")";
         $model = d();
         $res = $model->q($sql);
         $data = preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$content);
         if($res>0){
             //留言成功的情况
             //获取其楼层
-            $floor = d()->q("select count(*) as num from z_comment where blogid = {$blogid} and `posttime` < {$res[0]['posttime']}");
+            $floor = d()->q("select count(*) as num from z_comment where blogid = {$blogid} and `posttime` < {$posttime}");
             $floor = 1 + $floor[0]['num'];
             //TODO 关于网站site_url还需要重新配置定义，目前的是不够用的
             $url = 'http://'.$_SERVER['HTTP_HOST'].'/'.U('Blog/blog',array('id'=>$blogid)).'#floor'.$floor;
