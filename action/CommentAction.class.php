@@ -34,6 +34,18 @@ class CommentAction extends Action{
         $res = $model->q($sql);
         $data = preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$content);
         if($res>0){
+            //留言成功的情况
+            //获取其楼层
+            $floor = d()->q("select count(*) as num from z_comment where blogid = {$blogid} and `posttime` < {$res[0]['posttime']}");
+            $floor = 1 + $floor[0]['num'];
+            $url = SITE_URL.'/'.$blogid.'html#floor'.$floor;
+            $blogtitle = d()->q("select `title` from z_blog where id = {$blogid}");
+            $mailBody = '<p>'.$username.' < '.$email.' >对你的</p>
+                        <h3>'.$blogtitle[0]['title'].'</h3>
+                        <p>进行了评论。</p>
+                        <p>内容为：'.$content.'</p>
+                        <p><a href="'.$url.'">点击链接查看</a></p>';
+            new MailModel('i@zhoumengkang.com','康哥',$mailBody,'主公，北剅轩有客来访');
             $this->ajaxReturn(1,'评论成功',$data);
         }else{
             $this->ajaxReturn(0,'评论失败',$data);
