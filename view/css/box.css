@@ -7,7 +7,7 @@
 	
 }
 .html_clew_box {
-	width: 200px;
+	min-width: 200px;
 	height: 80px;
 	color:#2ecc71;
     font-family: "Open Sans",Arial,"Hiragino Sans GB","Microsoft YaHei","微软雅黑","STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif;
@@ -40,6 +40,7 @@
 	float: right;
 }
 .html_clew_box_con {
+    padding: 0 10px;
 	text-align: center;
 	line-height: 80px;
 	background: #fff;
