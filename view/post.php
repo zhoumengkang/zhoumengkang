@@ -82,7 +82,7 @@ include 'header.php';
 	<?php if($action == 'modifyBlog'){ ?>
 		<input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
 	<div>修改日志：<br/>
-		<input type="text" name="modifyLog" style="width:99%" class="password"  />
+		<input type="text" name="modifyLog" style="text-align: left;padding-left: 10px;width:99%" class="password"  />
     </div>
 	<?php }?>
         <a href="javascript:void(0)" onclick="checkAndPost('<?php echo $action; ?>')"><div class="inputClass">
