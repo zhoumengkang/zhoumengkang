@@ -60,7 +60,7 @@ class CommentAction extends Action{
      */
     public function del(){
         if(!$_SESSION['uid']){
-            $this->ajaxReturn(0,'先登陆',$data);
+            $this->ajaxReturn(0,'先登陆',0);
         }else{
             $res = M()->q('update z_comment set `status` = 0 where id = '.intval($_POST['id']));
             if($res>0){
