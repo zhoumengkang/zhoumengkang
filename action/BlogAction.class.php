@@ -11,13 +11,8 @@ class BlogAction extends Action{
         $maxRead = d()->q('select * from z_blog where `status` > 0 order by `count` desc limit 10');
 		$links = d()->q('select * from z_link where `status` > 0 order by rank asc');
         $tags = d()->q("SELECT a.id, a.name, COUNT( b.tag_id ) AS linktimes FROM  `z_tags` a LEFT JOIN `z_blog_to_tags` b  ON b.tag_id = a.id GROUP BY b.tag_id ORDER BY linktimes DESC LIMIT 20");
-        //dump($tags);exit;
-		$num = PERPAGES;
-		$page = (int)$_GET['p']?(int)$_GET['p']:1;
-		$start = ($page-1)*$num;
 
-        $res = d()->q("select * from z_blog where status = 1 and nav = 1 order by id desc limit ".$start.','.$num);
-        $totalNum = d()->q("select count(*) as num from z_blog where status = 1 and nav = 1");
+        $res = d()->q("select * from z_blog where status = 1 and nav = 1 order by id desc limit 20");
 		
 		if(is_array($res)){
 			include './view/index.php';	

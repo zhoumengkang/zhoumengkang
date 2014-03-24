@@ -15,7 +15,7 @@ $(function(){ prettyPrint(); });
 			<div class="list_item">			
 				<div class="article_title">
 					<h3>
-						<a href="<?php echo U('Blog/blog',array('id'=>$v['id']));?>"><span class="link_title"><?php echo htmlspecialchars_decode($v['title']);?></span></a>
+						<a href="<?php echo U('Blog/blog',array('id'=>$v['id']));?>"><span class="link_title"><?php echo htmlspecialchars_decode($v['title'],ENT_QUOTES);?></span></a>
 					</h3>
 				</div>
 				<div class="article_manage">
@@ -75,7 +75,7 @@ $(function(){ prettyPrint(); });
                         <?php } ?>
                     </div>
                 <?php } ?>
-			<?php echo htmlspecialchars_decode($v['content']);?>
+			<?php echo htmlspecialchars_decode($v['content'],ENT_QUOTES);?>
 			</div>
 			<?php
 				}
