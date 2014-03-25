@@ -53,7 +53,7 @@ class BlogAction extends Action{
      */
     public function readByTags(){
         //顶置的帖子
-        $top = d()->q('select * from z_blog where `status` = 2 order by toptime desc limit 10');
+        //$top = d()->q('select * from z_blog where `status` = 2 order by toptime desc limit 10');
         //浏览的最多的帖子
         $maxRead = d()->q('select * from z_blog where `status` > 0 order by `count` desc limit 10');
         $links = d()->q('select * from z_link where `status` > 0 order by rank asc');
@@ -63,8 +63,8 @@ class BlogAction extends Action{
         $page = (int)$_GET['p']?(int)$_GET['p']:1;
         $start = ($page-1)*$num;
         if($_GET['tag']){
-            $res = d()->q('select * from z_blog a,z_blog_to_tags b where a.status = 1 and a.id = b.blog_id and b.tag_id = '.intval($_GET['tag']).' group by a.id order by a.id desc limit '.$start.','.$num);
-            $totalNum = d()->q('select count(distinct b.blog_id) from z_blog a,z_blog_to_tags b where a.status = 1 and a.id = b.blog_id and b.tag_id = '.intval($_GET['tag']));
+            $res = d()->q('select * from z_blog a,z_blog_to_tags b where a.status > 0 and a.id = b.blog_id and b.tag_id = '.intval($_GET['tag']).' group by a.id order by a.id desc limit '.$start.','.$num);
+            $totalNum = d()->q('select count(distinct b.blog_id) from z_blog a,z_blog_to_tags b where a.status > 0 and a.id = b.blog_id and b.tag_id = '.intval($_GET['tag']));
         }
         if(is_array($res)){
             include './view/blogList.php';

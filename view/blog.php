@@ -57,7 +57,7 @@ $(function(){ prettyPrint(); });
 					标签 : 
 					<?php
 						foreach ($tags as $key => $value) {
-							echo '<a href="'.U('Blog/index',array('tag'=>$value['id'])).'" style="display: inline;" >'.$value['name'].'</a>';
+							echo '<a href="'.U('Blog/readByTags',array('tag'=>$value['id'])).'" style="display: inline;" >'.$value['name'].'</a>';
 						}
 					?>
 					</div>
