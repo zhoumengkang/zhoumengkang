@@ -46,12 +46,30 @@ class CommentAction extends Action{
                         <p>'.$username.' < '.$email.' >在评论中说：</p>
                         <div style="border-radius: 4px;margin: 10px 0 10px;border: 1px dashed #BEB0B0;padding: 8px;background: #F0F0F0;">'.$content.'</div>
                         <p><a href="'.$url.'">点击链接查看</a></p>';
-            new MailModel('i@zhoumengkang.com','康哥',$mailBody,'主公，北剅轩有客来访');
+            //异步邮件通知
+            $this->sendEmail('i@zhoumengkang.com','康哥',$mailBody,'主公，北剅轩有客来访');
+
             $this->ajaxReturn(1,'评论成功',$data);
         }else{
             $this->ajaxReturn(0,'评论失败',$data);
         }
 
+    }
+
+    public function sendEmail($email,$nickname,$mailBody,$title){
+        echo 1;
+        //$this->snyc_send($email,$nickname,$mailBody,$title);
+    }
+
+    /**
+     * 异步邮件发送请求地址
+     * @param $email
+     * @param $nickname
+     * @param $mailBody
+     * @param $title
+     */
+    protected function snyc_send($email,$nickname,$mailBody,$title){
+        new MailModel($email,$nickname,$mailBody,$title);
     }
 
     /**
