@@ -186,7 +186,7 @@ class BlogAction extends Action{
 		$res =d()->q("select * from z_blog where id = {$id} and `status`>0");
         $res[0]['content'] = preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$res[0]['content']);
 		$tags = d()->q("select b.name,b.id from z_blog_to_tags a,z_tags b where a.blog_id =".$id." and a.tag_id=b.id group by a.tag_id");
-        $num = 3;
+        $num = 20;
         $page = (int)$_GET['p']?(int)$_GET['p']:1;
         $start = ($page-1)*$num;
         $comment = d()->q("select * from z_comment where `blogid` = {$id} and`status` > 0 order by `posttime` desc limit ".$start.",".$num);
