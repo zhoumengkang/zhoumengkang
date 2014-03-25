@@ -167,14 +167,14 @@ class AdminAction extends Action{
 
 		//标签处理完毕
 		//更新文章
-        $title = htmlspecialchars($_POST['title'],ENT_QUOTES);
-        $content = htmlspecialchars($_POST['content'],ENT_QUOTES);
+        $title = addslashes(htmlspecialchars($_POST['title'],ENT_QUOTES));
+        $content = addslashes(htmlspecialchars($_POST['content'],ENT_QUOTES));
 		$sql ="update z_blog set `title`='{$title}',`nav`={$_POST['nav']},`content`='{$content}' where id=".$_POST['id'];
 		//dump($sql);
 		$res =d()->q($sql);
 		//修改日志记录
         if(trim($_POST['modifyLog'])){
-            $sql = "insert into z_modify(`blog_id`,`reason`,`mtime`)values(".intval($_POST['id']).",'".htmlspecialchars($_POST['modifyLog'])."',".time().")";
+            $sql = "insert into z_modify(`blog_id`,`reason`,`mtime`)values(".intval($_POST['id']).",'".addslashes(htmlspecialchars($_POST['modifyLog']))."',".time().")";
             $modifyRes=d()->q($sql);
         }
 
