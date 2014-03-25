@@ -33,43 +33,38 @@ class CommentAction extends Action{
         $sql = "insert into z_comment(`blogid`,`email`,`username`,`link`,`content`,`posttime`) values ({$blogid},'{$email}','{$username}','{$link}','{$content}',".$posttime.")";
         $model = d();
         $res = $model->q($sql);
-        $data = preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$content);
+        $dataOfcomment = preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$content);
         if($res>0){
             //留言成功的情况
             //获取其楼层
             $floor = d()->q("select count(*) as num from z_comment where blogid = {$blogid} and `posttime` < {$posttime}");
             $floor = 1 + $floor[0]['num'];
             //TODO 关于网站site_url还需要重新配置定义，目前的是不够用的
-            $url = 'http://'.$_SERVER['HTTP_HOST'].'/'.U('Blog/blog',array('id'=>$blogid)).'#floor'.$floor;
+            $url = 'http://'.$_SERVER['HTTP_HOST'].''.U('Blog/blog',array('id'=>$blogid)).'#floor'.$floor;
             $blogtitle = d()->q("select `title` from z_blog where id = {$blogid}");
-            $mailBody = '<h3>'.$blogtitle[0]['title'].'&nbsp&nbsp有新的留言</h3>
-                        <p>'.$username.' < '.$email.' >在评论中说：</p>
-                        <div style="border-radius: 4px;margin: 10px 0 10px;border: 1px dashed #BEB0B0;padding: 8px;background: #F0F0F0;">'.$content.'</div>
-                        <p><a href="'.$url.'">点击链接查看</a></p>';
+            $mailBody = '<h3>康哥你的文章&nbsp&nbsp'.$blogtitle[0]['title'].'&nbsp&nbsp有新的留言</h3><p>'.$username.' < '.$email.' >在评论中说：</p><div style="border-radius: 4px;margin: 10px 0 10px;border: 1px dashed #BEB0B0;padding: 8px;background: #F0F0F0;">'.$content.'</div><p><a href="'.$url.'">点击链接查看</a></p>';
             //异步邮件通知
-            $this->sendEmail('i@zhoumengkang.com','康哥',$mailBody,'主公，北剅轩有客来访');
-
-            $this->ajaxReturn(1,'评论成功',$data);
+            $data = array();
+            $data['email'] = 'i@zhoumengkang.com';
+            $data['nickname'] = '康哥';
+            $data['mailBody'] = str_replace('&','$_$_$',$mailBody);
+            $data['title'] = '主公，北剅轩有客来访';
+            $url = 'http://'.$_SERVER['HTTP_HOST'].U('Comment/sendEmail');
+            request_by_fsockopen($url,$data);
+            $this->ajaxReturn(1,'评论成功',$dataOfcomment);
         }else{
-            $this->ajaxReturn(0,'评论失败',$data);
+            $this->ajaxReturn(0,'评论失败',$dataOfcomment);
         }
 
     }
 
     public function sendEmail(){
-        dump($_POST);
-        //$this->snyc_send($email,$nickname,$mailBody,$title);
+        $this->snyc_send($_POST);
     }
 
-    /**
-     * 异步邮件发送请求地址
-     * @param $email
-     * @param $nickname
-     * @param $mailBody
-     * @param $title
-     */
-    protected function snyc_send($email,$nickname,$mailBody,$title){
-        new MailModel($email,$nickname,$mailBody,$title);
+    protected function snyc_send($data){
+        //安全处理
+        new MailModel($data['email'],$data['nickname'],$data['mailBody'],$data['title']);
     }
 
     /**
