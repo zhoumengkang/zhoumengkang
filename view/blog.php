@@ -1,8 +1,8 @@
 <?php
 include 'header.php';
 ?>
-<link rel="stylesheet" href="./editor/kindeditor-4.1.7/plugins/code/prettify.css" />
-<script charset="utf-8" src="./editor/kindeditor-4.1.7/plugins/code/prettify.js"></script>
+<link rel="stylesheet" href="./editor/plugins/code/prettify.css" />
+<script charset="utf-8" src="./editor/plugins/code/prettify.js"></script>
 <script>
 $(function(){ prettyPrint(); });
 </script>

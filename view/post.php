@@ -1,18 +1,18 @@
 <?php
 include 'header.php';
 ?>
-<link rel="stylesheet" href="./editor/kindeditor-4.1.7/themes/default/default.css" />
-<link rel="stylesheet" href="./editor/kindeditor-4.1.7/plugins/code/prettify.css" />
-<script charset="utf-8" src="./editor/kindeditor-4.1.7/kindeditor.js"></script>
-<script charset="utf-8" src="./editor/kindeditor-4.1.7/lang/zh_CN.js"></script>
-<script charset="utf-8" src="./editor/kindeditor-4.1.7/plugins/code/prettify.js"></script>
+<link rel="stylesheet" href="./editor/themes/default/default.css" />
+<link rel="stylesheet" href="./editor/plugins/code/prettify.css" />
+<script charset="utf-8" src="./editor/kindeditor.js"></script>
+<script charset="utf-8" src="./editor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="./editor/plugins/code/prettify.js"></script>
 <script>
 	KindEditor.ready(function(K) {
 		editor = K.create('textarea[name="content"]', {
             height : "800px",
-            cssPath : './editor/kindeditor-4.1.7/plugins/code/prettify.css',
-			uploadJson : './editor/kindeditor-4.1.7/php/upload_json.php',
-			fileManagerJson : './editor/kindeditor-4.1.7/php/file_manager_json.php',
+            cssPath : './editor/plugins/code/prettify.css',
+			uploadJson : './editor/php/upload_json.php',
+			fileManagerJson : './editor/php/file_manager_json.php',
 			allowFileManager : true,
 			afterCreate : function() {
 				var self = this;
