@@ -10,4 +10,3 @@ Disallow: /config.php
 Disallow: /nginx.conf
 Disallow: /function.php
 Disallow: /route.php
-Disallow: /index.php?m=Admin*
