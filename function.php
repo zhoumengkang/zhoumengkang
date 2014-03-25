@@ -207,3 +207,48 @@ function getKeywords($tags){
     }
     return trim($keyword,',');
 }
+
+/**
+ * 异步请求
+ * @param string $url
+ * @param array  $post_data
+ * @return void
+ */
+function request_by_fsockopen($url,$post_data=array()){
+    $url_array = parse_url($url);
+    $hostname = $url_array['host'];
+    $port = isset($url_array['port'])? $url_array['port'] : 80;
+    $requestPath = $url_array['path'] ."?". $url_array['query'];
+    $fp = fsockopen($hostname, $port, $errno, $errstr, 10);
+    if (!$fp) {
+        echo "$errstr ($errno)";
+        return false;
+    }
+    $method = "GET";
+    if(!empty($post_data)){
+        $method = "POST";
+    }
+    $header = "$method $requestPath HTTP/1.1\r\n";
+    $header.="Host: $hostname\r\n";
+    if(!empty($post_data)){
+        $_post = strval(NULL);
+        foreach($post_data as $k => $v){
+            $_post .= $k."=".$v."&";
+        }
+        $_post = trim($_post,'&');
+        $header .= "Content-Type: application/x-www-form-urlencoded\r\n";//POST数据
+        $header .= "Content-Length: ". strlen($_post) ."\r\n";//POST数据的长度
+        $header.="Connection: Close\r\n\r\n";//长连接关闭
+        $header .= $_post; //传递POST数据
+    }else{
+        $header.="Connection: Close\r\n\r\n";//长连接关闭
+    }
+    fwrite($fp, $header);
+    //-----------------调试代码区间-----------------
+    /*while (!feof($fp)) {
+        $html.=fgets($fp);
+    }
+    echo $html;*/
+    //-----------------调试代码区间-----------------
+    fclose($fp);
+}
