@@ -5,6 +5,7 @@ class Action{
     protected $tags = null;
     protected $action ;
     protected $module ;
+    protected $title ;
 	/**
 	 *action初始化方法(在这个方法里根据参数a的值决定调用对应的方法)
 	 *

@@ -1,9 +1,10 @@
-<!Doctype html>
+<!DOCTYPE html>
 <head lang="zh-cn">
     <meta charset="utf-8">
 	<title><?php echo $this->title ;?></title>
-	<meta name="description" content="周梦康的博客，记录着我的学习笔记，也记录着我的生活琐事。"/>
-	<link rel="stylesheet" href="./view/css/public.css" type="text/css">
+	<meta name="description" content="<?php if($this->description){echo $this->description;}else{ echo '周梦康的博客，记录着我的学习笔记，也记录着我的生活琐事。';}?>"/>
+    <meta name="keywords" content="<?php if($this->keywords){echo $this->keywords;}else{ echo '北剅轩,周梦康';}?>" />
+    <link rel="stylesheet" href="./view/css/public.css" type="text/css">
 	<link rel="stylesheet" href="./view/css/box.css" type="text/css">
 	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.7.2/jquery.js"></script>
     <script type="text/javascript">

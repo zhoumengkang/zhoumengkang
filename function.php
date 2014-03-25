@@ -178,3 +178,32 @@ function msubstr($str, $start=0, $length, $charset="utf-8", $suffix=true) {
 function showMsg($string){
 	echo '<script>showMsg('.$string.')</script>';
 }
+
+/**
+ * 清楚内容中的空白，暂时用于输出页面的description
+ * @param $str
+ * @return mixed
+ */
+function cleanTheWhitespace($str){
+    $toClean = array("\t","\r\n","\r","\n","    ","&nbsp;");
+    //顺便把双引号转为了单引号，怕在description中与外围的双引号冲突
+    return str_replace('"',"'",str_replace($toClean, "", htmlspecialchars_decode(strip_tags($str),ENT_QUOTES)));
+}
+
+
+function getKeywords($tags){
+    $keyword = '';
+    if(is_array($tags)){
+        if(count($tags)<3){
+            foreach($tags as $k=>$v){
+                $keyword .=','.$v['name'];
+            }
+            $keyword .= ',北剅轩,周梦康';
+        }else{
+            foreach($tags as $k=>$v){
+                $keyword .=','.$v['name'];
+            }
+        }
+    }
+    return trim($keyword,',');
+}
