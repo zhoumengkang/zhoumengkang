@@ -184,7 +184,7 @@ class BlogAction extends Action{
 	public function blog(){
 		$id = intval($_GET['id']);
 		$res =d()->q("select * from z_blog where id = {$id} and `status`>0");
-        $res[0]['content'] = htmlspecialchars_decode(preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$res[0]['content']),ENT_QUOTES);
+        $res[0]['content'] = preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$res[0]['content']);
 		$tags = d()->q("select b.name,b.id from z_blog_to_tags a,z_tags b where a.blog_id =".$id." and a.tag_id=b.id group by a.tag_id");
         $num = 3;
         $page = (int)$_GET['p']?(int)$_GET['p']:1;
@@ -204,7 +204,7 @@ class BlogAction extends Action{
 
         if($res){
 			$this->title = $res[0]['title'].'_周梦康的博客';
-            $this->description = msubstr(cleanTheWhitespace($res[0]['content']),0,200);
+            $this->description = msubstr(cleanTheWhitespace(htmlspecialchars_decode($res[0]['content'],ENT_QUOTES)),0,200);
             $this->keywords = getKeywords($tags);
 			$modify = d()->q("select * from z_modify where blog_id={$id} order by id asc");
 			include './view/blog.php';
