@@ -56,7 +56,7 @@ class CommentAction extends Action{
 
     }
 
-    public function sendEmail($email,$nickname,$mailBody,$title){
+    public function sendEmail(){
         echo 1;
         //$this->snyc_send($email,$nickname,$mailBody,$title);
     }
@@ -68,7 +68,7 @@ class CommentAction extends Action{
      * @param $mailBody
      * @param $title
      */
-    protected function snyc_send($email,$nickname,$mailBody,$title){
+    protected function asyn_sendemail($email,$nickname,$mailBody,$title){
         new MailModel($email,$nickname,$mailBody,$title);
     }
 
