@@ -90,9 +90,12 @@ $(function(){ prettyPrint(); });
             <?php
             if(is_array($comment)){
                 foreach($comment as $k=>$v){
-
-                    echo '<div class="commentlist"><div><a href="'.$v['link'].'">'.$v['username'].'</a>'.date("Y-m-d H:i:s",time()).'</div>'.$v['content'].'</div>';
-
+                    echo '<div class="commentlist"><div><span name="floor">'.(($_GET['p']*20)+$k+1).'</span> 楼 <a href="'.$v['link'].'" tagert="_blank">'.$v['username'].'</a>'.date("Y-m-d H:i:s",time()).'<div style="float:right">';
+                    echo '<a href="javascript:void(0)" targetId="'.$v['id'].'" class="reply_the_comment">回复</a>';
+                    if($_SESSION['uid']){
+                        echo '<a href="javascript:void(0)" targetId="'.$v['id'].'" class="delreply">删除</a>';
+                    }
+                    echo '</div></div>'.$v['content'].'</div>';
                 }
 
             }
@@ -113,6 +116,9 @@ $(function(){ prettyPrint(); });
         </div>
     </div>
     <script type="text/javascript">
+        $(".reply_the_comment").click(function(){
+            //$("textarea[name='comment']").val($(this).child('span[name="floor"]').val());
+        })
         $("textarea[name='comment']").focus(function(){
             //先自动填下留言表单，为留言做准备
             var email = getcookie('email');
@@ -128,9 +134,6 @@ $(function(){ prettyPrint(); });
                 $("input[name='blog']").val(blog);
             }
         })
-
-
-
         $("#post_comment").click(function(){
             post_comment();
         })
