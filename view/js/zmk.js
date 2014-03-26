@@ -214,12 +214,13 @@ var post_comment = function(){
         return false;
     }
     post_comment_flag = false;
-
-    if($("textarea[name='comment']").val().length < 1){
+    var post_comment = $("textarea[name='comment']").val();
+    if(post_comment.length < 1){
         ui.error('...说点什么吧');
         return false;
     }
-    if(!$("input[name='email']").val().match(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)){
+    var post_email = $("input[name='email']").val();
+    if(!post_email.match(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)){
         ui.error('邮箱格式不正确');
         return false;
     }
@@ -230,22 +231,23 @@ var post_comment = function(){
             blogurl = 'http://'+blogurl;
         }
     }
+    var post_yourname = $("input[name='yourname']").val();
     //第一次留言，则把用户的邮箱、称呼、博客地址存到客户端cookie里方便下次调用，而不用浏览的人手动输入了
-    if(!getcookie('yourname')){
-        setcookie('yourname',$("input[name='yourname']").val());
+    if(!getcookie('yourname') || getcookie('yourname') != post_yourname){
+        setcookie('yourname',post_yourname);
     }
-    if(!getcookie('email')){
-        setcookie('email',$("input[name='email']").val());
+    if(!getcookie('email') || getcookie('email') != post_email){
+        setcookie('email',post_email);
     }
-    if(!getcookie('blog')){
-        setcookie('blog',$("input[name='blog']").val());
+    if(!getcookie('blog') || getcookie('blog') != blogurl){
+        setcookie('blog',blogurl);
     }
     $.post(U('Comment/doComment'),{
         blogid: $("input[name='blogid']").val(),
         blog:blogurl,
-        content: $("textarea[name='comment']").val(),
-        email: $("input[name='email']").val(),
-        name: $("input[name='yourname']").val()
+        content: post_comment,
+        email: post_email,
+        name: post_yourname
     },function(data){
         post_comment_flag = true;
         if(parseInt(data.flag)>0){

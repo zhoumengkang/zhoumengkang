@@ -6,7 +6,7 @@
     <meta name="keywords" content="<?php if($this->keywords){echo $this->keywords;}else{ echo '北剅轩,周梦康';}?>" />
     <link rel="stylesheet" href="./view/css/public.css" type="text/css">
 	<link rel="stylesheet" href="./view/css/box.css" type="text/css">
-	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.7.2/jquery.js"></script>
+	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript">
         var SITE_URL = '<?php echo SITE_URL; ?>';
     </script>

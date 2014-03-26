@@ -115,9 +115,32 @@ $(function(){ prettyPrint(); });
             </form>
         </div>
     </div>
+    <a name="comment_text"></a>
     <script type="text/javascript">
         $(".reply_the_comment").click(function(){
-            //$("textarea[name='comment']").val($(this).child('span[name="floor"]').val());
+            var pre_content = '回复'+$(this).parent().parent().find('span[name="floor"]').text()+'楼: ';
+            var callback = function(pre_content){
+                $("textarea[name='comment']").css('background','#FFB3B6').focus().val(pre_content);
+                setTimeout(function(){
+                    $("textarea[name='comment']").css('background','#FFF');
+                    setTimeout(function(){
+                        $("textarea[name='comment']").css('background','#FFB3B6');
+                        setTimeout(function(){
+                            $("textarea[name='comment']").css('background','#FFF');
+                        },300)
+                    },300)
+                },300);
+            }
+            //到底部了，就不要再往下滚了，否则再往上滚的时候会出现滚轮失效的假象
+            var scrollHeight = $('a[name="comment_text"]').offset().top;
+            if($(document).scrollTop() + $(window).height() + 100 <= $(document).height()){
+                $("html,body").animate({scrollTop:scrollHeight},1000,function(){
+                    //使得回复框颜色闪一闪
+                    callback(pre_content);
+                });
+            }else{
+                callback(pre_content);
+            }
         })
         $("textarea[name='comment']").focus(function(){
             //先自动填下留言表单，为留言做准备
