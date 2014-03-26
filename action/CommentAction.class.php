@@ -88,7 +88,7 @@ class CommentAction extends Action{
         if(!$_SESSION['uid']){
             $this->ajaxReturn(0,'先登陆',0);
         }else{
-            $res = M()->q('update z_comment set `status` = 0 where id = '.intval($_POST['id']));
+            $res = d()->q('update z_comment set `status` = 0 where id = '.intval($_POST['id']));
             if($res>0){
                 $this->ajaxReturn(1,'删除成功',$res);
             }else{

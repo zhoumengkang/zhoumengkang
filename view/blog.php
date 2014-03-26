@@ -117,6 +117,23 @@ $(function(){ prettyPrint(); });
     </div>
     <a name="comment_text"></a>
     <script type="text/javascript">
+        $(".delreply").click(function(){
+            var _e = $(this);
+            var id = $(this).attr('targetId');
+            ui.confirm('确认删除该留言？',function(){
+                var url = U('Comment/del');
+                $.post(url,{id:id},function(data){
+                    if(parseInt(data.flag)==1){
+                        _e.parents('.commentlist').remove();
+                        ui.success('删除成功');
+                    }else{
+                        ui.error('删除失败');
+                    }
+                },'json')
+            },function(){
+                return false;
+            })
+        })
         $(".reply_the_comment").click(function(){
             var pre_content = '回复'+$(this).parent().parent().find('span[name="floor"]').text()+'楼: ';
             var callback = function(pre_content){
