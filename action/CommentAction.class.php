@@ -43,14 +43,13 @@ class CommentAction extends Action{
             //TODO 关于网站site_url还需要重新配置定义，目前的是不够用的
             $url = 'http://'.$_SERVER['HTTP_HOST'].''.U('Blog/blog',array('id'=>$blogid)).'#floor'.$floor;
             $blogtitle = d()->q("select `title` from z_blog where id = {$blogid}");
-            $mailBody = '<h3>康哥你的文章&nbsp&nbsp'.$blogtitle[0]['title'].'&nbsp&nbsp有新的留言</h3><p>'.$username.' < '.$email.' >在评论中说：</p><div style="border-radius: 4px;margin: 10px 0 10px;border: 1px dashed #BEB0B0;padding: 8px;background: #F0F0F0;">'.$content.'</div><p><a href="'.$url.'">点击链接查看</a></p>';
+            $mailBody = '<h3>康哥你的文章  <span style="padding:15px">"'.$blogtitle[0]['title'].'"</span>  有新的留言</h3><p>'.$username.' < '.$email.' >在评论中说：</p><div style="border-radius: 4px;margin: 10px 0 10px;border: 1px dashed #BEB0B0;padding: 8px;background: #F0F0F0;">'.$content.'</div><p><a href="'.$url.'">点击链接查看</a></p>';
             //异步邮件通知
             $data = array();
-            $data['authcode'] = 'zhoumengkanghahaha';
+            $data['authId'] = 'zhoumengkanghahaha';
             $data['email'] = 'i@zhoumengkang.com';
             $data['nickname'] = '康哥';
             $data['mailBody'] = $mailBody;
-            $data['title'] = '主公，北剅轩有客来访';
             $url = 'http://'.$_SERVER['HTTP_HOST'].U('Comment/sendEmail');
 
             request_by_fsockopen($url,$data);
