@@ -233,9 +233,9 @@ function request_by_fsockopen($url,$post_data=array()){
     if(!empty($post_data)){
         $_post = strval(NULL);
         foreach($post_data as $k => $v){
-            $_post .= $k."=".$v."&";
+            $_post[]= $k."=".urlencode($v);//
         }
-        $_post = trim($_post,'&');
+        $_post = implode('&', $_post);
         $header .= "Content-Type: application/x-www-form-urlencoded\r\n";//POST数据
         $header .= "Content-Length: ". strlen($_post) ."\r\n";//POST数据的长度
         $header.="Connection: Close\r\n\r\n";//长连接关闭
@@ -245,7 +245,8 @@ function request_by_fsockopen($url,$post_data=array()){
     }
     fwrite($fp, $header);
     //-----------------调试代码区间-----------------
-    /*while (!feof($fp)) {
+    /*$html = '';
+    while (!feof($fp)) {
         $html.=fgets($fp);
     }
     echo $html;*/

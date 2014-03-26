@@ -5,6 +5,7 @@
  * createTime   : 8/3/14 23:13
  */
 class CommentAction extends Action{
+    protected $authId = '94c0883d999094126593e729e56fb3a6';//发送邮件之前的验证码
     public function __construct(){
         parent::__construct();
     }
@@ -45,11 +46,13 @@ class CommentAction extends Action{
             $mailBody = '<h3>康哥你的文章&nbsp&nbsp'.$blogtitle[0]['title'].'&nbsp&nbsp有新的留言</h3><p>'.$username.' < '.$email.' >在评论中说：</p><div style="border-radius: 4px;margin: 10px 0 10px;border: 1px dashed #BEB0B0;padding: 8px;background: #F0F0F0;">'.$content.'</div><p><a href="'.$url.'">点击链接查看</a></p>';
             //异步邮件通知
             $data = array();
+            $data['authcode'] = 'zhoumengkanghahaha';
             $data['email'] = 'i@zhoumengkang.com';
             $data['nickname'] = '康哥';
-            $data['mailBody'] = str_replace('&','$_$_$',$mailBody);
+            $data['mailBody'] = $mailBody;
             $data['title'] = '主公，北剅轩有客来访';
             $url = 'http://'.$_SERVER['HTTP_HOST'].U('Comment/sendEmail');
+
             request_by_fsockopen($url,$data);
             $this->ajaxReturn(1,'评论成功',$dataOfcomment);
         }else{
@@ -58,12 +61,23 @@ class CommentAction extends Action{
 
     }
 
+    //简单的加密函数
+    protected function auth_encode($data){
+        return md5($data.'zmk');
+    }
+
     public function sendEmail(){
-        $this->snyc_send($_POST);
+        //解码已编码的URL字符串
+        $data = array_map('urldecode',$_POST);
+        //安全处理做
+        //验证是不是我自己发送的，而非别人模拟发送的
+        if($this->auth_encode($data['authId']) != $this->authId){
+            return fasle;
+        }
+        $this->snyc_send($data);
     }
 
     protected function snyc_send($data){
-        //安全处理
         new MailModel($data['email'],$data['nickname'],$data['mailBody'],$data['title']);
     }
 

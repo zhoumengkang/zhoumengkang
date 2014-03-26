@@ -17,7 +17,7 @@ class MailModel {
         $this->mail->FromName = "周梦康";  //发件人姓名
         $this->mail->AddAddress($address,$nickname);//添加收件人（地址，昵称）
         $this->mail->IsHTML(true);
-        $this->mail->Body = str_replace('$_$_$','&',$boby);//把html格式还原
+        $this->mail->Body = $boby;//把html格式还原
         if(!$this->mail->Send()) {
             echo "发送失败: " .$this->mail->ErrorInfo;
         }
