@@ -163,17 +163,23 @@ $(function(){ prettyPrint(); });
         })
         $("textarea[name='comment']").focus(function(){
             //先自动填下留言表单，为留言做准备
-            var email = getcookie('email');
-            if(email){
-                $("input[name='email']").val(email);
+            if(!$("input[name='email']").val()){
+                var email = getcookie('email');
+                if(email){
+                    $("input[name='email']").val(email);
+                }
             }
-            var yourname = getcookie('yourname');
-            if(yourname){
-                $("input[name='yourname']").val(yourname);
+            if(!$("input[name='yourname']").val()){
+                var yourname = getcookie('yourname');
+                if(yourname){
+                    $("input[name='yourname']").val(yourname);
+                }
             }
-            var blog = getcookie('blog');
-            if(blog){
-                $("input[name='blog']").val(blog);
+            if(!$("input[name='blog']").val()){
+                var blog = getcookie('blog');
+                if(blog){
+                    $("input[name='blog']").val(blog);
+                }
             }
         })
         $("#post_comment").click(function(){
@@ -186,7 +192,6 @@ $(function(){ prettyPrint(); });
             }
         })
     </script>
-
 </div>
 <?php
 include 'footer.php';
