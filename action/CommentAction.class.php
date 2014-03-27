@@ -57,7 +57,7 @@ class CommentAction extends Action{
                 $data['nickname'] = '康哥';
                 $data['mailBody'] = $mailBody;
             }
-            $url = 'http://'.$_SERVER['HTTP_HOST'].U('Comment/sendEmail');
+            $url = 'http://'.$_SERVER['HTTP_HOST'].'/'.U('Comment/sendEmail');
             //异步邮件通知
             request_by_fsockopen($url,$data);
             $this->ajaxReturn(1,'评论成功',$dataOfcomment);
