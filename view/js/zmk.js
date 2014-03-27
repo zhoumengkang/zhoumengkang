@@ -243,6 +243,7 @@ var post_comment = function(){
         setcookie('blog',blogurl);
     }
     $.post(U('Comment/doComment'),{
+        replyId:$("input[name='replyId']").val(),
         blogid: $("input[name='blogid']").val(),
         blog:blogurl,
         content: post_comment,

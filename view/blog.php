@@ -102,18 +102,19 @@ $(function(){ prettyPrint(); });
             ?>
         </div>
         <?php if(is_array($comment)){echo pagelist($page,$totalNum[0]['num'],20);}?>
-        <div style=" margin-top: 10px; ">
-            <input type="hidden" name="blogid" value="<?php echo $res[0]['id']; ?>"/>
-            <textarea name="comment" cols="50" rows="5" placeholder="说点什么吧，可以使用`xxxx`来插入简短的代码碎片（模仿的markdown你懂的）" class="comment_textarea"></textarea>
-        </div>
-        <div style=" margin:5px 0; ">
-            <form name="comment">
+        <form name="comment">
+            <div style=" margin-top: 10px; ">
+                <input type="hidden" name="blogid" value="<?php echo $res[0]['id']; ?>"/>
+                <input type="hidden" name="replyId" value="0"/>
+                <textarea name="comment" cols="50" rows="5" placeholder="说点什么吧，可以使用`xxxx`来插入简短的代码碎片" class="comment_textarea"></textarea>
+            </div>
+            <div style=" margin:5px 0; ">
                 <input type="email" name="email" placeholder="留个邮箱吧" class="comment_input" />
                 <input type="text" name="yourname" placeholder="你的大名" class="comment_input" />
                 <input type="text" name="blog" placeholder="你的博客地址" class="comment_input" />
                 <a href="javascript:void(0)" id="post_comment" issending="false">提交</a>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
     <a name="comment_text"></a>
     <script type="text/javascript">
@@ -135,6 +136,7 @@ $(function(){ prettyPrint(); });
             })
         })
         $(".reply_the_comment").click(function(){
+            $("input[name='replyId']").val($(this).attr('targetId'));
             var pre_content = '回复'+$(this).parent().parent().find('span[name="floor"]').text()+'楼: ';
             var callback = function(pre_content){
                 $("textarea[name='comment']").css('background','#FFB3B6').focus().val(pre_content);
