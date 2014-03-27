@@ -43,7 +43,6 @@ class CommentAction extends Action{
             $data = array();
             $data['authId'] = 'zhoumengkanghahaha';
             if(intval($_POST['replyId'])){
-                echo 1;
                 //回复别人的回复
                 //查询出被回复留言的邮箱和昵称
                 $userInfo = d()->q("select `username`,`email` from `z_comment` where `id` = ".intval($_POST['replyId']));
@@ -52,7 +51,6 @@ class CommentAction extends Action{
                 $data['nickname'] = $userInfo[0]['username'];
                 $data['mailBody'] = $mailBody;
             }else{
-                echo 2;
                 $mailBody = '<h3>康哥你的文章  <span style="padding:15px">"'.$blogtitle[0]['title'].'"</span>  有新的留言</h3><p>'.$username.' < '.$email.' >在评论中说：</p><div style="border-radius: 4px;margin: 10px 0 10px;border: 1px dashed #BEB0B0;padding: 8px;background: #F0F0F0;">'.$content.'</div><p><a href="'.$url.'">点击链接查看</a></p>';
 
                 $data['email'] = 'i@zhoumengkang.com';
