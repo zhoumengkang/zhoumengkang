@@ -19,7 +19,7 @@ function U($url,$params=null){
     //是否开启路由
     if(defined('ROUTE') && ROUTE){
         //导入路由
-        $router_ruler   =   include(dirname(__FILE__).'/route.php');
+        $router_ruler   =   include_once(dirname(__FILE__).'/route.php');
         $real_url = route($router_ruler,$url,$params);
     }else{
         $real_url = urlBuild($url,$params);

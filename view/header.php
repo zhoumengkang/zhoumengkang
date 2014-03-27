@@ -2,24 +2,24 @@
 if(defined('ROUTE') && ROUTE){
     if(strstr($_SERVER['REQUEST_URI'],'index.php')){
         parse_str($_SERVER['QUERY_STRING'],$params);
-        switch(strtolower($params['a'])){
-            case 'blog':
-                $route = $params['id'];
-                break;
-            case 'bloglist':
-                $type = array(1=>'notebook',2=>'homesick',3=>'playground');
-                $route = $type[$params['nav']];
-                break;
-            case 'readbytags':
-                $route = 'tag-'.$params['tag'];
-                break;
-            default :
-                break;
-        }
-        if($params['p']<2){
-            header('Location:'.SITE.'/'.$route.'.html');
-        }else{
-            header('Location:'.SITE.'/'.$route.'-'.$params['p'].'.html');
+        if(in_array($params['a'],array('blog','bloglist','readbytags'))){
+            switch(strtolower($params['a'])){
+                case 'blog':
+                    $route = $params['id'];
+                    break;
+                case 'bloglist':
+                    $type = array(1=>'notebook',2=>'homesick',3=>'playground');
+                    $route = $type[$params['nav']];
+                    break;
+                case 'readbytags':
+                    $route = 'tag-'.$params['tag'];
+                    break;
+            }
+            if($params['p']<2){
+                header('Location:'.SITE.'/'.$route.'.html');
+            }else{
+                header('Location:'.SITE.'/'.$route.'-'.$params['p'].'.html');
+            }
         }
     }
 }
