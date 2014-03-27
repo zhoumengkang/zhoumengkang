@@ -17,7 +17,7 @@ function d(){
  */
 function U($url,$params=null){
     //是否开启路由
-    if(ROUTE){
+    if(defined('ROUTE') && ROUTE){
         //导入路由
         $router_ruler   =   include(dirname(__FILE__).'/route.php');
         $real_url = route($router_ruler,$url,$params);

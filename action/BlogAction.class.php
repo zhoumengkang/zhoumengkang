@@ -64,10 +64,10 @@ class BlogAction extends Action{
         $start = ($page-1)*$num;
         if($_GET['tag']){
             $res = d()->q('select * from z_blog a,z_blog_to_tags b where a.status > 0 and a.id = b.blog_id and b.tag_id = '.intval($_GET['tag']).' group by a.id order by a.id desc limit '.$start.','.$num);
-            $totalNum = d()->q('select count(distinct b.blog_id) from z_blog a,z_blog_to_tags b where a.status > 0 and a.id = b.blog_id and b.tag_id = '.intval($_GET['tag']));
+            $totalNum = d()->q('select count(distinct b.blog_id) as num from z_blog a,z_blog_to_tags b where a.status > 0 and a.id = b.blog_id and b.tag_id = '.intval($_GET['tag']));
         }
         if(is_array($res)){
-            include './view/blogList.php';
+            include './view/readByTags.php';
         }else{
             include './view/404.php';
         }
