@@ -2,6 +2,33 @@
 include 'header.php';
 ?>
 <link rel="stylesheet" href="./editor/plugins/code/prettify.css" />
+<style type="text/css">
+    .content_img_wrap{
+        position: relative;
+        display: inline-block;
+        background: #000;
+    }
+    .img_magnify{
+        opacity: 0.5;
+    }
+    .content_img{
+        float: none;
+        margin: 0px auto;
+        display: inline-block;
+        border: 5px solid #fff;
+        box-shadow: 0px 0px 5px #aaa;
+    }
+    .content_img img{
+        max-width: 480px;
+        display: block;
+        cursor: pointer;
+    }
+    .magnifier{
+        z-index: 2;
+        position: absolute;
+        cursor: pointer;
+    }
+</style>
 <script charset="utf-8" src="./editor/plugins/code/prettify.js"></script>
 <script>
 $(function(){ prettyPrint(); });
@@ -123,6 +150,23 @@ $(function(){ prettyPrint(); });
     </div>
     <a name="comment_text"></a>
     <script type="text/javascript">
+        $(function(){
+            //匹配img标签,在其外面包裹一层
+            $(".content").find('img').wrap("<span class='content_img'></span>");
+            $(".content_img").hover(function(){
+                var img_element = $(this).find('img');
+                img_element.wrap("<span class='content_img_wrap'></span>").addClass('img_magnify').after('<a class="magnifier" alt="查看大图"><img src="./view/images/link.png"></a>');
+                var _top = img_element.height();
+                var _left = img_element.width();
+                $(this).find('.magnifier').css({
+                    top:((_top-20)/2),
+                    left:((_left-20)/2)
+                }).fadeIn();
+            },function(){
+                $(this).find('img').next('.magnifier').remove();
+                $(this).find('img').unwrap().removeClass('img_magnify');
+            })
+        })
         $(".delreply").click(function(){
             var _e = $(this);
             var id = $(this).attr('targetId');
