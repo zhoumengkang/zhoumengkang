@@ -30,6 +30,7 @@ body, div, ul, li{
     clear: both;
 }
 .header_fixed{
+    z-index: 99;
     width: 100%;
     position: fixed;
 }
