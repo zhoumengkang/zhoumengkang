@@ -8,9 +8,6 @@ include 'header.php';
         display: block;
         background: #000;
     }
-    .img_magnify{
-        opacity: 0.5;
-    }
     .content_img{
         max-width: 480px;
         float: none;
@@ -157,7 +154,7 @@ $(function(){ prettyPrint(); });
             $(".content").find('img').wrap("<span class='content_img'></span>");
             $(".content_img").hover(function(){
                 var img_element = $(this).find('img');
-                img_element.wrap("<span class='content_img_wrap'></span>").addClass('img_magnify').after('<a class="magnifier" alt="查看大图"><img src="./view/images/link.png"></a>');
+                img_element.wrap("<span class='content_img_wrap'></span>").animate({'opacity':'0.5'}).after('<a class="magnifier" alt="查看大图"><img src="./view/images/link.png"></a>');
                 var _top = img_element.height();
                 var _left = img_element.width();
                 $(this).find('.magnifier').css({
@@ -166,7 +163,7 @@ $(function(){ prettyPrint(); });
                 }).fadeIn('slow');
             },function(){
                 $(this).find('img').next('.magnifier').remove();
-                $(this).find('img').unwrap().removeClass('img_magnify');
+                $(this).find('img').unwrap().animate({'opacity':'1'});
             })
         })
         $(".delreply").click(function(){
