@@ -150,6 +150,8 @@ $(function(){ prettyPrint(); });
     <a name="comment_text"></a>
     <script type="text/javascript">
         $(function(){
+            //将所有的a链接都改为在新窗口打开
+            $(".content").find('a').attr({'target':'_blank'});
             //匹配img标签,在其外面包裹一层
             $(".content").find('img').wrap("<span class='content_img'></span>");
             $(".content_img").hover(function(){
