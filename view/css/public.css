@@ -342,6 +342,13 @@ ul, ul li {
     display: block;
     cursor: pointer;
 }
+.content a{
+    color: #519DFF;
+}
+.content a:hover{
+    color: #1F87F8;
+    text-decoration:underline;
+}
 .link_delete{
 	padding-right:10px;
 }
