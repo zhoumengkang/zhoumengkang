@@ -5,16 +5,17 @@ include 'header.php';
 <style type="text/css">
     .content_img_wrap{
         position: relative;
-        display: inline-block;
+        display: block;
         background: #000;
     }
     .img_magnify{
         opacity: 0.5;
     }
     .content_img{
+        max-width: 480px;
         float: none;
         margin: 0px auto;
-        display: inline-block;
+        display: block;
         border: 5px solid #fff;
         box-shadow: 0px 0px 5px #aaa;
     }
@@ -24,6 +25,7 @@ include 'header.php';
         cursor: pointer;
     }
     .magnifier{
+        display: none;
         z-index: 2;
         position: absolute;
         cursor: pointer;
@@ -161,7 +163,7 @@ $(function(){ prettyPrint(); });
                 $(this).find('.magnifier').css({
                     top:((_top-20)/2),
                     left:((_left-20)/2)
-                }).fadeIn();
+                }).fadeIn('slow');
             },function(){
                 $(this).find('img').next('.magnifier').remove();
                 $(this).find('img').unwrap().removeClass('img_magnify');
