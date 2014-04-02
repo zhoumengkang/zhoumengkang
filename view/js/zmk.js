@@ -81,7 +81,7 @@ $(function() {
             position:'fixed',
             left:left + "px",
             top:top + "px",
-            zIndex:5
+            zIndex:998
         }).fadeIn("slow");
     })
     //登录操作
