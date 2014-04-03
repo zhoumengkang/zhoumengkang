@@ -121,7 +121,7 @@ $(function(){ prettyPrint(); });
                     $realpage = $_GET['p'];
                 }
                 foreach($comment as $k=>$v){
-                    echo '<div class="commentlist"><div><span name="floor">'.((($realpage-1)*20)+$k+1).'</span> 楼 <a href="'.$v['link'].'" tagert="_blank">'.$v['username'].'</a>'.date("Y-m-d H:i:s",time()).'<div style="float:right">';
+                    echo '<div class="commentlist"><div><span name="floor">'.((($realpage-1)*20)+$k+1).'</span> 楼 <a href="'.$v['link'].'" tagert="_blank">'.$v['username'].'</a>'.date("Y-m-d H:i:s",$v['posttime']).'<div style="float:right">';
                     echo '<a href="javascript:void(0)" targetId="'.$v['id'].'" class="reply_the_comment">回复</a>';
                     if($_SESSION['uid']){
                         echo '<a href="javascript:void(0)" targetId="'.$v['id'].'" class="delreply">删除</a>';
