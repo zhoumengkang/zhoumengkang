@@ -38,7 +38,7 @@ class CommentAction extends Action{
         if($res>0){
             //留言成功的情况
             //TODO 关于网站site_url还需要重新配置定义，目前的是不够用的
-            $url = 'http://'.$_SERVER['HTTP_HOST'].''.U('Blog/blog',array('id'=>$blogid));
+            $url = 'http://'.trim($_SERVER['HTTP_HOST'],'/').'/'.U('Blog/blog',array('id'=>$blogid));
             $blogtitle = d()->q("select `title` from z_blog where id = {$blogid}");
             $data = array();
             $data['authId'] = 'zhoumengkanghahaha';
