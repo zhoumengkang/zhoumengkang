@@ -203,7 +203,7 @@ class BlogAction extends Action{
 
 
         if($res){
-			$this->title = $res[0]['title'].'_周梦康的博客';
+			$this->title = $res[0]['title'];
             $this->description = msubstr(cleanTheWhitespace(htmlspecialchars_decode($res[0]['content'],ENT_QUOTES)),0,200);
             $this->keywords = getKeywords($tags);
 			$modify = d()->q("select * from z_modify where blog_id={$id} order by id asc");

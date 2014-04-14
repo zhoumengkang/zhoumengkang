@@ -47,11 +47,11 @@ if(defined('ROUTE') && ROUTE){
         <pre>
 /**
  * @description 笔记和生活！
- * @author      周梦康 < i@zhoumengkang.com >
+ * @author      周梦康 < zhoumengkang@php.net >
  */
         </pre>
     </div>
-    <span class="sign">代码，生活，只言片语皆回忆。</span>
+    <span class="sign">代码，生活，只言片语。</span>
     <div class="nav" id="nav">
     <ul>
         <?php
