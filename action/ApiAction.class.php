@@ -9,7 +9,6 @@ class ApiAction extends Action{
      */
     public function weiboCard(){
         $urlArray = parse_url(urldecode($_GET['url']));
-        dump($urlArray);
         preg_match('/\/([0-9]+).html/', htmlspecialchars($urlArray['path']),$match);//获取文章id
         $id = $match[1];
         $q = d();
