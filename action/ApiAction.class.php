@@ -10,11 +10,11 @@ class ApiAction extends Action{
     public function weiboCard(){
         $urlArray = parse_url(urldecode($_GET['url']));
         dump($urlArray);
-        $id = preg_match('/\/([0-9]+).html/', htmlspecialchars($urlArray['path']),$match);//获取文章id
-        echo $id;
+        preg_match('/\/([0-9]+).html/', htmlspecialchars($urlArray['path']),$match);//获取文章id
+        $id = $match[1];
         $q = d();
         $res =$q->q("select * from z_blog where id = {$id} ");
-        echo $q->lastsql();
+        //echo $q->lastsql();
         $title = $res[0]['title'];
         $content = msubstr(cleanTheWhitespace(htmlspecialchars_decode($res[0]['content'],ENT_QUOTES)),0,200);
         /*{
