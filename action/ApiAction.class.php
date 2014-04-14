@@ -41,7 +41,7 @@ class ApiAction extends Action{
             "create_at": "2013年11月22日"
         }*/
         $data['object_type'] = 'article';
-        $data['display_name'] = 'article';
+        $data['display_name'] = $title;
         $data['image'] = array(
             "url"=>"http://mengkang.net/view/images/php.jpg",
             "width"=>120,
