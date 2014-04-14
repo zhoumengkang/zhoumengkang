@@ -112,6 +112,14 @@ $(function() {
         }
     });
 
+    //回车搜索
+    $("input[name='keyword']").bind('keydown', function(e) {
+        var key = e.which;
+        if(key == 13) {
+            $("form[name='search']").submit();
+        }
+    });
+
     //返回操作
     $(".closeLoginBox").click(function(){
         $('.loginBox').fadeOut('slow',function(){

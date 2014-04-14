@@ -231,4 +231,12 @@ class BlogAction extends Action{
         $tags = d()->q("SELECT a.id, a.name, COUNT( b.tag_id ) AS linktimes FROM  `z_tags` a LEFT JOIN `z_blog_to_tags` b  ON b.tag_id = a.id GROUP BY b.tag_id ORDER BY linktimes DESC LIMIT 300");
         include './view/tagsList.php';
     }
+
+    public function search(){
+        if($_POST['keyword']){
+            $keyword = htmlspecialchars(trim($_POST['keyword']));
+            $res = d()->q("SELECT id,title,ctime from `z_blog` WHERE `title` LIKE '%".$keyword."%'");
+        }
+        include './view/search.php';
+    }
 }
