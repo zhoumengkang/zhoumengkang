@@ -56,10 +56,10 @@ class ApiAction extends Action{
             "object_type"=>"person"
         );
         $data['summary'] = $content;
-        $data['url'] = 'http://mengkang.net/'.$id.'html';
+        $data['url'] = 'http://mengkang.net/'.$id.'.html';
         $data['links'] = array(
-            "url"=>"http://mengkang.net/".$id.'html',
-            "scheme"=>"scheme://mengkang.net/".$id.'html',
+            "url"=>"http://mengkang.net/".$id.'.html',
+            "scheme"=>"scheme://mengkang.net/".$id.'.html',
             "display_name"=>"阅读全文"
         );
         $data['create_at'] = date('Y年m月d日',$res[0]['ctime']);
