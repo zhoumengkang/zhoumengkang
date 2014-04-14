@@ -9,6 +9,7 @@ class ApiAction extends Action{
      */
     public function weiboCard(){
         $urlArray = parse_url(urldecode($_GET['url']));
+        dump($urlArray);
         $id = preg_match('/\/([0-9]+).html/', htmlspecialchars($urlArray['path']),$match);//获取文章id
         $res =d()->q("select * from z_blog where id = {$id} and `status`>0");
         $title = $res[0]['title'];
