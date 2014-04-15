@@ -22,6 +22,7 @@ include 'header.php';
                                 <a href="<?php echo U('Blog/blog',array('id'=>$v['id']));?>"><span><?php echo msubstr(htmlspecialchars_decode($v['title'],ENT_QUOTES),0,50);?></span></a><span class="viewtimes" title="阅读次数">(<?php echo $v['count']?>)</span>
                             </h3>
                         </div>
+                        <?php if(!$this->ismobile){ ?>
                         <div class="article_manage">
                             <span class="link_postdate"><?php echo date('Y-m-d H:i:s',$v['ctime'])?></span>
 
@@ -32,6 +33,8 @@ include 'header.php';
                             <?php }?>
 
                         </div>
+                        <?php  } ?>
+
                     </div>
                 <?php
                 }
@@ -50,6 +53,7 @@ include 'header.php';
                                 <a href="<?php echo U('Blog/blog',array('id'=>$v['id']));?>"><span><?php echo msubstr(htmlspecialchars_decode($v['title'],ENT_QUOTES),0,50);?></span></a><span class="viewtimes" title="阅读次数">(<?php echo $v['count']?>)</span>
                             </h3>
                         </div>
+                        <?php if(!$this->ismobile){ ?>
                         <div class="article_manage">
                             <span class="link_postdate"><?php echo date('Y-m-d H:i:s',$v['ctime'])?></span>
 
@@ -60,6 +64,7 @@ include 'header.php';
                             <?php }?>
 
                         </div>
+                        <?php }?>
                     </div>
                 <?php
                 }
