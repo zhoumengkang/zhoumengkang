@@ -552,3 +552,16 @@ ul, ul li {
 .reply_the_comment{
     color: #FF8383!important;
 }
+.mobilenav{
+    float: right;
+}
+.mobileheader ul li{
+    float: left;
+    padding: 0 10px;
+    margin: 0 10px;
+}
+.mobileheader span{
+    color: #2e9fff;
+    font-size: 20px;
+}
+.mobileheader span:hover{color: #323232}

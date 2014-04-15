@@ -44,8 +44,8 @@ if(defined('ROUTE') && ROUTE){
 <?php if($this->ismobile){ ?>
 <header>
     <a id="top"></a>
-    <a href="./"><span>北剅轩</span></a>
-    <div>
+    <a href="./" class="mobileheader" style="float: left"><span>北剅轩</span></a>
+    <div class="mobile mobileheader">
         <ul>
             <?php
             if (is_array($this->nav)) {
