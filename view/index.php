@@ -3,8 +3,9 @@ include 'header.php';
 ?>
 <div id="wrap">
     <div id="side">
-        <?php
-        include 'side.php';
+        <?php if(!$this->ismobile){
+            include 'side.php';
+        }
         ?>
     </div>
     <div id="main">
