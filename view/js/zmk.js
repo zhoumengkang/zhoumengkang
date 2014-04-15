@@ -1,4 +1,7 @@
 $(function() {
+    if($(window).width()<=910){
+        $("#intro").remove();
+    }
     //控制台隐藏
     $("a[name='consoleHide']").click( function(){
         var ele = $(this);
