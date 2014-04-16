@@ -563,4 +563,30 @@ ul, ul li {
     color: #2e9fff;
     font-size: 20px;
 }
-.mobileheader span:hover{color: #323232}
+.mobileheader span:hover{
+    color: #323232
+}
+.content_img_wrap{
+    position: relative;
+    display: block;
+    background: #000;
+}
+.content_img{
+    max-width: 480px;
+    float: none;
+    margin: 0px auto;
+    display: block;
+    border: 5px solid #fff;
+    box-shadow: 0px 0px 5px #aaa;
+}
+.content_img img{
+    max-width: 480px;
+    display: block;
+    cursor: pointer;
+}
+.magnifier{
+    display: none;
+    z-index: 2;
+    position: absolute;
+    cursor: pointer;
+}

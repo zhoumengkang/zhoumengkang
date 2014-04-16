@@ -2,32 +2,6 @@
 include 'header.php';
 ?>
 <link rel="stylesheet" href="./editor/plugins/code/prettify.css" />
-<style type="text/css">
-    .content_img_wrap{
-        position: relative;
-        display: block;
-        background: #000;
-    }
-    .content_img{
-        max-width: 480px;
-        float: none;
-        margin: 0px auto;
-        display: block;
-        border: 5px solid #fff;
-        box-shadow: 0px 0px 5px #aaa;
-    }
-    .content_img img{
-        max-width: 480px;
-        display: block;
-        cursor: pointer;
-    }
-    .magnifier{
-        display: none;
-        z-index: 2;
-        position: absolute;
-        cursor: pointer;
-    }
-</style>
 <script charset="utf-8" src="./editor/plugins/code/prettify.js"></script>
 <script>
 $(function(){ prettyPrint(); });
@@ -137,7 +111,7 @@ $(function(){ prettyPrint(); });
             <div style=" margin-top: 10px; ">
                 <input type="hidden" name="blogid" value="<?php echo $res[0]['id']; ?>"/>
                 <input type="hidden" name="replyId" value="0"/>
-                <textarea name="comment" cols="50" rows="5" placeholder="说点什么吧，可以使用`xxxx`来插入简短的代码碎片" class="comment_textarea"></textarea>
+                <textarea name="comment" id="comment_textarea" placeholder="说点什么吧，可以使用`xxxx`来插入简短的代码碎片" class="comment_textarea"></textarea>
             </div>
             <div style=" margin:5px 0; ">
                 <input type="email" name="email" placeholder="留个邮箱吧" class="comment_input" />
