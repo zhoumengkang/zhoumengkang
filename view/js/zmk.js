@@ -5,6 +5,10 @@ $(function() {
         $("#logo").css({"font-size":"30px","padding":"30px 10px 0 10px","line-height": "30px"});
         $("#nav").css({"float":"left","margin":"10px 0 10px 10px","height":"auto","line-height":"23px"}).find("li").css({"float":"none","padding":"0","margin":"0 5px"});
     }
+    //修复手机浏览器下顶部不贴边
+    $(document).bind('scroll',function(){
+        $("#header").css("top","0");
+    })
     //控制台隐藏
     $("a[name='consoleHide']").click( function(){
         var ele = $(this);
