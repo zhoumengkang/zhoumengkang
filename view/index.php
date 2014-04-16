@@ -17,9 +17,9 @@ include 'header.php';
                     ?>
                     <div class="list_item list_view" blogId="<?php echo $v['id'] ?>">
                         <div class="article_title left">
-                            <div>
+                            <h3>
                                 <a href="<?php echo U('Blog/blog',array('id'=>$v['id']));?>"><span><?php echo msubstr(htmlspecialchars_decode($v['title'],ENT_QUOTES),0,50);?></span></a><span class="viewtimes" title="阅读次数">(<?php echo $v['count']?>)</span>
-                            </div>
+                            </h3>
                         </div>
                         <div class="article_manage">
                             <span class="link_postdate"><?php echo date('Y-m-d H:i:s',$v['ctime'])?></span>
@@ -45,9 +45,9 @@ include 'header.php';
                     ?>
                     <div class="list_item list_view" blogId="<?php echo $v['id'] ?>">
                         <div class="article_title left">
-                            <div>
+                            <h3>
                                 <a href="<?php echo U('Blog/blog',array('id'=>$v['id']));?>"><span><?php echo msubstr(htmlspecialchars_decode($v['title'],ENT_QUOTES),0,50);?></span></a><span class="viewtimes" title="阅读次数">(<?php echo $v['count']?>)</span>
-                            </div>
+                            </h3>
                         </div>
                         <div class="article_manage">
                             <span class="link_postdate"><?php echo date('Y-m-d H:i:s',$v['ctime'])?></span>

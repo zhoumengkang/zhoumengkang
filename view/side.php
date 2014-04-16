@@ -6,7 +6,7 @@
 	?>
 	<div class="list_item list_view" style="margin-left:10px">			
 		<div class="article_title">
-			<div><a href="<?php echo U('Blog/blog',array('id'=>$v['id']));?>"><span><?php echo msubstr($v['title'],0,17);?></span></a></div>
+			<h3><a href="<?php echo U('Blog/blog',array('id'=>$v['id']));?>"><span><?php echo msubstr($v['title'],0,17);?></span></a></h3>
 		</div>
 	</div>
 	<?php
