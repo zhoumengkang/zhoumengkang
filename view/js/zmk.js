@@ -197,10 +197,7 @@ $(function() {
         var img = '<img src="'+$(this).attr('src')+'">';
         ui.box('查看图片',img);
     })
-    /*$(".magnifier").click(function(){
-        var img = '<img src="'+$(this).prev('img').attr('src')+'">';
-        ui.box('查看图片',img);
-    })*/
+
     $('.magnifier').live('click',function(){
         var img = '<img src="'+$(this).prev('img').attr('src')+'">';
         ui.box('查看图片',img);
