@@ -6,7 +6,7 @@
 	?>
 	<div class="list_item list_view" style="margin-left:10px">			
 		<div class="article_title">
-			<h3><a href="<?php echo U('Blog/blog',array('id'=>$v['id']));?>"><span><?php echo msubstr($v['title'],0,17);?></span></a></h3>
+			<div><a href="<?php echo U('Blog/blog',array('id'=>$v['id']));?>"><span><?php echo msubstr($v['title'],0,17);?></span></a></div>
 		</div>
 	</div>
 	<?php
@@ -22,7 +22,7 @@
             */?>
             <div class="list_item list_view" style="margin-left:10px">
                 <div class="article_title">
-                    <h3><a href="<?php /*echo U('Blog/blog',array('id'=>$v['id']));*/?>"><span><?php /*echo msubstr($v['title'],0,17);*/?></span></a></h3>
+                    <div><a href="<?php /*echo U('Blog/blog',array('id'=>$v['id']));*/?>"><span><?php /*echo msubstr($v['title'],0,17);*/?></span></a></div>
                 </div>
             </div>
         <?php
@@ -48,7 +48,7 @@
 </div>
 <div class="side">
     <p class="side_title" style="float: left;margin-top: 20px;">搜索</p>
-    <div style=" margin-left: 50px; margin-top: 15px; ">
+    <div style=" margin-left: 50px; margin-top: 18px; ">
         <form name="search" action="<?php echo U('Blog/search');?>" method="post">
             <input type="text" name="keyword" value="" placeholder="输入关键词 回车搜索" style="height: 20px;padding: 3px 5px;font-size: 14px;width: 170px;" />
         </form>
