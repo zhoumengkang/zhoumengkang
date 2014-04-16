@@ -6,7 +6,6 @@ class Action{
     protected $action ;
     protected $module ;
     protected $title ;
-    protected $ismobile = false;
 	/**
 	 *action初始化方法(在这个方法里根据参数a的值决定调用对应的方法)
 	 *
@@ -25,7 +24,6 @@ class Action{
 	}
 	public function init($module){
         $this->initUser();
-        $this->checkBrowser();
 		//获取a参数的值
         $this->module = $module;
 		$this->action = isset($_GET["a"])?$_GET["a"]:"index"; //默认值为index
@@ -48,13 +46,6 @@ class Action{
             if($_COOKIE['blogmaster'] == $authorizeCode){
                 $_SESSION['uid'] = 1;
             }
-        }
-    }
-    //浏览器判断，看是否为手机浏览器
-    protected function checkBrowser(){
-        //$useragent=$_SERVER['HTTP_USER_AGENT'];
-        if(isset($_SERVER['HTTP_X_WAP_PROFILE'])){
-            $this->ismobile = true;
         }
     }
 

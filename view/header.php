@@ -41,26 +41,6 @@ if(defined('ROUTE') && ROUTE){
 	<script type="text/javascript" src="./view/js/box.js"></script>
 </head>
 <body>
-<?php if($this->ismobile){ ?>
-<header>
-    <a id="top"></a>
-    <a href="./" class="mobileheader" style="float: left"><span>北剅轩</span></a>
-    <div class="mobilenav mobileheader">
-        <ul>
-            <?php
-            if (is_array($this->nav)) {
-                foreach($this->nav as $k =>$v){
-                    if($v['pid']==0){
-                        echo '<li><a href="'.U('Blog/blogList',array('nav'=>$v['id'])).'" title="'.$v['name'].'"><span>'.$v['name'].'</span></a></li>';
-                    }
-                }
-            }
-            ?>
-        </ul>
-    </div>
-    <div class="clear"></div>
-</header>
-<?php }else{?>
 <header id="header" class="header_fixed">
 	<a id="top"></a>
     <a href="./"><span class="logo" id="logo">北剅轩</span></a>
@@ -87,7 +67,6 @@ if(defined('ROUTE') && ROUTE){
     </div>
     <div class="clear"></div>
 </header>
-<?php } ?>
 
 <div id="content">
 

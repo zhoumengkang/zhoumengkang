@@ -1,6 +1,9 @@
 $(function() {
+    //我就当它是手机浏览器了
     if($(window).width()<=910){
         $("#intro").remove();
+        $("#logo").css({"font-size":"30px","padding":"30px 10px 0 10px","line-height": "30px"});
+        $("#nav").css({"float":"left","margin-right":"0"}).find("li").css({"padding":"0","margin":"0 5px"});
     }
     //控制台隐藏
     $("a[name='consoleHide']").click( function(){
