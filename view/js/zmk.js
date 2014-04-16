@@ -5,6 +5,9 @@ $(function() {
         $("#logo").css({"font-size":"30px","padding":"30px 10px 0 10px","line-height": "30px"});
         $("#nav").css({"float":"left","margin":"10px 0 10px 10px","height":"auto","line-height":"23px"}).find("li").css({"float":"none","padding":"0","margin":"0 5px"});
         $(".copyright").find("small").css({"padding-top": "25px","display":"block","line-height":"25px"});
+        //文章图片的大小修改
+        $("img").css("max-width",($(".content").width() -10));
+
     }
     //修复手机浏览器下顶部不贴边
     $(document).bind('scroll',function(){
