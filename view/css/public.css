@@ -536,7 +536,7 @@ ul, ul li {
 }
 /**留言框**/
 .markdownTags{
-    white-space: nowrap;
+    word-break: break-all;
     border: 1px solid #ddd;
     padding: 1px 5px;
     margin: 0 3px;
