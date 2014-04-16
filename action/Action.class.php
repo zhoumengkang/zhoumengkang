@@ -6,7 +6,7 @@ class Action{
     protected $action ;
     protected $module ;
     protected $title ;
-    protected $ismobile = false;
+    protected $ismobile = true;
 	/**
 	 *action初始化方法(在这个方法里根据参数a的值决定调用对应的方法)
 	 *
