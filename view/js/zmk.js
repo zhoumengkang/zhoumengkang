@@ -7,7 +7,7 @@ $(function() {
         $(".copyright").find("small").css({"padding-top": "25px","display":"block","line-height":"25px"});
         //文章图片的大小修改
         $("img").css("max-width",($(".content").width() -10));
-        $("#comment_textarea").css({"width":"90%"});
+        $("#comment_textarea").css({"width":"95%"});
         $(".link_postdate").css({"clear":"both","float":"left"});
         $(".link_view").css({"float":"left"});
     }
