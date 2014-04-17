@@ -43,7 +43,7 @@ if(defined('ROUTE') && ROUTE){
 <body>
 <header id="header" class="header_fixed">
 	<a id="top"></a>
-    <a href="./"><span class="logo" id="logo">北剅沟</span></a>
+    <a href="./"><span class="logo" id="logo">北剅轩</span></a>
 	<div class="description" id="intro">
         <pre>
 /**
