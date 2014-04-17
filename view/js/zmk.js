@@ -10,6 +10,7 @@ $(function() {
         $("#comment_textarea").css({"width":"95%"});
         $(".link_postdate").css({"clear":"both","float":"left"});
         $(".link_view").css({"float":"left"});
+        $(".article_manage").remove();
     }
     //修复手机浏览器下顶部不贴边
     $(document).bind('scroll',function(){
