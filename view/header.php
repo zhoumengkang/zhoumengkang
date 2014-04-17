@@ -43,11 +43,11 @@ if(defined('ROUTE') && ROUTE){
 <body>
 <header id="header" class="header_fixed">
 	<a id="top"></a>
-    <a href="./"><span class="logo" id="logo">北剅轩</span></a>
+    <a href="./"><span class="logo" id="logo">北剅沟</span></a>
 	<div class="description" id="intro">
         <pre>
 /**
- * @description 笔记和生活！
+ * @description 记点笔记，也写点生活！
  * @author      周梦康 < zhoumengkang@php.net >
  */
         </pre>
