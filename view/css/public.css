@@ -6,6 +6,12 @@ body{
 	color: #323232; 
 	text-align:left; 
 }
+a{
+    vertical-align: baseline;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
 input,textarea{
     border: 1px solid #ccc;
     border-radius: 2px;
