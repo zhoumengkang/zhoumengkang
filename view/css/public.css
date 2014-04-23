@@ -45,6 +45,7 @@ body, div, ul, li{
     padding-top: 20px;
 }
 .description pre{
+    font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
     margin: 0;
     color: #CCCCCC;
     font-size: 12px;
