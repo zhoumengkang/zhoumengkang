@@ -12,6 +12,9 @@ a{
     -moz-transition: all 0.2s ease;
     transition: all 0.2s ease;
 }
+
+::selection{background: #5FB6B9; color: white; /* Safari */}
+::-moz-selection{background: #5FB6B9; color: white; /* Firefox */ }
 input,textarea{
     border: 1px solid #ccc;
     border-radius: 2px;
