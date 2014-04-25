@@ -184,7 +184,7 @@ $(function() {
 						$("div[blogId='"+id+"']").fadeOut('slow');
 					}else{
 						setTimeout(function(){
-							location.href="<?php echo U('Blog/index')?>";
+							location.href="/";
 						},1500)
 					}
 				}else{
