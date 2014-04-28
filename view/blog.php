@@ -130,7 +130,7 @@ $(function(){ prettyPrint(); });
             $(".content").find('img').wrap("<span class='content_img'></span>");
             $(".content_img").hover(function(){
                 var img_element = $(this).find('img');
-                img_element.wrap("<span class='content_img_wrap'></span>").animate({'opacity':'0.5'}).after('<a class="magnifier" alt="查看大图"><img src="./view/images/link.png"></a>');
+                img_element.wrap("<span class='content_img_wrap'></span>").animate({'opacity':'0.85'}).after('<a class="magnifier" alt="查看大图"><img src="./view/images/link.png"></a>');
                 var _top = img_element.height();
                 var _left = img_element.width();
                 $(this).find('.magnifier').css({
