@@ -128,19 +128,21 @@ $(function(){ prettyPrint(); });
             $(".content").find('a').attr({'target':'_blank'});
             //匹配img标签,在其外面包裹一层
             $(".content").find('img').wrap("<span class='content_img'></span>");
-            $(".content_img").hover(function(){
-                var img_element = $(this).find('img');
-                img_element.wrap("<span class='content_img_wrap'></span>").animate({'opacity':'0.85'}).after('<a class="magnifier" alt="查看大图"><img src="./view/images/link.png"></a>');
-                var _top = img_element.height();
-                var _left = img_element.width();
-                $(this).find('.magnifier').css({
-                    top:((_top-20)/2),
-                    left:((_left-20)/2)
-                }).fadeIn('slow');
-            },function(){
-                $(this).find('img').next('.magnifier').remove();
-                $(this).find('img').unwrap().animate({'opacity':'1'});
-            })
+            if($(window).width()>910){
+                $(".content_img").hover(function(){
+                    var img_element = $(this).find('img');
+                    img_element.wrap("<span class='content_img_wrap'></span>").animate({'opacity':'0.85'}).after('<a class="magnifier" alt="查看大图"><img src="./view/images/link.png"></a>');
+                    var _top = img_element.height();
+                    var _left = img_element.width();
+                    $(this).find('.magnifier').css({
+                        top:((_top-20)/2),
+                        left:((_left-20)/2)
+                    }).fadeIn('slow');
+                },function(){
+                    $(this).find('img').next('.magnifier').remove();
+                    $(this).find('img').unwrap().animate({'opacity':'1'});
+                })
+            }
         })
         $(".delreply").click(function(){
             var _e = $(this);
