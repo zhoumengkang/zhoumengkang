@@ -7,6 +7,7 @@ body{
 	text-align:left; 
 }
 a{
+    word-break: break-all;
     vertical-align: baseline;
     -webkit-transition: all 0.2s ease;
     -moz-transition: all 0.2s ease;
