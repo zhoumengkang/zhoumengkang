@@ -607,5 +607,5 @@ ul, ul li {
     transition: background-color 150ms linear;
 }
 .linenums li:hover{
-    background-color: #464343;
+    background-color: #000000;
 }
