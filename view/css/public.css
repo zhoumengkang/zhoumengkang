@@ -597,3 +597,14 @@ ul, ul li {
     position: absolute;
     cursor: pointer;
 }
+/*增加代码样式*/
+.linenums li{
+    -webkit-transition: background-color 150ms linear;
+    -moz-transition: background-color 150ms linear;
+    -o-transition: background-color 150ms linear;
+    -ms-transition: background-color 150ms linear;
+    transition: background-color 150ms linear;
+}
+.linenums li:hover{
+    background-color: #464343;
+}
