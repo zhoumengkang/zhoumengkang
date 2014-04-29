@@ -198,6 +198,7 @@ padding:10px;overflow:hidden;border-radius:6px;background-color:white;border:1px
 }
 .tags a:hover{
     background-color: #959797;
+    text-decoration: none!important;
 }
 .link_title{
     display: inline-block;
