@@ -69,16 +69,15 @@ class Action{
         exit;
     }
     //随着模板文件的增加，才发现分目录的必要性，所以用一个display来封装include，然后在其中指定规定的模板路径是非常必要的
-    //TODO 不好使
+    //TODO
     /**
      * 模板输出
      * @param array $data 模板输出的数据
      */
-    /*protected function display($data){
-        if(is_array($data)){
-            include './view/'.$this->action.'.php';
-        }else{
-            include './view/404.php';
+    protected function display($data){
+        $file = dirname(__FILE__).'/../view/'.$this->module.'/'.$this->action.'.php';
+        if(file_exists($file)){
+            include $file;
         }
-    }*/
+    }
 }
