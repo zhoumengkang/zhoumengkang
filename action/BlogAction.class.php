@@ -184,6 +184,10 @@ class BlogAction extends Action{
 	public function blog(){
 		$id = intval($_GET['id']);
 		$res =d()->q("select * from z_blog where id = {$id} and `status`>0");
+        if(!$res){
+            include './view/404.php';
+            exit;
+        }
         $res[0]['content'] = preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$res[0]['content']);
 		$tags = d()->q("select b.name,b.id from z_blog_to_tags a,z_tags b where a.blog_id =".$id." and a.tag_id=b.id group by a.tag_id");
         $num = PERPAGES;
@@ -201,16 +205,12 @@ class BlogAction extends Action{
 
         $totalNum = d()->q("select count(*) as num from z_comment where `blogid` = {$id} and`status` > 0");
 
+        $this->title = $res[0]['title'];
+        $this->description = msubstr(cleanTheWhitespace(htmlspecialchars_decode($res[0]['content'],ENT_QUOTES)),0,200);
+        $this->keywords = getKeywords($tags);
+        $modify = d()->q("select * from z_modify where blog_id={$id} order by id asc");
+        include './view/blog.php';
 
-        if($res){
-			$this->title = $res[0]['title'];
-            $this->description = msubstr(cleanTheWhitespace(htmlspecialchars_decode($res[0]['content'],ENT_QUOTES)),0,200);
-            $this->keywords = getKeywords($tags);
-			$modify = d()->q("select * from z_modify where blog_id={$id} order by id asc");
-			include './view/blog.php';
-		}else{
-			include './view/404.php';
-		}
 		$sql = "update z_blog set count=count+1 where id=".$id;
 		d()->q($sql);
 	}
