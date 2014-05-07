@@ -74,7 +74,7 @@ class Action{
      * 模板输出
      * @param array $data 模板输出的数据
      */
-    protected function display($data){
+    protected function display($data = null){
         $file = dirname(__FILE__).'/../view/'.$this->module.'/'.$this->action.'.php';
         if(file_exists($file)){
             include $file;

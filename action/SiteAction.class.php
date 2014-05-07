@@ -8,7 +8,9 @@ class SiteAction extends Action{
      * 列表
      */
     public function index(){
-
+        $redis = new Redis(); #实例化redis类
+        $redis->connect('127.0.0.1'); #连接服务器
+        echo $redis->get('webname');
     }
 
     /**
@@ -19,16 +21,17 @@ class SiteAction extends Action{
             die('先登陆');
         }
         if($_POST){
+            $data = user_filter($_POST);
             $redis = new Redis(); #实例化redis类
             $redis->connect('127.0.0.1'); #连接服务器
-            $redis->set('key', 'hello '); #调用方法，设置string类型值
-            $redis->append('key', 'world'); #修改string类型值
-            echo $redis->get('key');  #获取redis key的值，并输出显示
-            echo $redis->type('key'); #获取key 的数据类型
+            $redis->mset($data);
+
+            echo $redis->get('webname');
             $redis->close(); #关闭连接
+            $this->display();
         }else{
-            $a = 2222;
-            $this->display($a);
+
+            $this->display();
         }
 
 

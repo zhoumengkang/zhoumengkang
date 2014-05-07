@@ -256,3 +256,16 @@ function request_by_fsockopen($url,$post_data=array()){
     //-----------------调试代码区间-----------------
     fclose($fp);
 }
+
+/**
+ * 简单的自定义过滤函数
+ * @param $data 需要过滤的数据
+ */
+function user_filter($data){
+    if(is_array($data)){
+        $data = array_map('htmlspecialchars',$data);
+        return $data = array_map('trim',$data);
+    }else{
+        return trim(htmlspecialchars($data));
+    }
+}
