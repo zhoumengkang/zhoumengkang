@@ -239,4 +239,18 @@ class BlogAction extends Action{
         }
         include './view/search.php';
     }
+
+    public function sitemap(){
+        //生成sitemap,然后用伪静态配合
+        header("Content-Type: text/xml; charset=utf-8");
+        echo '<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+    <loc>http://mengkang.net/</loc>
+    <lastmod>2014-5-8</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+</url>
+</urlset>';
+    }
 }
