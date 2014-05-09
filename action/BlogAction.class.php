@@ -235,7 +235,7 @@ class BlogAction extends Action{
     public function search(){
         if($_POST['keyword']){
             $keyword = htmlspecialchars(trim($_POST['keyword']));
-            $res = d()->q("SELECT id,title,ctime from `z_blog` WHERE `title` LIKE '%".$keyword."%'");
+            $res = d()->q("SELECT id,title,ctime from `z_blog` WHERE `title` LIKE '%".$keyword."%' AND status > 0");
         }
         include './view/search.php';
     }
@@ -243,14 +243,28 @@ class BlogAction extends Action{
     public function sitemap(){
         //生成sitemap,然后用伪静态配合
         header("Content-Type: text/xml; charset=utf-8");
-        echo '<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url>
-    <loc>http://mengkang.net/</loc>
-    <lastmod>2014-5-8</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-</url>
-</urlset>';
+        $siteUrl = "http://mengkang.net/";
+        $header = '<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\r\n";
+        $content = "    <url>
+        <loc>%s</loc>
+        <lastmod>%s</lastmod>
+        <changefreq>%s</changefreq>
+        <priority>%s</priority>
+    </url>\r\n";
+        $header .= sprintf($content,$siteUrl,Date('Y-m-d',time()),'daily','1.0');
+        $header .= sprintf($content,$siteUrl."notebook.html" ,Date('Y-m-d',time()),'daily','0.9');
+        $header .= sprintf($content,$siteUrl."homesick.html" ,Date('Y-m-d',time()),'daily','0.9');
+        $header .= sprintf($content,$siteUrl."playground.html" ,Date('Y-m-d',time()),'daily','0.9');
+        $header .= sprintf($content,$siteUrl."tags.html" ,Date('Y-m-d',time()),'daily','0.9');
+
+        $blogs = d()->q("SELECT `id`,`ctime` from `z_blog` WHERE status > 0 order by `id` DESC limit 200");
+
+        foreach($blogs as $k=>$v){
+            $header .= sprintf($content,$siteUrl.$v['id'].".html" ,Date('Y-m-d',$v['ctime']),'yearly','0.6');
+        }
+
+        $header .= "</urlset>";
+        echo $header;
     }
 }
