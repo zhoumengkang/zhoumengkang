@@ -47,9 +47,11 @@
 }
 
 blockquote {
-  padding: 0 0 0 15px;
-  margin: 0 0 20px;
-  border-left: 5px solid #eeeeee;
+    border-radius: 10px;
+    border: 1px #bbb dashed;
+    background: #eee;
+    padding: 10px;
+    margin: 0 0 20px;
 }
 
 blockquote p {

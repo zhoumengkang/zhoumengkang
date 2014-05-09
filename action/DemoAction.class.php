@@ -18,4 +18,10 @@ class DemoAction extends Action{
     public function sendEmail(){
         $test = new MailModel('i@zhoumengkang.com','康哥','sss');
     }
+    public function test(){
+        $a = new D();
+        $res = $a ->q('insert into z_user(name,password) VALUES ("zhou12","'.md5("zmkzmk").'") ');
+        echo $a->lastsql();
+        dump($res);
+    }
 }
