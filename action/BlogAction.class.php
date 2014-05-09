@@ -215,13 +215,6 @@ class BlogAction extends Action{
 		d()->q($sql);
 	}
 	
-	/*public function getNav(){
-		$id = addslashes($_POST['id']);
-		$sql = "select * from z_nav where status = 1 and pid = $id";
-		$nav = d()->q($sql);
-		echo json_encode($nav);
-	}*/
-	
 	public function about(){
         include './view/about.php';
         //$this->jump('发表成功',U('Blog/index'));

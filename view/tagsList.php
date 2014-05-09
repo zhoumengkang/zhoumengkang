@@ -18,7 +18,7 @@ include 'header.php';
             <?php
             if(is_array($tags)){
                 foreach($tags as $k=>$v){
-                    echo '<div class="tagslist"><a href="'.U('Blog/index',array('tag'=>$v['id'])).'">'.$v['name'].'</a><span>('.$v['linktimes'].')次</span></div>';
+                    echo '<div class="tagslist"><a href="'.U('Blog/readbytags',array('tag'=>$v['id'])).'">'.$v['name'].'</a><span>('.$v['linktimes'].')次</span></div>';
                 }
             }
             ?>
