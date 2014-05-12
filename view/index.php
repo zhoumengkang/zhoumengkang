@@ -50,9 +50,9 @@ include 'header.php';
                             </h3>
                         </div>
                         <div class="article_manage">
-                            <span class="link_postdate"><?php echo date('Y-m-d H:i:s',$v['ctime'])?></span>
-
-                            <?php if($_SESSION['uid']){ ?>
+                            <?php if(!$_SESSION['uid']){?>
+                                <span class="link_postdate"><?php echo date('Y-m-d H:i:s',$v['ctime'])?></span>
+                            <?php }else{ ?>
                                 <span class="link_edit"><a href="<?php echo U('Admin/modifyBlog',array('id'=>$v['id']));?>" title="编辑">编辑</a></span>
                                 <span class="link_edit"><a href="javascript:void(0);"  title="recommendBlog" recommendId="<?php echo $v['id']?>" status="<?php echo $v['status'];?>">推荐</a></span>
                                 <span class="link_delete"><a href="javascript:void(0);" deleteId="<?php echo $v['id']?>" title="deletdBlog">删除</a></span>
