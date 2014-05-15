@@ -260,4 +260,9 @@ class BlogAction extends Action{
         $header .= "</urlset>";
         echo $header;
     }
+
+    //增加404控制器
+    public function error404(){
+        include './view/404.php';
+    }
 }
