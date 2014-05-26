@@ -34,6 +34,7 @@ function U($url,$params=null){
  * @param array  $router_ruler 路由表
  * @param string $url          路由键
  * @param array  $params       参数列表
+ * @return string $real_url    URL地址
  */
 function route($router_ruler,$url,$params){
     //路由规则里全写成小写吧
