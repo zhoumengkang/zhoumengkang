@@ -1,4 +1,21 @@
 $(function() {
+    //我就当它是手机浏览器了
+    if($(window).width()<=910){
+        $("#intro").remove();
+        $("#logo").css({"font-size":"30px","padding":"30px 10px 0 10px","line-height": "30px"});
+        $("#nav").css({"float":"right","margin":"10px 10px 10px 0","height":"auto","line-height":"23px"}).find("li").css({"float":"none","padding":"0","margin":"0 5px"});
+        $(".copyright").find("small").css({"padding-top": "25px","display":"block","line-height":"25px"});
+        //文章图片的大小修改
+        $("img").css("max-width",($(".content").width() -10));
+        $("#comment_textarea").css({"width":"95%"});
+        $(".link_postdate").css({"clear":"both","float":"left"});
+        $(".link_view").css({"float":"left"});
+        $(".article_manage").remove();
+    }
+    //修复手机浏览器下顶部不贴边
+    $(document).bind('scroll',function(){
+        $("#header").css("top","0");
+    })
     //控制台隐藏
     $("a[name='consoleHide']").click( function(){
         var ele = $(this);
@@ -81,7 +98,7 @@ $(function() {
             position:'fixed',
             left:left + "px",
             top:top + "px",
-            zIndex:5
+            zIndex:998
         }).fadeIn("slow");
     })
     //登录操作
@@ -109,6 +126,14 @@ $(function() {
         var key = e.which;
         if(key == 13) {
             loginFun();
+        }
+    });
+
+    //回车搜索
+    $("input[name='keyword']").bind('keydown', function(e) {
+        var key = e.which;
+        if(key == 13) {
+            $("form[name='search']").submit();
         }
     });
 
@@ -159,7 +184,7 @@ $(function() {
 						$("div[blogId='"+id+"']").fadeOut('slow');
 					}else{
 						setTimeout(function(){
-							location.href="<?php echo U('Blog/index')?>";
+							location.href="/";
 						},1500)
 					}
 				}else{
@@ -172,7 +197,20 @@ $(function() {
 
     //查看原图
     $("img").click(function(){
+        if($(window).width()<=1000){
+            location.href = $(this).attr('src');
+            return;
+        }
         var img = '<img src="'+$(this).attr('src')+'">';
+        ui.box('查看图片',img);
+    })
+
+    $('.magnifier').live('click',function(){
+        if($(window).width()<=1000){
+            location.href = $(this).prev('img').attr('src');
+            return;
+        }
+        var img = '<img src="'+$(this).prev('img').attr('src')+'">';
         ui.box('查看图片',img);
     })
 
@@ -243,6 +281,7 @@ var post_comment = function(){
         setcookie('blog',blogurl);
     }
     $.post(U('Comment/doComment'),{
+        replyId:$("input[name='replyId']").val(),
         blogid: $("input[name='blogid']").val(),
         blog:blogurl,
         content: post_comment,

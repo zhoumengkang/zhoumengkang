@@ -57,7 +57,7 @@ $(function(){ prettyPrint(); });
 					标签 : 
 					<?php
 						foreach ($tags as $key => $value) {
-							echo '<a href="'.U('Blog/readByTags',array('tag'=>$value['id'])).'" style="display: inline;" >'.$value['name'].'</a>';
+							echo '<a href="'.U('Blog/readByTags',array('tag'=>$value['id'])).'" >'.$value['name'].'</a>';
 						}
 					?>
 					</div>
@@ -89,8 +89,13 @@ $(function(){ prettyPrint(); });
         <div id="commentList">
             <?php
             if(is_array($comment)){
+                if($_GET['p']<=1){
+                    $realpage = 1;
+                }else{
+                    $realpage = $_GET['p'];
+                }
                 foreach($comment as $k=>$v){
-                    echo '<div class="commentlist"><div><span name="floor">'.(($_GET['p']*20)+$k+1).'</span> 楼 <a href="'.$v['link'].'" tagert="_blank">'.$v['username'].'</a>'.date("Y-m-d H:i:s",time()).'<div style="float:right">';
+                    echo '<div class="commentlist"><div><span name="floor">'.((($realpage-1)*20)+$k+1).'</span> 楼 <a href="'.$v['link'].'" tagert="_blank">'.$v['username'].'</a>'.date("Y-m-d H:i:s",$v['posttime']).'<div style="float:right">';
                     echo '<a href="javascript:void(0)" targetId="'.$v['id'].'" class="reply_the_comment">回复</a>';
                     if($_SESSION['uid']){
                         echo '<a href="javascript:void(0)" targetId="'.$v['id'].'" class="delreply">删除</a>';
@@ -101,22 +106,59 @@ $(function(){ prettyPrint(); });
             }
             ?>
         </div>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'mengkang'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
         <?php if(is_array($comment)){echo pagelist($page,$totalNum[0]['num'],20);}?>
-        <div style=" margin-top: 10px; ">
-            <input type="hidden" name="blogid" value="<?php echo $res[0]['id']; ?>"/>
-            <textarea name="comment" cols="50" rows="5" placeholder="说点什么吧，可以使用`xxxx`来插入简短的代码碎片（模仿的markdown你懂的）" class="comment_textarea"></textarea>
-        </div>
-        <div style=" margin:5px 0; ">
-            <form name="comment">
+        <form name="comment" style="display: none">
+            <div style=" margin-top: 10px; ">
+                <input type="hidden" name="blogid" value="<?php echo $res[0]['id']; ?>"/>
+                <input type="hidden" name="replyId" value="0"/>
+                <textarea name="comment" id="comment_textarea" placeholder="说点什么吧，可以使用`xxxx`来插入简短的代码碎片" class="comment_textarea"></textarea>
+            </div>
+            <div style=" margin:5px 0; ">
                 <input type="email" name="email" placeholder="留个邮箱吧" class="comment_input" />
                 <input type="text" name="yourname" placeholder="你的大名" class="comment_input" />
                 <input type="text" name="blog" placeholder="你的博客地址" class="comment_input" />
                 <a href="javascript:void(0)" id="post_comment" issending="false">提交</a>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
     <a name="comment_text"></a>
+
     <script type="text/javascript">
+        $(function(){
+            //将所有的a链接都改为在新窗口打开
+            $(".content").find('a').attr({'target':'_blank'});
+            //匹配img标签,在其外面包裹一层
+            $(".content").find('img').wrap("<span class='content_img'></span>");
+            if($(window).width()>910){
+                $(".content_img").hover(function(){
+                    var img_element = $(this).find('img');
+                    img_element.wrap("<span class='content_img_wrap'></span>").animate({'opacity':'0.85'}).after('<a class="magnifier" alt="查看大图"><img src="./view/images/link.png"></a>');
+                    var _top = img_element.height();
+                    var _left = img_element.width();
+                    $(this).find('.magnifier').css({
+                        top:((_top-20)/2),
+                        left:((_left-20)/2)
+                    }).fadeIn('slow');
+                },function(){
+                    $(this).find('img').next('.magnifier').remove();
+                    $(this).find('img').unwrap().animate({'opacity':'1'});
+                })
+            }
+        })
         $(".delreply").click(function(){
             var _e = $(this);
             var id = $(this).attr('targetId');
@@ -135,6 +177,7 @@ $(function(){ prettyPrint(); });
             })
         })
         $(".reply_the_comment").click(function(){
+            $("input[name='replyId']").val($(this).attr('targetId'));
             var pre_content = '回复'+$(this).parent().parent().find('span[name="floor"]').text()+'楼: ';
             var callback = function(pre_content){
                 $("textarea[name='comment']").css('background','#FFB3B6').focus().val(pre_content);
@@ -161,17 +204,23 @@ $(function(){ prettyPrint(); });
         })
         $("textarea[name='comment']").focus(function(){
             //先自动填下留言表单，为留言做准备
-            var email = getcookie('email');
-            if(email){
-                $("input[name='email']").val(email);
+            if(!$("input[name='email']").val()){
+                var email = getcookie('email');
+                if(email){
+                    $("input[name='email']").val(email);
+                }
             }
-            var yourname = getcookie('yourname');
-            if(yourname){
-                $("input[name='yourname']").val(yourname);
+            if(!$("input[name='yourname']").val()){
+                var yourname = getcookie('yourname');
+                if(yourname){
+                    $("input[name='yourname']").val(yourname);
+                }
             }
-            var blog = getcookie('blog');
-            if(blog){
-                $("input[name='blog']").val(blog);
+            if(!$("input[name='blog']").val()){
+                var blog = getcookie('blog');
+                if(blog){
+                    $("input[name='blog']").val(blog);
+                }
             }
         })
         $("#post_comment").click(function(){
@@ -184,7 +233,6 @@ $(function(){ prettyPrint(); });
             }
         })
     </script>
-
 </div>
 <?php
 include 'footer.php';

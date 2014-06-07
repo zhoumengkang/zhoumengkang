@@ -37,21 +37,29 @@ class CommentAction extends Action{
         $dataOfcomment = preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$content);
         if($res>0){
             //留言成功的情况
-            //获取其楼层
-            $floor = d()->q("select count(*) as num from z_comment where blogid = {$blogid} and `posttime` < {$posttime}");
-            $floor = 1 + $floor[0]['num'];
             //TODO 关于网站site_url还需要重新配置定义，目前的是不够用的
-            $url = 'http://'.$_SERVER['HTTP_HOST'].''.U('Blog/blog',array('id'=>$blogid)).'#floor'.$floor;
+            $url = 'http://'.trim($_SERVER['HTTP_HOST'],'/').'/'.U('Blog/blog',array('id'=>$blogid));
             $blogtitle = d()->q("select `title` from z_blog where id = {$blogid}");
-            $mailBody = '<h3>康哥你的文章  <span style="padding:15px">"'.$blogtitle[0]['title'].'"</span>  有新的留言</h3><p>'.$username.' < '.$email.' >在评论中说：</p><div style="border-radius: 4px;margin: 10px 0 10px;border: 1px dashed #BEB0B0;padding: 8px;background: #F0F0F0;">'.$content.'</div><p><a href="'.$url.'">点击链接查看</a></p>';
-            //异步邮件通知
             $data = array();
             $data['authId'] = 'zhoumengkanghahaha';
-            $data['email'] = 'i@zhoumengkang.com';
-            $data['nickname'] = '康哥';
-            $data['mailBody'] = $mailBody;
-            $url = 'http://'.$_SERVER['HTTP_HOST'].U('Comment/sendEmail');
+            if(intval($_POST['replyId'])){
+                //回复别人的回复
+                //查询出被回复留言的邮箱和昵称
+                $userInfo = d()->q("select `username`,`email` from `z_comment` where `id` = ".intval($_POST['replyId']));
+                $mailBody = '<h3>'.$userInfo[0]['username'].' 你在周梦康博客<span style="padding:15px">"'.$blogtitle[0]['title'].'"</span>的留言有回复</h3><p> '.$username.' 在评论中说：</p><div style="border-radius: 4px;margin: 10px 0 10px;border: 1px dashed #BEB0B0;padding: 8px;background: #F0F0F0;">'.$content.'</div><p><a href="'.$url.'">点击链接查看</a></p>';
+                $data['email'] = $userInfo[0]['email'];
+                $data['nickname'] = $userInfo[0]['username'];
+                $data['mailBody'] = $mailBody;
+                $data['title'] = $userInfo[0]['username'].'，你在周梦康博客" '.$blogtitle[0]['title'].' "的留言有回复';
+            }else{
+                $mailBody = '<h3>康哥你的文章  <span style="padding:15px">"'.$blogtitle[0]['title'].'"</span>  有新的留言</h3><p>'.$username.' < '.$email.' >在评论中说：</p><div style="border-radius: 4px;margin: 10px 0 10px;border: 1px dashed #BEB0B0;padding: 8px;background: #F0F0F0;">'.$content.'</div><p><a href="'.$url.'">点击链接查看</a></p>';
 
+                $data['email'] = 'i@zhoumengkang.com';
+                $data['nickname'] = '康哥';
+                $data['mailBody'] = $mailBody;
+            }
+            $url = 'http://'.$_SERVER['HTTP_HOST'].'/'.U('Comment/sendEmail');
+            //异步邮件通知
             request_by_fsockopen($url,$data);
             $this->ajaxReturn(1,'评论成功',$dataOfcomment);
         }else{

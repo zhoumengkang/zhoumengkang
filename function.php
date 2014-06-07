@@ -17,9 +17,12 @@ function d(){
  */
 function U($url,$params=null){
     //是否开启路由
-    if(ROUTE){
+    if(defined('ROUTE') && ROUTE){
         //导入路由
-        $router_ruler   =   include(dirname(__FILE__).'/route.php');
+        static $router_ruler = array();
+        if(empty($router_ruler)){
+            $router_ruler = include(dirname(__FILE__).'/route.php');
+        }
         $real_url = route($router_ruler,$url,$params);
     }else{
         $real_url = urlBuild($url,$params);
@@ -31,6 +34,7 @@ function U($url,$params=null){
  * @param array  $router_ruler 路由表
  * @param string $url          路由键
  * @param array  $params       参数列表
+ * @return string $real_url    URL地址
  */
 function route($router_ruler,$url,$params){
     //路由规则里全写成小写吧
@@ -252,4 +256,17 @@ function request_by_fsockopen($url,$post_data=array()){
     echo $html;*/
     //-----------------调试代码区间-----------------
     fclose($fp);
+}
+
+/**
+ * 简单的自定义过滤函数
+ * @param $data 需要过滤的数据
+ */
+function user_filter($data){
+    if(is_array($data)){
+        $data = array_map('htmlspecialchars',$data);
+        return $data = array_map('trim',$data);
+    }else{
+        return trim(htmlspecialchars($data));
+    }
 }

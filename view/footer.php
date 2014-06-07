@@ -31,16 +31,16 @@
             本程序由
             <a href="<?php echo U('Blog/readbytags',array('tag'=>6));?>" title="关于开发本博客的文章">ZzBlog</a>
             勉强驱动 © 周梦康 2013 - 2014 辽ICP备12007622号-1
+            <span style="display:<?php if($_SESSION['uid']){echo 'inline-block';}else{echo 'none';}?>">
+                <script type="text/javascript">
+                    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd2adf0c061d575a2921e4a7c41fe9cd6' type='text/javascript'%3E%3C/script%3E"));
+                </script>
+            </span>
         </small>
     </div>
 	<div class="messageBox"></div>
     <div class="backToTop" title="返回顶部" style="display: none;">返回顶部</div>
-    <div style="display: none">
-        <script type="text/javascript">
-            var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-            document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd2adf0c061d575a2921e4a7c41fe9cd6' type='text/javascript'%3E%3C/script%3E"));
-        </script>
-    </div>
 </footer>
 </body>
 </html>

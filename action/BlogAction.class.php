@@ -14,7 +14,7 @@ class BlogAction extends Action{
 		$links = d()->q('select * from z_link where `status` > 0 order by rank asc');
         $tags = d()->q("SELECT a.id, a.name, COUNT( b.tag_id ) AS linktimes FROM  `z_tags` a LEFT JOIN `z_blog_to_tags` b  ON b.tag_id = a.id GROUP BY b.tag_id ORDER BY linktimes DESC LIMIT 20");
 
-        $res = d()->q("select * from z_blog where status = 1 and nav = 1 order by id desc limit 20");
+        $res = d()->q("select * from z_blog where status = 1 and `title` != '' order by id desc limit 20");
 		
 		if(is_array($res)){
 			include './view/index.php';	
@@ -64,10 +64,10 @@ class BlogAction extends Action{
         $start = ($page-1)*$num;
         if($_GET['tag']){
             $res = d()->q('select * from z_blog a,z_blog_to_tags b where a.status > 0 and a.id = b.blog_id and b.tag_id = '.intval($_GET['tag']).' group by a.id order by a.id desc limit '.$start.','.$num);
-            $totalNum = d()->q('select count(distinct b.blog_id) from z_blog a,z_blog_to_tags b where a.status > 0 and a.id = b.blog_id and b.tag_id = '.intval($_GET['tag']));
+            $totalNum = d()->q('select count(distinct b.blog_id) as num from z_blog a,z_blog_to_tags b where a.status > 0 and a.id = b.blog_id and b.tag_id = '.intval($_GET['tag']));
         }
         if(is_array($res)){
-            include './view/blogList.php';
+            include './view/readByTags.php';
         }else{
             include './view/404.php';
         }
@@ -184,12 +184,16 @@ class BlogAction extends Action{
 	public function blog(){
 		$id = intval($_GET['id']);
 		$res =d()->q("select * from z_blog where id = {$id} and `status`>0");
+        if(!$res){
+            include './view/404.php';
+            exit;
+        }
         $res[0]['content'] = preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$res[0]['content']);
 		$tags = d()->q("select b.name,b.id from z_blog_to_tags a,z_tags b where a.blog_id =".$id." and a.tag_id=b.id group by a.tag_id");
-        $num = 20;
+        $num = PERPAGES;
         $page = (int)$_GET['p']?(int)$_GET['p']:1;
         $start = ($page-1)*$num;
-        $comment = d()->q("select * from z_comment where `blogid` = {$id} and`status` > 0 order by `posttime` desc limit ".$start.",".$num);
+        $comment = d()->q("select * from z_comment where `blogid` = {$id} and`status` > 0 order by `posttime` asc limit ".$start.",".$num);
         /*$comment = array_map(function($data){
             preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$data['content']);
         },$comment);*/
@@ -201,34 +205,64 @@ class BlogAction extends Action{
 
         $totalNum = d()->q("select count(*) as num from z_comment where `blogid` = {$id} and`status` > 0");
 
+        $this->title = $res[0]['title'];
+        $this->description = msubstr(cleanTheWhitespace(htmlspecialchars_decode($res[0]['content'],ENT_QUOTES)),0,200);
+        $this->keywords = getKeywords($tags);
+        $modify = d()->q("select * from z_modify where blog_id={$id} order by id asc");
+        include './view/blog.php';
 
-        if($res){
-			$this->title = $res[0]['title'].'_周梦康的博客';
-            $this->description = msubstr(cleanTheWhitespace(htmlspecialchars_decode($res[0]['content'],ENT_QUOTES)),0,200);
-            $this->keywords = getKeywords($tags);
-			$modify = d()->q("select * from z_modify where blog_id={$id} order by id asc");
-			include './view/blog.php';
-		}else{
-			include './view/404.php';
-		}
 		$sql = "update z_blog set count=count+1 where id=".$id;
 		d()->q($sql);
 	}
 	
-	/*public function getNav(){
-		$id = addslashes($_POST['id']);
-		$sql = "select * from z_nav where status = 1 and pid = $id";
-		$nav = d()->q($sql);
-		echo json_encode($nav);
-	}*/
-	
 	public function about(){
-        echo '屌丝。。。';
+        include './view/about.php';
         //$this->jump('发表成功',U('Blog/index'));
     }
 
     public function tags(){
         $tags = d()->q("SELECT a.id, a.name, COUNT( b.tag_id ) AS linktimes FROM  `z_tags` a LEFT JOIN `z_blog_to_tags` b  ON b.tag_id = a.id GROUP BY b.tag_id ORDER BY linktimes DESC LIMIT 300");
         include './view/tagsList.php';
+    }
+
+    public function search(){
+        if($_POST['keyword']){
+            $keyword = htmlspecialchars(trim($_POST['keyword']));
+            $res = d()->q("SELECT id,title,ctime from `z_blog` WHERE `title` LIKE '%".$keyword."%' AND status > 0");
+        }
+        include './view/search.php';
+    }
+
+    public function sitemap(){
+        //生成sitemap,然后用伪静态配合
+        header("Content-Type: text/xml; charset=utf-8");
+        $siteUrl = "http://mengkang.net/";
+        $header = '<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\r\n";
+        $content = "    <url>
+        <loc>%s</loc>
+        <lastmod>%s</lastmod>
+        <changefreq>%s</changefreq>
+        <priority>%s</priority>
+    </url>\r\n";
+        $header .= sprintf($content,$siteUrl,Date('Y-m-d',time()),'daily','1.0');
+        $header .= sprintf($content,$siteUrl."notebook.html" ,Date('Y-m-d',time()),'daily','0.9');
+        $header .= sprintf($content,$siteUrl."homesick.html" ,Date('Y-m-d',time()),'daily','0.9');
+        $header .= sprintf($content,$siteUrl."playground.html" ,Date('Y-m-d',time()),'daily','0.9');
+        $header .= sprintf($content,$siteUrl."tags.html" ,Date('Y-m-d',time()),'daily','0.9');
+
+        $blogs = d()->q("SELECT `id`,`ctime` from `z_blog` WHERE status > 0 order by `id` DESC limit 200");
+
+        foreach($blogs as $k=>$v){
+            $header .= sprintf($content,$siteUrl.$v['id'].".html" ,Date('Y-m-d',$v['ctime']),'yearly','0.6');
+        }
+
+        $header .= "</urlset>";
+        echo $header;
+    }
+
+    //增加404控制器
+    public function error404(){
+        include './view/404.php';
     }
 }

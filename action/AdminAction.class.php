@@ -145,9 +145,8 @@ class AdminAction extends Action{
 					$tags3[]=$id[0]['id'];
 					//dump($tags3);
 				}else{
-					$id = d()->q('insert into z_tags (`name`,`status`) values ("'.$v.'",1) ');
-					//echo '新插入的数据<br/>';
-					dump($id);
+                    $model = d();
+					$id = $model->q('insert into z_tags (`name`,`status`) values ("'.$v.'",1) ');
 					$tags3[]=$id;
 				}
 			}
