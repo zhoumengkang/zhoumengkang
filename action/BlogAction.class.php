@@ -195,7 +195,7 @@ class BlogAction extends Action{
         },$comment);*/
         if(is_array($comment)){
             foreach($comment as $k =>$v){
-                $comment[$k]['content'] = preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$v['content']);
+                $comment[$k]['content'] = preg_replace('/`(.*?)`/',' <code class="markdownTags">$1</code> ',$v['content']);
             }
         }
 
