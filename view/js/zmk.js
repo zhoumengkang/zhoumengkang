@@ -40,7 +40,7 @@ $(function() {
     $(window).scroll(function() {
         //想通过延时来缓解狂上下滚动的bug...似乎没效果
         if($(window).scrollTop() <= 90){
-            var scrollDown = setInterval(function(){
+            /*var scrollDown = setInterval(function(){
                 if($(window).scrollTop() > 90){
                     clearInterval(scrollDown);
                     return false;
@@ -49,9 +49,13 @@ $(function() {
                      "padding-top": "30px",
                      "padding-bottom": "30px"
                 });
-            },20)
+            },20)*/
+            $("#header").css({
+                "padding-top": "30px",
+                "padding-bottom": "30px"
+            });
         }else{
-            var scrollUp = setInterval(function(){
+            /*var scrollUp = setInterval(function(){
                 if($(window).scrollTop() <= 90){
                     clearInterval(scrollUp);
                     return false;
@@ -60,7 +64,11 @@ $(function() {
                     "padding-top": "15px",
                     "padding-bottom": "15px"
                 });
-            },200)
+            },200)*/
+            $("#header").css({
+                "padding-top": "15px",
+                "padding-bottom": "15px"
+            });
         }
     })
 
