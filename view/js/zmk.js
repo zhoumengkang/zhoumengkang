@@ -37,41 +37,32 @@ $(function() {
     });
 
     //顶部效果
-    //TODO:BUG越来越严重了，我擦！
-    /*$(window).scroll(function() {
-        if($(window).scrollTop()==0){
-            //恢复
-             $(".sign").hide(function(){
-                 $("#intro").fadeIn('slow');
-             });
-             $("#header").removeClass('fixed_top').animate({
-                 "height": "96px"
-             }).find(".logo").animate({
-                 "font-size": "40px",
-                 "line-height": "96px"
-             }).parent().parent().find(".nav").animate({
-                    "line-height": "40px",
-                    "padding":0,
-                    "margin-top":"28px",
-                    "margin-bottom":"28px"
+    $(window).scroll(function() {
+        //想通过延时来缓解狂上下滚动的bug...似乎没效果
+        if($(window).scrollTop() <= 90){
+            var scrollDown = setInterval(function(){
+                if($(window).scrollTop() > 90){
+                    clearInterval(scrollDown);
+                    return false;
+                }
+                $("#header").animate({
+                     "padding-top": "30px",
+                     "padding-bottom": "30px"
                 });
+            },20)
         }else{
-            $("#header").addClass('fixed_top').animate({
-                "height": "46px"
-            },500).find(".logo").animate({
-                    "font-size": "28px",
-                    "line-height": "46px"
-                }).parent().parent().find(".nav").animate({
-                    "line-height": "46px",
-                    "padding":0,
-                    "margin-top":0,
-                    "margin-bottom":0
+            var scrollUp = setInterval(function(){
+                if($(window).scrollTop() <= 90){
+                    clearInterval(scrollUp);
+                    return false;
+                }
+                $("#header").animate({
+                    "padding-top": "15px",
+                    "padding-bottom": "15px"
                 });
-            $("#intro").hide(function(){
-                $(".sign").css({"padding-top":"15px"}).show();
-            });
+            },200)
         }
-    })*/
+    })
 
 
     //footer吸底效果

@@ -29,21 +29,27 @@ body, div, ul, li{
 	padding:0;
 }
 /*导航开始*/
-#header{
+.header{
     -webkit-box-shadow: 0 2px 0 0 rgba(53, 58, 61, 0.05);
     box-shadow: 0 2px 0 0 rgba(53, 58, 61, 0.05);
     background-color:#ffffff;
-    margin-bottom:0px
+    margin-bottom:0px;
+    z-index: 3;
+    width: 100%;
+    position: fixed;
+}
+#header{
+    padding: 30px;
 }
 
 .clear{
     clear: both;
 }
-.header_fixed{
+/*.header_fixed{
     z-index: 3;
     width: 100%;
     position: fixed;
-}
+}*/
 .fixed_top{
     position: fixed;
     top:0;
@@ -61,13 +67,11 @@ body, div, ul, li{
     font-size: 12px;
     line-height: 14px;
 }
-.logo{
+#top{
     float: left;
     font-size: 40px;
-    font-weight: 800;
     color: #2e9fff;
-    padding:0 20px 0 40px;
-    line-height: 96px;
+    margin-left: 20px;
 }
 .sign{
     font-size:13px;
@@ -83,13 +87,12 @@ body, div, ul, li{
     float: left;
     padding: 0 10px;
     margin: 0 10px;
-
 }
-#nav span{
+#nav a{
     color: #2e9fff;
     font-size: 20px;
 }
-#nav span:hover{color: #323232}
+#nav ul a:hover{color: #323232}
 .nav{
     height: 40px;
     line-height: 40px;
@@ -135,7 +138,7 @@ body, div, ul, li{
 }
 
 #content{
-    padding-top: 96px;
+    padding-top: 90px;
     background:#f1f1f1 url(../images/body.gif) repeat;
 }
 
@@ -320,6 +323,8 @@ ul, ul li {
 
 /* article title */
 .article_title h3{display:inline; ; vertical-align:middle;font-weight: 500;}
+.title{margin: 20px 0 5px 8px;}
+.title h1{display:inline; ; vertical-align:middle;font-weight: 500;}
 
 
 

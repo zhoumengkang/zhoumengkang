@@ -13,10 +13,10 @@ $(function(){ prettyPrint(); });
 				foreach($res as $k =>$v){
 			?>
 			<div class="list_item">			
-				<div class="article_title">
-					<h3>
-						<a href="<?php echo U('Blog/blog',array('id'=>$v['id']));?>"><span class="link_title"><?php echo htmlspecialchars_decode($v['title'],ENT_QUOTES);?></span></a>
-					</h3>
+				<div class="title">
+					<h1>
+                        <?php echo htmlspecialchars_decode($v['title'],ENT_QUOTES);?>
+					</h1>
 				</div>
 				<div class="article_manage">
 					<div style="margin-left:1px">
