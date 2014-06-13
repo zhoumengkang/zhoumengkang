@@ -49,7 +49,7 @@
 <div class="side">
     <p class="side_title" style="float: left;margin-top: 20px;">搜索</p>
     <div style=" margin-left: 50px; margin-top: 18px; ">
-        <form name="search" action="<?php echo U('Blog/search');?>" method="post">
+        <form name="search" action="<?php echo U('Blog/search');?>" method="get">
             <input type="text" name="keyword" value="" placeholder="输入关键词 回车搜索" style="height: 20px;padding: 3px 5px;font-size: 14px;width: 170px;" />
         </form>
     </div>

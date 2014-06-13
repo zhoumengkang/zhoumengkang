@@ -57,7 +57,7 @@ class BlogAction extends Action{
         //浏览的最多的帖子
         $maxRead = d()->q('select * from z_blog where `status` > 0 order by `count` desc limit 10');
         $links = d()->q('select * from z_link where `status` > 0 order by rank asc');
-        $tags = d()->q("SELECT a.id, a.name, COUNT( b.tag_id ) AS linktimes FROM  `z_tags` a LEFT JOIN `z_blog_to_tags` b  ON b.tag_id = a.id GROUP BY b.tag_id ORDER BY linktimes DESC LIMIT 20");
+        $tags = d()->q("SELECT a.id, a.name, COUNT( b.tag_id ) AS linktimes FROM  `z_tags` a LEFT JOIN `z_blog_to_tags` b  ON b.tag_id = a.id GROUP BY b.tag_id ORDER BY linktimes DESC LIMIT 40");
         //dump($tags);exit;
         $num = PERPAGES;
         $page = (int)$_GET['p']?(int)$_GET['p']:1;
@@ -226,8 +226,8 @@ class BlogAction extends Action{
     }
 
     public function search(){
-        if($_POST['keyword']){
-            $keyword = htmlspecialchars(trim($_POST['keyword']));
+        if($_GET['keyword']){
+            $keyword = htmlspecialchars(trim($_GET['keyword']));
             $res = d()->q("SELECT id,title,ctime from `z_blog` WHERE `title` LIKE '%".$keyword."%' AND status > 0");
         }
         include './view/search.php';
