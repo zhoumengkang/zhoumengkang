@@ -310,7 +310,7 @@ ul, ul li {
 
 
 /* article style */
-.list_item{display:block; *display:inline-block; clear:both; background:url(../images/line_1.gif) repeat-x bottom;}
+.list_item{display:block; *display:inline-block; clear:both; border-bottom: 1px #f2f2f2 solid;}
 .list_item:after{content:"."; display:block; height:0; clear:both; visibility:hidden;}
 .list{margin:20px 20px 0 20px;}
 
@@ -324,7 +324,7 @@ ul, ul li {
 /* article title */
 .article_title h3{display:inline; ; vertical-align:middle;font-weight: 500;}
 .title{margin: 20px 0 5px 8px;}
-.title h1{display:inline; ; vertical-align:middle;font-weight: 500;}
+.title h1{display:inline; ; vertical-align:middle;font-weight: 500;line-height: 37px;}
 
 
 
@@ -517,11 +517,12 @@ ul, ul li {
 }
 .comment_textarea{
     font-family: "微软雅黑", Arial, Helvetica, sans-serif;
-    width: 60%;
+    width: 100%;
     line-height: 20px;
     height: 120px;
     font-size: 14px;
     padding: 4px;
+    margin-right:10px;
 }
 #post_comment{
     padding: 0 15px;
@@ -534,10 +535,10 @@ ul, ul li {
 #post_comment:hover{
     background-color: #08A5E0;
 }
-.commentlist{
+.commentlist p{
     word-wrap: break-word;
-    background: url(../images/line_1.gif) repeat-x bottom;
-    margin-bottom: 5px;
+    text-indent: 2em;
+    /*border-bottom: 1px #f2f2f2 solid;*/
 }
 .commentlist div{
     color: #CACACA;

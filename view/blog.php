@@ -100,29 +100,15 @@ $(function(){ prettyPrint(); });
                     if($_SESSION['uid']){
                         echo '<a href="javascript:void(0)" targetId="'.$v['id'].'" class="delreply">删除</a>';
                     }
-                    echo '</div></div>'.$v['content'].'</div>';
+                    echo '</div></div><p>'.$v['content'].'</p></div>';
                 }
 
             }
             ?>
         </div>
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-            var disqus_shortname = 'mengkang'; // required: replace example with your forum shortname
-
-            /* * * DON'T EDIT BELOW THIS LINE * * */
-            (function() {
-                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
         <?php if(is_array($comment)){echo pagelist($page,$totalNum[0]['num'],20);}?>
-        <form name="comment" style="display: none">
-            <div style=" margin-top: 10px; ">
+        <form name="comment">
+            <div style=" margin-top: 10px;padding-right: 10px; ">
                 <input type="hidden" name="blogid" value="<?php echo $res[0]['id']; ?>"/>
                 <input type="hidden" name="replyId" value="0"/>
                 <textarea name="comment" id="comment_textarea" placeholder="说点什么吧，可以使用`xxxx`来插入简短的代码碎片" class="comment_textarea"></textarea>
@@ -202,7 +188,7 @@ $(function(){ prettyPrint(); });
                 callback(pre_content);
             }
         })
-        $("textarea[name='comment']").focus(function(){
+        $("textarea[name='comment'],input").focus(function(){
             //先自动填下留言表单，为留言做准备
             if(!$("input[name='email']").val()){
                 var email = getcookie('email');
@@ -226,12 +212,12 @@ $(function(){ prettyPrint(); });
         $("#post_comment").click(function(){
             post_comment();
         })
-        $('input[name="blog"]').bind('keydown',function(e){
+        /*$('input[name="blog"]').bind('keydown',function(e){
             var key = e.which;
             if(key == 13) {
                 post_comment();
             }
-        })
+        })*/
     </script>
 </div>
 <?php
