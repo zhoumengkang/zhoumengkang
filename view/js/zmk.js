@@ -1,13 +1,13 @@
 $(function() {
     //我就当它是手机浏览器了
     if($(window).width()<=910){
-        $("#intro").remove();
-        $("#logo").css({"font-size":"30px","padding":"30px 10px 0 10px","line-height": "30px"});
-        $("#nav").css({"float":"right","margin":"10px 10px 10px 0","height":"auto","line-height":"23px"}).find("li").css({"float":"none","padding":"0","margin":"0 5px"});
+        /*$("#logo").css({"font-size":"30px","padding":"30px 10px 0 10px","line-height": "30px"});
+        $("#nav").css({"float":"right","margin":"10px 10px 10px 0","height":"auto","line-height":"23px"}).find("li").css({"float":"none","padding":"0","margin":"0 5px"});*/
+        $("#nav").remove();
+
         $(".copyright").find("small").css({"padding-top": "25px","display":"block","line-height":"25px"});
         //文章图片的大小修改
         $("img").css("max-width",($(".content").width() -10));
-        $("#comment_textarea").css({"width":"95%"});
         $(".link_postdate").css({"clear":"both","float":"left"});
         $(".link_view").css({"float":"left"});
         $(".article_manage").remove();
