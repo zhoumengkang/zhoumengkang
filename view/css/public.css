@@ -336,7 +336,7 @@ ul, ul li {
 .article_manage .link_comments{padding:0 0 0 14px; background:url(../images/ico_comm.png) no-repeat left ; _background:url(../images/ico_comm.gif) no-repeat left center;}
 .article_manage .link_categories{float:left;}
 /* article list view */
-.list_view{margin:0 20px; padding:5px 0;}
+.list_view{margin:0 10px; padding:5px 0;}
 .list_view .article_title{ height:30px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; margin:0 !important; }
 .list_view .article_title:after{content:"...";}
 .list_view .article_manage{display:inline; float:right; padding:0 !important; line-height:30px !important; text-align:right !important; white-space:nowrap;}
@@ -364,7 +364,7 @@ ul, ul li {
     text-decoration:underline;
 }
 .link_delete{
-	padding-right:10px;
+	/*padding-right:10px;*/
 }
 #modify{
 	font:12px Verdana, Arial, Helvetica, sans-serif;
