@@ -1,5 +1,5 @@
 <div class="side">
-	<p class="side_title">被围观次数最多的帖子</p>
+	<span class="side_title side_title2" >被围观次数最多的帖子</span>
 	<?php
 	if(is_array($maxRead)){
 		foreach($maxRead as $k =>$v){
