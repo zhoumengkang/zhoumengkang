@@ -8,9 +8,11 @@ class SiteAction extends Action{
      * 列表
      */
     public function index(){
-        $redis = new Redis(); #实例化redis类
-        $redis->connect('127.0.0.1'); #连接服务器
-        echo $redis->get('webname');
+        $this->title = "我的网址收藏夹 - 周梦康";
+        $this->description = "我收藏的一些不错的技术性博客和网站";
+        $sql = "select * from `z_link` where `status` > 0 and `is_mark` = 1 order by `id` desc";
+        $sites = d()->q($sql);
+        include 'Site/index.php';
     }
 
     /**
@@ -21,27 +23,30 @@ class SiteAction extends Action{
             die('先登陆');
         }
         if($_POST){
-            $data = user_filter($_POST);
-            $redis = new Redis(); #实例化redis类
-            $redis->connect('127.0.0.1'); #连接服务器
-            $redis->mset($data);
-
-            echo $redis->get('webname');
-            $redis->close(); #关闭连接
-            $this->display();
+            //dump($_POST);
+            if($_POST['id']){
+                //update
+                $sql = "update z_link set `name`='{$_POST['name']}',`url`='{$_POST['url']}',`des`='{$_POST['des']}' where `id`='{$_POST['id']}'";
+                $flag = d()->q($sql);
+                $_POST=null;
+            }else{
+                //insert
+                $sql = "insert into z_link(`name`,`url`,`des`,`type`,`rank`,`is_mark`)values('{$_POST['name']}','{$_POST['url']}','{$_POST['des']}',{$_POST['type']},0,1)";
+                //dump($sql);
+                $flag = d()->q($sql);
+                //$_POST=null;
+                if($flag){
+                    $url = U('Site/index');
+                    header("Location: {$url}");
+                }else{
+                    header("Location: {$_SERVER['HTTP_REFERER']}");
+                }
+            }
         }else{
-
-            $this->display();
+            $sql = "select * from `z_link` where `id` = ".intval($_GET['id'])." order by `id` desc";
+            $info = d()->q($sql);
         }
-
-
-
+        include 'Site/add.php';
     }
 
-    /**
-     * 修改
-     */
-    public function modify(){
-
-    }
 }
