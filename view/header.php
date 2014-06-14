@@ -71,10 +71,10 @@ if(defined('ROUTE') && ROUTE){
         <a href="javascript:void(0)" title="隐藏控制台" name="consoleHide" class="showConsole">《《</a>
         <ul>
             <li><a href="<?php echo U('Blog/post')?>">书写博客</a></li>
-            <li><a href="<?php echo U('Blog/rank')?>">最受欢迎</a></li>
-            <li><a href="<?php echo U('Admin/info')?>">博客信息</a></li>
+            <li><a href="<?php echo U('Site/add')?>">收藏管理</a></li>
+            <!--<li><a href="<?php /*echo U('Admin/info')*/?>">博客信息</a></li>-->
             <li><a href="<?php echo U('Admin/links')?>">链接管理</a></li>
-            <li><a href="<?php echo U('Admin/tags')?>">标签管理</a></li>
+            <!--<li><a href="<?php /*echo U('Admin/tags')*/?>">标签管理</a></li>-->
             <li><a href="<?php echo U('Admin/nav')?>">导航管理</a></li>
             <li><a href="<?php echo U('Blog/logout') ?>">退出管理</a></li>
         </ul>
