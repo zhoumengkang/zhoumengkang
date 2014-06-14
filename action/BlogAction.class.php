@@ -155,6 +155,14 @@ class BlogAction extends Action{
 			$tags1=array_merge($tags,$tags1);
 		}
 		//dump($tags1);
+
+        //对编辑器生成的无用标签和内容进行过滤
+        //echo '<pre>'.htmlspecialchars($_POST['content']).'<pre><hr>';
+        $search = array("/<p>\s+<br \/>\s+<\/p>/","/<p>\r\n<pre/","/<\/pre>\r\nCODE_EOF\r\n<\/p>/","/<p>\s+CODE_EOF\s+<\/p>/","/CODE_EOF/");
+        $replace = array("","<pre","</pre>","","");
+        $_POST['content'] = preg_replace($search,$replace,$_POST['content']);
+        //echo '<pre>'.htmlspecialchars($_POST['content']).'<pre>';exit;
+
         $title = addslashes(htmlspecialchars($_POST['title'],ENT_QUOTES));
         $content = addslashes(htmlspecialchars($_POST['content'],ENT_QUOTES));
 		$sql = 'insert into z_blog (`nav`,`title`,`content`,`ctime`)values("'.$nav.'","'.$title.'","'.$content.'",'.time().')';

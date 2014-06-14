@@ -6,6 +6,11 @@ include 'header.php';
 <script charset="utf-8" src="./editor/kindeditor.js"></script>
 <script charset="utf-8" src="./editor/lang/zh_CN.js"></script>
 <script charset="utf-8" src="./editor/plugins/code/prettify.js"></script>
+<style type="text/css">
+    .prettyprint{
+        background: #bbb;
+    }
+</style>
 <script>
 	KindEditor.ready(function(K) {
 		editor = K.create('textarea[name="content"]', {
