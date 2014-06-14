@@ -139,7 +139,7 @@ $(function() {
     })
 
     //回到顶部
-	var $backToTopTxt = "返回顶部", $backToTopEle = $('<div class="backToTop"></div>').appendTo($("body"))
+	var $backToTopTxt = "返回顶部", $backToTopEle = $('<div class="backToTop"></div>').appendTo($("#footer"))
 		.text($backToTopTxt).attr("title", $backToTopTxt).click(function() {
 			$("html, body").animate({ scrollTop: 0 }, 120);
 	}), $backToTopFun = function() {

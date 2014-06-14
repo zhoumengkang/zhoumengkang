@@ -1,8 +1,5 @@
 </div>
-<div style="clear:both;"></div>
-<style type="text/css">
-
-</style>
+<div class="clear"></div>
 <footer id="footer">
 	<div class="login" id="login">
         <div class="popbackground"></div>
@@ -40,7 +37,7 @@
         </small>
     </div>
 	<div class="messageBox"></div>
-    <div class="backToTop" title="返回顶部" style="display: none;">返回顶部</div>
+
 </footer>
 </body>
 </html>

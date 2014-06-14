@@ -14,25 +14,10 @@
 	}	
 	?>
 </div>
-<!--<div class="side">
-    <p class="side_title">我希望得到您点评的帖子</p>
-    <?php
-/*    if(is_array($top)){
-        foreach($top as $k =>$v){
-            */?>
-            <div class="list_item list_view" style="margin-left:10px">
-                <div class="article_title">
-                    <div><a href="<?php /*echo U('Blog/blog',array('id'=>$v['id']));*/?>"><span><?php /*echo msubstr($v['title'],0,17);*/?></span></a></div>
-                </div>
-            </div>
-        <?php
-/*        }
-    }
-    */?>
-</div>-->
 <div class="side">
     <p class="side_title" style="float: left;">最常用的标签</p>
-    <a href="<?php echo U('Blog/tags')?>" style=" padding: 16px; font-size: 13px; float: right; color: #bbb; ">更多 》》</a>
+    <a href="<?php echo U('Blog/tags')?>"  class="side-for-more">更多 》》</a>
+    <div class="clear"></div>
     <div class="tags">
         <?php
         if(is_array($tags)){
@@ -46,18 +31,20 @@
     </div>
 
 </div>
-<div class="side">
+<div class="side" style=" padding-bottom: 2px; ">
     <p class="side_title" style="float: left;margin-top: 20px;">搜索</p>
     <div style=" margin-left: 50px; margin-top: 18px; ">
         <form name="search" action="" method="get">
             <input type="hidden" name="m" value="Blog"/>
             <input type="hidden" name="a" value="search"/>
-            <input type="text" name="keyword" value="" placeholder="输入关键词 回车搜索" style="height: 20px;padding: 3px 5px;font-size: 14px;width: 170px;" />
+            <input type="text" name="keyword" value="" placeholder="输入关键词 回车" class="side-search" />
         </form>
     </div>
 </div>
 <div class="side" id="friendlinks">
-	<p class="side_title">友情链接</p>
+	<p class="side_title" style="float: left;">友情链接</p>
+    <a href="<?php echo U('Site/index');?>"  class="side-for-more">更多好站 》》</a>
+    <div class="clear"></div>
 	<ul class="links">
 	<?php
 	if(is_array($links)){
