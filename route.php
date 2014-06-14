@@ -34,5 +34,6 @@ return array(
                 2=>'playground-[p].html',
             ),
         )
-    )
+    ),
+    'site/index'=>'site.html'
 );
