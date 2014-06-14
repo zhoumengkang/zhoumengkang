@@ -35,5 +35,5 @@ return array(
             ),
         )
     ),
-    'site/index'=>'site.html'
+    'site/index'=>'sites.html'
 );
