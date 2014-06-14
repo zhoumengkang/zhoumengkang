@@ -9,7 +9,7 @@ include 'header.php';
                 $n = 1;
                 foreach($sites as $k =>$v){
                    if($v['type'] ==1){
-                       echo "<li>{$n}. <a href=\"{$v['url']}\" title=\"{$v['des']}\">{$v['name']}</a> - {$v['des']}</li>";
+                       echo "<li>{$n}. <a href=\"{$v['url']}\" title=\"{$v['des']}\" target=\"_blank\" >{$v['name']}</a> - {$v['des']}</li>";
                        $n++;
                    }
                 }
@@ -23,7 +23,7 @@ include 'header.php';
                 $n = 1;
                 foreach($sites as $k =>$v){
                     if($v['type'] ==2){
-                        echo "<li>{$n}. <a href=\"{$v['url']}\" title=\"{$v['des']}\">{$v['name']}</a> - {$v['des']}</li>";
+                        echo "<li>{$n}. <a href=\"{$v['url']}\" title=\"{$v['des']}\" target=\"_blank\">{$v['name']}</a> - {$v['des']}</li>";
                         $n++;
                     }
                 }
@@ -37,7 +37,7 @@ include 'header.php';
                 $n = 1;
                 foreach($sites as $k =>$v){
                     if($v['type'] ==3){
-                        echo "<li>{$n}. <a href=\"{$v['url']}\" title=\"{$v['des']}\">{$v['name']}</a> - {$v['des']}</li>";
+                        echo "<li>{$n}. <a href=\"{$v['url']}\" title=\"{$v['des']}\" target=\"_blank\">{$v['name']}</a> - {$v['des']}</li>";
                         $n++;
                     }
                 }
