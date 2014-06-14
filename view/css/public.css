@@ -306,7 +306,7 @@ a:link, a:visited {
 }
 a:hover {
 	text-decoration: underline;
-	color:#08A5E0;
+	color:#2cd9f5;
 	text-decoration:none;
 }
 
@@ -652,4 +652,16 @@ ul, ul li {
 .site-title{
     font-size: 16px;
     color: #CACACA;
+}
+.site-list a{
+    text-decoration: underline;
+}
+.site-list a:link{
+    color: #F57474;
+}
+.site-list a:hover{
+    color: #2cd9f5;
+}
+.site-list a:visited{
+    color: #046ef5;
 }
