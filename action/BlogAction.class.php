@@ -29,13 +29,13 @@ class BlogAction extends Action{
      */
     public function blogList(){
          //顶置的帖子
-		$top = d()->q('select * from z_blog where `status` = 2 order by toptime desc limit 20');
+		//$top = d()->q('select * from z_blog where `status` = 2 order by toptime desc limit 20');
         //浏览的最多的帖子
         $maxRead = d()->q('select * from z_blog where `status` > 0 order by `count` desc limit 10');
-		$links = d()->q('select * from z_link where `status` > 0 order by rank asc');
+        $links = d()->q('select id,name,url,rank from z_link where `status` > 0 and `is_mark` = 0 order by `rank` asc');
         $tags = d()->q("SELECT a.id, a.name, COUNT( b.tag_id ) AS linktimes FROM  `z_tags` a LEFT JOIN `z_blog_to_tags` b  ON b.tag_id = a.id GROUP BY b.tag_id ORDER BY linktimes DESC LIMIT 20");
-        //dump($tags);exit;
-		$num = PERPAGES;
+
+		$num = 40;
 		$page = (int)$_GET['p']?(int)$_GET['p']:1;
 		$start = ($page-1)*$num;
         if(!$_GET['nav']){$_GET['nav']=1;}
@@ -56,10 +56,10 @@ class BlogAction extends Action{
         //$top = d()->q('select * from z_blog where `status` = 2 order by toptime desc limit 10');
         //浏览的最多的帖子
         $maxRead = d()->q('select * from z_blog where `status` > 0 order by `count` desc limit 10');
-        $links = d()->q('select * from z_link where `status` > 0 order by rank asc');
+        $links = d()->q('select id,name,url,rank from z_link where `status` > 0 and `is_mark` = 0 order by `rank` asc');
         $tags = d()->q("SELECT a.id, a.name, COUNT( b.tag_id ) AS linktimes FROM  `z_tags` a LEFT JOIN `z_blog_to_tags` b  ON b.tag_id = a.id GROUP BY b.tag_id ORDER BY linktimes DESC LIMIT 40");
         //dump($tags);exit;
-        $num = PERPAGES;
+        $num = 40;
         $page = (int)$_GET['p']?(int)$_GET['p']:1;
         $start = ($page-1)*$num;
         if($_GET['tag']){
