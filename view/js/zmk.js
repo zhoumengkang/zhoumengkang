@@ -71,9 +71,9 @@ $(function() {
     //footer吸底效果
     var _ch = $("#content").height();
     var _wh = $(window).height();
-    //console.log("window's height",_wh,"content's height",_ch,"_wh - _ch:",_wh - _ch);
-    if(_wh - _ch > 192){
-        $("#content").css("min-height",(_wh-192)+"px");
+    console.log("window's height",_wh,"content's height",_ch,"_wh - _ch:",_wh - _ch);
+    if(_wh - _ch > 186){
+        $("#content").css("min-height",(_wh-186)+"px");
     }
 
 
