@@ -37,11 +37,20 @@ body, div, ul, li{
     z-index: 3;
     width: 100%;
     position: fixed;
+    -webkit-transition: all ease 1s;
 }
 #header{
     padding: 30px;
+    -webkit-transition: all ease 1s;
 }
 
+.small-header{
+    padding-top: 15px!important;
+    padding-bottom: 15px!important;
+}
+.public-transparency{
+    background-color: rgba(255, 255, 255, 0.81);
+}
 .clear{
     clear: both;
 }
