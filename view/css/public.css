@@ -30,18 +30,27 @@ body, div, ul, li{
 }
 /*导航开始*/
 .header{
-    -webkit-box-shadow: 0 2px 0 0 rgba(53, 58, 61, 0.05);
-    box-shadow: 0 2px 0 0 rgba(53, 58, 61, 0.05);
+    -webkit-box-shadow: 0 0 0 2px rgba(155, 157, 158, 0.21);
+    box-shadow: 0 0 0 2px rgba(155, 157, 158, 0.21);
     background-color:#ffffff;
     margin-bottom:0px;
     z-index: 3;
     width: 100%;
     position: fixed;
+    -webkit-transition: all ease 1s;
 }
 #header{
     padding: 30px;
+    -webkit-transition: all ease 1s;
 }
 
+.small-header{
+    padding-top: 15px!important;
+    padding-bottom: 15px!important;
+}
+.public-transparency{
+    background-color: rgba(255, 255, 255, 0.81);
+}
 .clear{
     clear: both;
 }

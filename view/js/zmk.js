@@ -35,35 +35,11 @@ $(function() {
     $(window).scroll(function() {
         //想通过延时来缓解狂上下滚动的bug...似乎没效果
         if($(window).scrollTop() <= 90){
-            /*var scrollDown = setInterval(function(){
-                if($(window).scrollTop() > 90){
-                    clearInterval(scrollDown);
-                    return false;
-                }
-                $("#header").animate({
-                     "padding-top": "30px",
-                     "padding-bottom": "30px"
-                });
-            },20)*/
-            $("#header").css({
-                "padding-top": "30px",
-                "padding-bottom": "30px"
-            });
+            $(".header").removeClass("public-transparency");
+            $("#header").removeClass("small-header");
         }else{
-            /*var scrollUp = setInterval(function(){
-                if($(window).scrollTop() <= 90){
-                    clearInterval(scrollUp);
-                    return false;
-                }
-                $("#header").animate({
-                    "padding-top": "15px",
-                    "padding-bottom": "15px"
-                });
-            },200)*/
-            $("#header").css({
-                "padding-top": "15px",
-                "padding-bottom": "15px"
-            });
+            $(".header").addClass("public-transparency");
+            $("#header").addClass("small-header");
         }
     })
 
@@ -71,9 +47,9 @@ $(function() {
     //footer吸底效果
     var _ch = $("#content").height();
     var _wh = $(window).height();
-    //console.log("window's height",_wh,"content's height",_ch,"_wh - _ch:",_wh - _ch);
-    if(_wh - _ch > 192){
-        $("#content").css("min-height",(_wh-192)+"px");
+    console.log("window's height",_wh,"content's height",_ch,"_wh - _ch:",_wh - _ch);
+    if(_wh - _ch > 186){
+        $("#content").css("min-height",(_wh-186)+"px");
     }
 
 
