@@ -33,7 +33,7 @@ include 'header.php';
                     </div>
                 <?php
                 }
-                echo pagelist($page,$totalNum[0]['num'],PERPAGES);
+                echo pagelist($page,$totalNum[0]['num'],40);
             }
             ?>
         </div>
