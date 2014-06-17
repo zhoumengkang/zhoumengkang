@@ -1,6 +1,8 @@
 <?php
 include 'header.php';
 ?>
+<div id="wrap">
+    <div class="site-list">
 <table class="linklist">
 <tr>
 	<th>名称</th>
@@ -14,7 +16,9 @@ include 'header.php';
 	<td nametd="<?php echo $v['id']?>"><?php echo $v['name'] ?></td>
 	<td urltd="<?php echo $v['id']?>"><?php echo $v['url'] ?></td>
 	<td ranktd="<?php echo $v['id']?>"><?php echo $v['rank'] ?></td>
-	<td><a href="javascript:void(0);" title="<?php echo $v['id']?>" class="modify_links">修改</a> | <a href="javascript:void(0);" title="<?php echo $v['id']?>" class="del_links">删除</a></td>
+	<td>
+        <a href="javascript:void(0);" title="<?php echo $v['id']?>" class="modify_links">修改</a> | <a href="javascript:void(0);" title="<?php echo $v['id']?>" class="del_links">删除</a>
+    </td>
 </tr>
 <?php }} ?>
 </table>
@@ -24,7 +28,7 @@ include 'header.php';
 	网站名称：<input type="text" name="name"  class="link_input" ><br/><br/>
 	网站地址：<input type="text" name="url" class="link_input info_des" ><br/><br/>
 	前台排名：<input type="text" name="rank" class="link_input" style="width:50px" ><br/>
-	<input type="submit" name="添加" class="sub"  >
+	<input type="submit" name="添加"  >
 </form>
 	<div style="padding-top:10px">
 	<?php
@@ -38,6 +42,7 @@ include 'header.php';
 	?>
 	</div>
 </div>
+<div class="clear"></div>
 <script type="text/javascript">
 $(function(){
 	$(".modify_links").click(function(){
@@ -57,6 +62,8 @@ $(function(){
 	})
 })
 </script>
+    </div>
+</div>
 <?php
 include 'footer.php';
 ?>

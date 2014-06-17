@@ -43,6 +43,8 @@ class Action{
         if($_COOKIE['blogmaster']){
             $time = d()->q('select `lastlogin` from z_user where id = 1');
             $authorizeCode = md5($time[0]['lastlogin'].'zmk');
+            /*dump($authorizeCode);
+            dump($_COOKIE['blogmaster']);exit;*/
             if($_COOKIE['blogmaster'] == $authorizeCode){
                 $_SESSION['uid'] = 1;
             }
