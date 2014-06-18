@@ -341,7 +341,7 @@ ul, ul li {
 
 /* article title */
 .article_title h3{display:inline; ; vertical-align:middle;font-weight: 500;}
-.title{margin: 20px 0 5px 8px;}
+.list_item .title{margin: 20px 0 5px 8px;}
 .title h1{display:inline; ; vertical-align:middle;font-weight: 500;line-height: 37px;}
 
 
