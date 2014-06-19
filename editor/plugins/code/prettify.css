@@ -50,8 +50,8 @@ blockquote {
     border: 1px solid #D6E9C6;
     border-left-width: 3px;
     background-color: #F4FFEF;
-    padding: 10px;
-    margin: 0 0 20px;
+    padding: 5px;
+    margin: 10px 0;
 }
 
 blockquote p {
