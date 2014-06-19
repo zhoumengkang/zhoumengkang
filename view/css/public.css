@@ -570,16 +570,17 @@ ul, ul li {
 .markdownTags{
     word-break: break-all;
     border: 1px solid #ddd;
-    padding: 1px 5px;
     margin: 0 5px;
     background-color: #f8f8f8;
-    border-radius: 3px;
+    border-radius: 0px!important;
     max-width: 100%;
     overflow: auto;
     vertical-align: middle;
     font-family: Consolas, "Liberation Mono", Courier, monospace;
-    font-size: 12px;
+    font-size: 14px;
     color: #777;
+    display: inline-block;
+    padding: 0px 4px;
 }
 .reply_the_comment{
     color: #FF8383!important;
