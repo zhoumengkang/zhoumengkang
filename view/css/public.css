@@ -385,6 +385,10 @@ ul, ul li {
 .content p{
     margin: 5px 0;
 }
+.content .tags{
+    line-height: 25px;
+    margin-bottom: 5px;
+}
 .link_delete{
 	/*padding-right:10px;*/
 }
