@@ -365,7 +365,7 @@ ul, ul li {
 
 .content{
 	padding:10px;
-    line-height: 1.5;
+    line-height: 30px;
     font-size: 16px;
 }
 .content img{
@@ -381,6 +381,9 @@ ul, ul li {
 .content a:hover{
     color: #1F87F8;
     text-decoration:underline;
+}
+.content p{
+    margin: 0 0 10px 0;
 }
 .link_delete{
 	/*padding-right:10px;*/
