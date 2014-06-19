@@ -4,7 +4,7 @@ include 'header.php';
 <link rel="stylesheet" href="./editor/plugins/code/prettify.css" />
 <script charset="utf-8" src="./editor/plugins/code/prettify.js"></script>
 <script>
-$(function(){ prettyPrint(); });
+    $(function(){ prettyPrint(); });
 </script>
 <div id="wrap">
 	<div id="blog">
@@ -53,7 +53,7 @@ $(function(){ prettyPrint(); });
 			</div>
 			<div class="content">
 				<?php if (is_array($tags)){ ?>
-					<div class="tags" style="margin-bottom: 5px;">
+					<div class="tags">
 					标签 : 
 					<?php
 						foreach ($tags as $key => $value) {
@@ -81,9 +81,6 @@ $(function(){ prettyPrint(); });
 				}
 			}
 			?>
-
-
-
 	</div>
     <div id="comment">
         <div id="commentList">
@@ -212,12 +209,6 @@ $(function(){ prettyPrint(); });
         $("#post_comment").click(function(){
             post_comment();
         })
-        /*$('input[name="blog"]').bind('keydown',function(e){
-            var key = e.which;
-            if(key == 13) {
-                post_comment();
-            }
-        })*/
     </script>
 </div>
 <?php
