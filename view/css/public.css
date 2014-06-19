@@ -577,7 +577,7 @@ ul, ul li {
     overflow: auto;
     vertical-align: middle;
     font-family: Consolas, "Liberation Mono", Courier, monospace;
-    font-size: 14px;
+    font-size: 14px!important;
     color: #777;
     padding: 0px 4px;
 }
