@@ -579,7 +579,6 @@ ul, ul li {
     font-family: Consolas, "Liberation Mono", Courier, monospace;
     font-size: 14px;
     color: #777;
-    display: inline-block;
     padding: 0px 4px;
 }
 .reply_the_comment{
