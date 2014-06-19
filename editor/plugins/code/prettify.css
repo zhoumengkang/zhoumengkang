@@ -47,9 +47,9 @@
 }
 
 blockquote {
-    border-radius: 4px;
-    border: 1px #bbb dashed;
-    background: #F5F5F5;
+    border: 1px solid #D6E9C6;
+    border-left-width: 3px;
+    background-color: #F4FFEF;
     padding: 10px;
     margin: 0 0 20px;
 }
