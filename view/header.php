@@ -25,6 +25,7 @@ if(defined('ROUTE') && ROUTE){
 }
 ?>
 <!DOCTYPE html>
+<html>
 <head lang="zh-cn">
     <meta charset="utf-8">
 	<title><?php echo $this->title ;?></title>
