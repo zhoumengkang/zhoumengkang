@@ -383,7 +383,7 @@ ul, ul li {
     text-decoration:underline;
 }
 .content p{
-    margin: 0;
+    margin: 5px 0;
 }
 .link_delete{
 	/*padding-right:10px;*/
