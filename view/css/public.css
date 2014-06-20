@@ -37,11 +37,15 @@ body, div, ul, li{
     z-index: 3;
     width: 100%;
     position: fixed;
-    -webkit-transition: all ease 1s;
 }
 #header{
     padding: 30px;
+}
+.header,#header{
     -webkit-transition: all ease 1s;
+    -moz-transition: all ease 1s;
+    -o-transition: all ease 1s;
+    transition: all ease 1s;
 }
 
 .small-header{
