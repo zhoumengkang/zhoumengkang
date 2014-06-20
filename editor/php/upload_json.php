@@ -109,11 +109,11 @@ if (empty($_FILES) === false) {
 			mkdir($save_path);
 		}
 	}
-	$ymd = date("Ymd");
+	$ymd = date("Y")."/".date("md");
 	$save_path .= $ymd . "/";
 	$save_url .= $ymd . "/";
 	if (!file_exists($save_path)) {
-		mkdir($save_path);
+		mkdir($save_path,0644,true);
 	}
 	//新文件名
 	$new_file_name = date("YmdHis") . '_' . rand(10000, 99999) . '.' . $file_ext;

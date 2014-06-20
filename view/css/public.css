@@ -390,7 +390,6 @@ ul, ul li {
     margin: 5px 0;
 }
 .content .tags{
-    line-height: 23px;
     margin-bottom: 5px;
 }
 .link_delete{
@@ -410,6 +409,9 @@ ul, ul li {
 }
 .myform{
 	padding:10px;
+}
+.tags{
+    line-height: 23px;
 }
 .tags span{
 	background:#ddd;
@@ -659,7 +661,11 @@ ul, ul li {
     clear: both;
 }
 .side-search{
-    height: 20px;padding: 3px 5px;font-size: 14px;width: 170px;
+    height: 20px;
+    padding: 3px 5px;
+    font-size: 14px;
+    width: 170px;
+    background: url(../images/search.png) no-repeat 157px 5px;
 }
 .site-list{
     padding: 10px;
