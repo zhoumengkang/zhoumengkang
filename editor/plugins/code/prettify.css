@@ -135,9 +135,6 @@ blockquote:after {
           border-radius: 4px;
 }
 
-#blog pre.prettyprint {
-  margin-bottom: 20px;
-}
 
 #blog pre code {
   padding: 0;
