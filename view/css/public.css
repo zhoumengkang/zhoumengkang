@@ -655,7 +655,11 @@ ul, ul li {
     clear: both;
 }
 .side-search{
-    height: 20px;padding: 3px 5px;font-size: 14px;width: 170px;
+    height: 20px;
+    padding: 3px 5px;
+    font-size: 14px;
+    width: 170px;
+    background: url(../images/search.png) no-repeat 157px 5px;
 }
 .site-list{
     padding: 10px;
