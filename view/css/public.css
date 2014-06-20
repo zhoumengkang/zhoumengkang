@@ -386,7 +386,6 @@ ul, ul li {
     margin: 5px 0;
 }
 .content .tags{
-    line-height: 23px;
     margin-bottom: 5px;
 }
 .link_delete{
@@ -406,6 +405,9 @@ ul, ul li {
 }
 .myform{
 	padding:10px;
+}
+.tags{
+    line-height: 23px;
 }
 .tags span{
 	background:#ddd;
