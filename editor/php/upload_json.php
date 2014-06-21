@@ -112,9 +112,9 @@ if (empty($_FILES) === false) {
 	$ymd = date("Y")."/".date("md");
 	$save_path .= $ymd . "/";
 	$save_url .= $ymd . "/";
-    alert($save_path.'-'.$save_url);
+
 	if (!file_exists($save_path)) {
-		mkdir($save_path,0644,true);
+		mkdir($save_path,0755,true);
 	}
 	//新文件名
 	$new_file_name = date("YmdHis") . '_' . rand(10000, 99999) . '.' . $file_ext;
