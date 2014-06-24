@@ -31,9 +31,8 @@ $(function() {
         }
     });
 
-    //顶部效果
+    //顶部效果 CSS3
     $(window).scroll(function() {
-        //想通过延时来缓解狂上下滚动的bug...似乎没效果
         if($(window).scrollTop() <= 90){
             $(".header").removeClass("public-transparency");
             $("#header").removeClass("small-header");
@@ -43,11 +42,10 @@ $(function() {
         }
     })
 
-
     //footer吸底效果
     var _ch = $("#content").height();
     var _wh = $(window).height();
-    console.log("window's height",_wh,"content's height",_ch,"_wh - _ch:",_wh - _ch);
+    //console.log("window's height",_wh,"content's height",_ch,"_wh - _ch:",_wh - _ch);
     if(_wh - _ch > 186){
         $("#content").css("min-height",(_wh-186)+"px");
     }
