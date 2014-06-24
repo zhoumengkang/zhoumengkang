@@ -125,7 +125,8 @@ include 'header.php';
             //将所有的a链接都改为在新窗口打开
             $(".content").find('a').attr({'target':'_blank'});
             //匹配img标签,在其外面包裹一层
-            $(".content").find('img').wrap("<span class='content_img'></span>");
+            $(".content img").wrap("<span class='content_img'></span>");
+            $(".content_img").css({'width':$(this).find('img').css('width')});
             if($(window).width()>910){
                 $(".content_img").hover(function(){
                     var img_element = $(this).find('img');
