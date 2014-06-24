@@ -193,4 +193,28 @@ class AdminAction extends Action{
             $this->jump('文章修改失败',$url);
         }
 	}
+
+    //删除图片附件
+    public function delpic(){
+        if($_POST){
+            $realPassword = d()->q('select `tel` from z_user where id = 1');
+            if(trim($_POST['password']) != $realPassword[0]['tel']){
+                $this->jump('密码不对',SITE);
+            }
+            $pathArr = explode(SITE,$_POST['url']);
+            $path = ROOT.'/'.$pathArr[1];
+            if(file_exists($path)){
+                $res = unlink($path);
+                if($res){
+                    $this->jump('图片删除成功',SITE);
+                }else{
+                    $this->jump('图片删除成功',$_SERVER['HTTP_REFERER']);
+                }
+            }else{
+                $this->jump('图片不存在',SITE);
+            }
+        }else{
+            include 'Admin/delpic.php';
+        }
+    }
 }
