@@ -213,7 +213,7 @@ class BlogAction extends Action{
 
         $totalNum = d()->q("select count(*) as num from z_comment where `blogid` = {$id} and`status` > 0");
 
-        $this->title = $res[0]['title'];
+        $this->title = htmlspecialchars_decode($res[0]['title'],ENT_QUOTES);
         $this->description = msubstr(cleanTheWhitespace(htmlspecialchars_decode($res[0]['content'],ENT_QUOTES)),0,200);
         $this->keywords = getKeywords($tags);
         $modify = d()->q("select * from z_modify where blog_id={$id} order by id asc");
