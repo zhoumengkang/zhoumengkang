@@ -72,7 +72,7 @@ include 'header.php';
                         <?php } ?>
                     </div>
                 <?php } ?>
-			<?php echo htmlspecialchars_decode($v['content'],ENT_QUOTES);?>
+			<?php echo $v['content'];?>
 			</div>
 			<?php
 				}
@@ -141,6 +141,8 @@ include 'header.php';
                     $(this).find('img').unwrap().animate({'opacity':'1'});
                 })
             }
+            //懒加载
+            $(".content img").lazyload("fadeIn");
         })
         $(".delreply").click(function(){
             var _e = $(this);
