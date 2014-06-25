@@ -126,7 +126,9 @@ include 'header.php';
             $(".content").find('a').attr({'target':'_blank'});
             //匹配img标签,在其外面包裹一层
             $(".content img").wrap("<span class='content_img'></span>");
-            $(".content_img").css({'width':$(this).find('img').css('width')});
+            $(".content_img").each(function(){
+                $(this).css({'width':$(this).find('img').css('width')});
+            })
             if($(window).width()>910){
                 $(".content_img").hover(function(){
                     var img_element = $(this).find('img');
