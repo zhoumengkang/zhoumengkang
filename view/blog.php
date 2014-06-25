@@ -14,9 +14,7 @@ include 'header.php';
 			?>
 			<div class="list_item">			
 				<div class="title">
-					<h1>
-                        <?php echo htmlspecialchars_decode($v['title'],ENT_QUOTES);?>
-					</h1>
+					<h1><?php echo htmlspecialchars_decode($v['title'],ENT_QUOTES);?></h1>
 				</div>
 				<div class="article_manage">
 					<div style="margin-left:1px">
@@ -43,12 +41,11 @@ include 'header.php';
 					</div>
 					<span class="link_postdate"><?php echo date('Y-m-d H:i:s',$v['ctime'])?></span>
 					<span class="link_view" title="阅读次数"><a href="<?php echo U('Blog/blog',array('id'=>$v['id']));?>" title="阅读次数">阅读</a>(<?php echo $v['count']?>)</span>
-					
-					<?php if($_SESSION['uid']){ ?>
-                        <span class="link_edit"><a href="<?php echo U('Admin/modifyBlog',array('id'=>$_GET['id']))?>" title="编辑">编辑</a></span>
-                        <span class="link_edit"><a href="javascript:void(0);"  title="recommendBlog" recommendId="<?php echo $v['id']?>" status="<?php echo $v['status'];?>"><?php if($v['status']==2){echo '取消推荐';}else{echo '推荐';}?></a></span>
-                        <span class="link_delete"><a href="javascript:void(0);" deleteId="<?php echo $v['id']?>" title="deletdBlog">删除</a></span>
-					<?php } ?>
+                <?php if($_SESSION['uid']){ ?>
+                    <span class="link_edit"><a href="<?php echo U('Admin/modifyBlog',array('id'=>$_GET['id']))?>" title="编辑">编辑</a></span>
+                    <span class="link_edit"><a href="javascript:void(0);"  title="recommendBlog" recommendId="<?php echo $v['id']?>" status="<?php echo $v['status'];?>"><?php if($v['status']==2){echo '取消推荐';}else{echo '推荐';}?></a></span>
+                    <span class="link_delete"><a href="javascript:void(0);" deleteId="<?php echo $v['id']?>" title="deletdBlog">删除</a></span>
+                <?php } ?>
 				</div>
 			</div>
 			<div class="content">
