@@ -36,6 +36,9 @@ if(defined('ROUTE') && ROUTE){
     <link rel="stylesheet" href="<?php echo SITE;?>/view/css/public.css" type="text/css">
 	<link rel="stylesheet" href="<?php echo SITE;?>/view/css/box.css" type="text/css">
 	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+    <?php if($_GET['a'] == 'blog'){?>
+    <script type="text/javascript" src="<?php echo SITE;?>/view/js/jquery.lazyload.min.js"></script>
+    <?php }?>
     <script type="text/javascript">
         var SITE_URL = '<?php echo SITE_URL; ?>';
     </script>
