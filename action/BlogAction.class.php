@@ -196,23 +196,39 @@ class BlogAction extends Action{
             include './view/404.php';
             exit;
         }
+        //增加代码标签
         $res[0]['content'] = preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$res[0]['content']);
+        //还原被替换了的html标签方便匹配<img xxx>
+        $res[0]['content'] = htmlspecialchars_decode($res[0]['content'],ENT_QUOTES);
+        //做懒加载匹配
+        $res[0]['content'] = preg_replace_callback(
+            '/<\s*img\s+[^>]*?src\s*=\s*(\'|\")(.*?)\\1[^>]*?\/?\s*>/i',
+            function($matches){
+                $info = getimagesize('http:'.'//'.$_SERVER['HTTP_HOST'].'/'.$matches[2]);
+                //如果宽于480的，给480；窄于480的给实际的宽度
+                //如果不写高度，网速快的时候可能感觉不到，如果网速慢，可能会导致页面拉倒下面之后，会“弹回到上面”的效果，之前逛淘宝深受其害。
+                if($info[0] < 480){
+                    return "<img data-original=\"".$matches[2]."\" width=\"".$info[0]."\" height=\"".$info[1]."\">";
+                }else{
+                    $_tmpHeight = intval((480*$info[1])/$info[0]);
+                    return "<img data-original=\"".$matches[2]."\" width=\"480\" height=\"".$_tmpHeight."\">";
+                }
+                return $matches[2];
+            },
+            $res[0]['content']
+        );
+
 		$tags = d()->q("select b.name,b.id from z_blog_to_tags a,z_tags b where a.blog_id =".$id." and a.tag_id=b.id group by a.tag_id");
         $num = PERPAGES;
         $page = (int)$_GET['p']?(int)$_GET['p']:1;
         $start = ($page-1)*$num;
         $comment = d()->q("select * from z_comment where `blogid` = {$id} and`status` > 0 order by `posttime` asc limit ".$start.",".$num);
-        /*$comment = array_map(function($data){
-            preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$data['content']);
-        },$comment);*/
         if(is_array($comment)){
             foreach($comment as $k =>$v){
                 $comment[$k]['content'] = preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$v['content']);
             }
         }
-
         $totalNum = d()->q("select count(*) as num from z_comment where `blogid` = {$id} and`status` > 0");
-
         $this->title = htmlspecialchars_decode($res[0]['title'],ENT_QUOTES);
         $this->description = msubstr(cleanTheWhitespace(htmlspecialchars_decode($res[0]['content'],ENT_QUOTES)),0,200);
         $this->keywords = getKeywords($tags);
