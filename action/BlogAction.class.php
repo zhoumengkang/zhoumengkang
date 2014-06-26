@@ -196,24 +196,35 @@ class BlogAction extends Action{
             include './view/404.php';
             exit;
         }
+
         //增加代码标签
         $res[0]['content'] = preg_replace('/`(.*?)`/','<code class="markdownTags">$1</code>',$res[0]['content']);
         //还原被替换了的html标签方便匹配<img xxx>
         $res[0]['content'] = htmlspecialchars_decode($res[0]['content'],ENT_QUOTES);
+        //把双引号等转义回来
+        $this->title = htmlspecialchars_decode($res[0]['title'],ENT_QUOTES);
+        $title = str_replace('"',"'",$this->title);
+        $count = 0;
         //做懒加载匹配
         $res[0]['content'] = preg_replace_callback(
             '/<\s*img\s+[^>]*?src\s*=\s*(\'|\")(.*?)\\1[^>]*?\/?\s*>/i',
-            function($matches){
-                $info = getimagesize('http:'.'//'.$_SERVER['HTTP_HOST'].'/'.$matches[2]);
+            function($matches) use($title,&$count){
+                //$info = getimagesize('http:'.'//'.$_SERVER['HTTP_HOST'].$matches[2]);
+                $info = getimagesize(ROOT.$matches[2]);
                 //如果宽于480的，给480；窄于480的给实际的宽度
                 //如果不写高度，网速快的时候可能感觉不到，如果网速慢，可能会导致页面拉倒下面之后，会“弹回到上面”的效果，之前逛淘宝深受其害。
                 if($info[0] < 480){
-                    return "<img data-original=\"".$matches[2]."\" width=\"".$info[0]."\" height=\"".$info[1]."\">";
+                    $lazyImg = "<img data-original=\"".$matches[2]."\" width=\"".$info[0]."\" height=\"".$info[1]."\">";
                 }else{
                     $_tmpHeight = intval((480*$info[1])/$info[0]);
-                    return "<img data-original=\"".$matches[2]."\" width=\"480\" height=\"".$_tmpHeight."\">";
+                    $lazyImg = "<img data-original=\"".$matches[2]."\" width=\"480\" height=\"".$_tmpHeight."\">";
                 }
-                return $matches[2];
+                //找一张比较小的图作为文章的缩略图，供搜索引擎抓取
+                if(($count< 2) && (filesize(ROOT.$matches[2])<240000)){
+                    $lazyImg = str_replace(">"," alt=\"{$title}\" >",str_replace("data-original","src",$lazyImg));
+                    $count++;
+                }
+                return $lazyImg;
             },
             $res[0]['content']
         );
@@ -229,7 +240,7 @@ class BlogAction extends Action{
             }
         }
         $totalNum = d()->q("select count(*) as num from z_comment where `blogid` = {$id} and`status` > 0");
-        $this->title = htmlspecialchars_decode($res[0]['title'],ENT_QUOTES);
+
         $this->description = msubstr(cleanTheWhitespace(htmlspecialchars_decode($res[0]['content'],ENT_QUOTES)),0,200);
         $this->keywords = getKeywords($tags);
         $modify = d()->q("select * from z_modify where blog_id={$id} order by id asc");
