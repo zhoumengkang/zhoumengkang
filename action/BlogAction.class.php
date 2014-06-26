@@ -220,7 +220,7 @@ class BlogAction extends Action{
                     $lazyImg = "<img data-original=\"".$matches[2]."\" width=\"480\" height=\"".$_tmpHeight."\">";
                 }
                 //找一张比较小的图作为文章的缩略图，供搜索引擎抓取
-                if(($count< 2) && (filesize(ROOT.$matches[2])<240000)){
+                if(($count< 1) && (filesize(ROOT.$matches[2])<240000)){
                     $lazyImg = str_replace(">"," alt=\"{$title}\" >",str_replace("data-original","src",$lazyImg));
                     $count++;
                 }
