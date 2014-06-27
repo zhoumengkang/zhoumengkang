@@ -142,7 +142,7 @@ include 'header.php';
                 })
             }
             //懒加载
-            $(".content img").lazyload("fadeIn");
+            $(".content img").lazyload({"effect":"fadeIn"});
         })
         $(".delreply").click(function(){
             var _e = $(this);
