@@ -210,7 +210,12 @@ class BlogAction extends Action{
             '/<\s*img\s+[^>]*?src\s*=\s*(\'|\")(.*?)\\1[^>]*?\/?\s*>/i',
             function($matches) use($title,&$count){
                 //$info = getimagesize('http:'.'//'.$_SERVER['HTTP_HOST'].$matches[2]);
-                $info = getimagesize(ROOT.$matches[2]);
+                if(strstr($matches[2],"http://")){
+                    $info = getimagesize($matches[2]);
+                }else{
+                    $info = getimagesize(ROOT.$matches[2]);
+                }
+
                 //如果宽于480的，给480；窄于480的给实际的宽度
                 //如果不写高度，网速快的时候可能感觉不到，如果网速慢，可能会导致页面拉倒下面之后，会“弹回到上面”的效果，之前逛淘宝深受其害。
                 if($info[0] < 480){
