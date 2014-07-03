@@ -30,8 +30,8 @@ body, div, ul, li{
 }
 /*导航开始*/
 .header{
-    -webkit-box-shadow: 0 0 0 2px rgba(155, 157, 158, 0.21);
-    box-shadow: 0 0 0 2px rgba(155, 157, 158, 0.21);
+    -webkit-box-shadow: rgb(187, 187, 187) 0px 0px 5px 0px;
+    box-shadow: rgb(187, 187, 187) 0px 0px 5px 0px;
     background-color:#ffffff;
     margin-bottom:0px;
     z-index: 3;
