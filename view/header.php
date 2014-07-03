@@ -40,7 +40,7 @@ if(defined('ROUTE') && ROUTE){
     <script type="text/javascript" src="<?php echo SITE;?>/view/js/jquery.lazyload.min.js"></script>
     <?php }?>
     <script type="text/javascript">
-        var SITE_URL = '<?php echo SITE_URL; ?>';
+        var SITE_URL = '<?php echo SITE.SITE_URL; ?>';
     </script>
 	<script type="text/javascript" src="<?php echo SITE;?>/view/js/zmk.js"></script>
 	<script type="text/javascript" src="<?php echo SITE;?>/view/js/box.js"></script>
