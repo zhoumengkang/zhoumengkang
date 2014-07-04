@@ -233,7 +233,7 @@ var ui = {
     }
 }
 
-$(".popclose").live('click',function(){
+$(".popclose, #popbackground").live('click',function(){
     $("#popbox").fadeOut('slow',function(){
         $("#popbox").remove();
         $("#popbackground").remove();
