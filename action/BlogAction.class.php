@@ -14,7 +14,7 @@ class BlogAction extends Action{
 		$links = d()->q('select id,name,url,rank from z_link where `status` > 0 and `is_mark` = 0 order by `rank` asc');
         $tags = d()->q("SELECT a.id, a.name, COUNT( b.tag_id ) AS linktimes FROM  `z_tags` a LEFT JOIN `z_blog_to_tags` b  ON b.tag_id = a.id GROUP BY b.tag_id ORDER BY linktimes DESC LIMIT 20");
 
-        $res = d()->q("select * from z_blog where status = 1 and `title` != '' order by id desc limit 20");
+        $res = d()->q("select * from z_blog where status = 1 and `nav` = 1 and `title` != '' order by id desc limit 20");
 		
 		if(is_array($res)){
 			include './view/index.php';	
