@@ -83,7 +83,7 @@ body, div, ul, li{
 #top{
     float: left;
     font-size: 40px;
-    color: #2e9fff;
+    color: #5ADFFF;
 }
 .sign{
     font-size:13px;
@@ -101,7 +101,7 @@ body, div, ul, li{
     margin: 0 10px;
 }
 #nav a{
-    color: #2e9fff;
+    color: #5ADFFF;
     font-size: 20px;
 }
 #nav ul a:hover{color: #323232}
