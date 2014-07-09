@@ -427,12 +427,11 @@ ul, ul li {
 	text-align:center;
 }
 .pages a{
-	margin:0 2px;
+	margin:0 3px;
 }
 .pages span{
 	background: #DDD;
 	padding:4px 8px;
-	border-radius:8px;
 }
 .pages span:hover{
 	background:#89EAEE;
@@ -444,9 +443,8 @@ ul, ul li {
 }
 .pages .active{
 	color:#FFF;
-	background:#08A5E0;
+	background: #23bbe0;
 	cursor:pointer;
-	border-radius:8px;
 }
 .wrong{background:#FFF;padding-bottom:10px;text-align: center;}
 .wrong>p>img{width:406px;height:380px}
