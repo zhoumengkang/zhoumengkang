@@ -12,7 +12,7 @@ class BlogAction extends Action{
         //浏览的最多的帖子
         $maxRead = d()->q('select * from z_blog where `status` > 0 order by `count` desc limit 10');
 		$links = d()->q('select id,name,url,rank from z_link where `status` > 0 and `is_mark` = 0 order by `rank` asc');
-        $tags = d()->q("SELECT a.id, a.name, COUNT( b.tag_id ) AS linktimes FROM  `z_tags` a LEFT JOIN `z_blog_to_tags` b  ON b.tag_id = a.id GROUP BY b.tag_id ORDER BY linktimes DESC LIMIT 20");
+        $tags = d()->q("SELECT a.id, a.name, COUNT( b.tag_id ) AS linktimes FROM  `z_tags` a LEFT JOIN `z_blog_to_tags` b  ON b.tag_id = a.id GROUP BY b.tag_id ORDER BY linktimes DESC LIMIT 40");
 
         $res = d()->q("select * from z_blog where status = 1 and `nav` = 1 and `title` != '' order by id desc limit 20");
 		
@@ -33,7 +33,7 @@ class BlogAction extends Action{
         //浏览的最多的帖子
         $maxRead = d()->q('select * from z_blog where `status` > 0 order by `count` desc limit 10');
         $links = d()->q('select id,name,url,rank from z_link where `status` > 0 and `is_mark` = 0 order by `rank` asc');
-        $tags = d()->q("SELECT a.id, a.name, COUNT( b.tag_id ) AS linktimes FROM  `z_tags` a LEFT JOIN `z_blog_to_tags` b  ON b.tag_id = a.id GROUP BY b.tag_id ORDER BY linktimes DESC LIMIT 20");
+        $tags = d()->q("SELECT a.id, a.name, COUNT( b.tag_id ) AS linktimes FROM  `z_tags` a LEFT JOIN `z_blog_to_tags` b  ON b.tag_id = a.id GROUP BY b.tag_id ORDER BY linktimes DESC LIMIT 40");
 
 		$num = 40;
 		$page = (int)$_GET['p']?(int)$_GET['p']:1;
@@ -304,5 +304,10 @@ class BlogAction extends Action{
     //增加404控制器
     public function error404(){
         include './view/404.php';
+    }
+
+    //单词本
+    public function danciben(){
+        include './view/danciben.php';
     }
 }

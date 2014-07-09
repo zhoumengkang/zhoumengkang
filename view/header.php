@@ -2,7 +2,7 @@
 if(defined('ROUTE') && ROUTE){
     if(strstr($_SERVER['REQUEST_URI'],'index.php')){
         parse_str($_SERVER['QUERY_STRING'],$params);
-        if(in_array(strtolower($params['a']),array('blog','bloglist','readbytags'))){
+        if(in_array(strtolower($params['a']),array('blog','bloglist','readbytags','danciben'))){
             switch(strtolower($params['a'])){
                 case 'blog':
                     $route = $params['id'];
@@ -14,6 +14,10 @@ if(defined('ROUTE') && ROUTE){
                 case 'readbytags':
                     $route = 'tag-'.$params['tag'];
                     break;
+                case 'danciben':
+                    $route = "danciben";
+                    break;
+
             }
             if($params['p']<2){
                 header('Location:'.SITE.'/'.$route.'.html');

@@ -24,4 +24,8 @@ class DemoAction extends Action{
         echo $a->lastsql();
         dump($res);
     }
+
+    public function widgetTest(){
+        widget("friendlinks");
+    }
 }

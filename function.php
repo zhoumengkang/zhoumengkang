@@ -270,3 +270,23 @@ function user_filter($data){
         return trim(htmlspecialchars($data));
     }
 }
+
+/**
+ * @param  string $widgetName   widget名字
+ */
+function widget($widgetName){
+    //载入对应的widget
+    require_once dirname(__FILE__)."/widget/Widget.class.php";
+    $widget = dirname(__FILE__)."/widget/".$widgetName."/".$widgetName."Widget.class.php";
+
+    if(file_exists($widget)){
+        require_once $widget;
+        $widgetArr[$widgetName] = true;
+    }else{
+        $widgetArr[$widgetName] = false;
+        die("该挂件不存在");
+    }
+    echo $widgetClass = $widgetName."Widget";
+
+    $widgetClass::widgetFetch();
+}
