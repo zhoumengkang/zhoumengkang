@@ -64,7 +64,10 @@ include 'header.php';
                 }
                 tmpele.fadeIn();
             },function(){
-                $(this).find("div").fadeOut();
+                var tmpli = $(this);
+                setTimeout(function(){
+                    tmpli.find("div").fadeOut();
+                },1000);
             })
         </script>
         <?php echo pagelist($page,$totalNum[0]['num'],$num);?>

@@ -36,5 +36,5 @@ return array(
         )
     ),
     'site/index'=>'sites.html',
-    'blog/danciben'=>'danciben.html'
+    'danci/index'=>'danciben.html'
 );
