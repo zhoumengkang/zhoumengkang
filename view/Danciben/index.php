@@ -10,12 +10,17 @@ include 'header.php';
                     color: #6D6D6D;
                     margin: 0;
                 }
-                h3 a{
-                    float: right;
+                .lidiv{
+                    display: none;
+                }
+
+                .lidiv a{
                     display: inline-block;
                     padding-left: 20px;
                     font-size: 16px;
                     font-weight: 500;
+                    float: right;
+                    padding-right: 10px;
                 }
                 blockquote{
                     font-style: italic;
@@ -28,6 +33,10 @@ include 'header.php';
                 }
                 blockquote p{
                     margin: 0;
+                }
+                blockquote a{
+                    clear: both !important;
+                    text-decoration: underline;
                 }
                 span.translate{
                     font-size: 16px;
@@ -49,13 +58,16 @@ include 'header.php';
                 <?php if(is_array($danciben)){
                     foreach($danciben as $v){ ?>
                         <li data-id="<?php echo $v['id']?>" data-check="0">
-                            <h3><?php echo $v['word'];?><?php if($_SESSION['uid']){
+                            <h3><?php echo $v['word'];?></h3>
+
+                            <div class="lidiv">
+                                <?php if($_SESSION['uid']){
                                     echo '<a href="'.U('Danci/info',array('id'=>$v['id'])).'">修改</a>';
-                                }?></h3>
-                            <div style="display: none">
+                                }?>
                                 <p><span class="translate"><?php echo $v['translate'];?></span></p>
                                 <blockquote>
-                                    <p><?php echo $v['sentence'];?></p>
+                                    <p class="sentence"><?php echo $v['sentence'];?></p>
+                                    <p>来自：<a href="<?php echo $v['from'];?>" ><?php echo $v['from'];?></a></p>
                                 </blockquote>
                             </div>
 
@@ -66,9 +78,9 @@ include 'header.php';
                 $("li").hover(function(){
                     var tmpele = $(this).find("div");
                     var word = $(this).find('h3').text();
-                    var sentence = tmpele.find("blockquote p").html();
+                    var sentence = tmpele.find("blockquote .sentence").html();
                     if(!tmpele.attr("data-check")){
-                        tmpele.find("blockquote p").html(sentence.replace(word,'<span>'+word+'</span>'));
+                        tmpele.find("blockquote .sentence").html(sentence.replace(word,'<span>'+word+'</span>'));
                         tmpele.attr("data-check",1);
                     }
                     tmpele.fadeIn();
