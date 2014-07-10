@@ -27,6 +27,7 @@ include 'header.php';
 	<input type="hidden" name="id" value="">
 	网站名称：<input type="text" name="name"  class="link_input" ><br/><br/>
 	网站地址：<input type="text" name="url" class="link_input info_des" ><br/><br/>
+	网站地址：<input type="text" name="des" class="link_input info_des" ><br/><br/>
 	前台排名：<input type="text" name="rank" class="link_input" style="width:50px" ><br/>
 	<input type="submit" name="添加"  >
 </form>

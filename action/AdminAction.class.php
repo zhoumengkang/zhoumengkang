@@ -23,12 +23,12 @@ class AdminAction extends Action{
 			//dump($_POST);
 			if($_POST['id']){
 				//update
-				$sql = "update z_link set `name`='{$_POST['name']}',`url`='{$_POST['url']}',`rank`='{$_POST['rank']}' where `id`='{$_POST['id']}'";
+				$sql = "update z_link set `name`='{$_POST['name']}',`url`='{$_POST['url']}',`des`='{$_POST['des']}',`rank`='{$_POST['rank']}' where `id`='{$_POST['id']}'";
 				$flag = d()->q($sql);
 				$_POST=null;
 			}else{
 				//insert
-				$sql = "insert into z_link(`name`,`url`,`rank`)values('{$_POST['name']}','{$_POST['url']}',{$_POST['rank']})"; 
+				$sql = "insert into z_link(`name`,`url`,`rank`)values('{$_POST['name']}','{$_POST['url']}',`des`='{$_POST['des']}',{$_POST['rank']})";
 				//dump($sql);
 				$flag = d()->q($sql);
 				$_POST=null;
