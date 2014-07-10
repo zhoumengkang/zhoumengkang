@@ -10,6 +10,13 @@ include 'header.php';
                 color: #6D6D6D;
                 margin: 0;
             }
+            h3 a{
+                float: right;
+                display: inline-block;
+                padding-left: 20px;
+                font-size: 16px;
+                font-weight: 500;
+            }
             blockquote{
                 font-style: italic;
                 color: #797979;
@@ -42,7 +49,9 @@ include 'header.php';
             <?php if(is_array($danciben)){
                 foreach($danciben as $v){ ?>
                     <li data-id="<?php echo $v['id']?>" data-check="0">
-                        <h3><?php echo $v['word'];?></h3>
+                        <h3><?php echo $v['word'];?><?php if($_SESSION['uid']){
+                                echo '<a href="'.U('Danci/info',array('id'=>$v['id'])).'">修改</a>';
+                            }?></h3>
                         <div style="display: none">
                             <p><span class="translate"><?php echo $v['translate'];?></span></p>
                             <blockquote>

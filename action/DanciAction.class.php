@@ -13,4 +13,8 @@ class DanciAction extends Action{
         $totalNum = d()->q("select count(*) as num from z_danciben ");
         include './view/danciben.php';
     }
+
+    public function info(){
+        $info = d()->q("select * from z_danciben where id =".intval($_GET['id']));
+    }
 }
