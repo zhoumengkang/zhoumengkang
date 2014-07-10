@@ -305,9 +305,4 @@ class BlogAction extends Action{
     public function error404(){
         include './view/404.php';
     }
-
-    //单词本
-    public function danciben(){
-        include './view/danciben.php';
-    }
 }
