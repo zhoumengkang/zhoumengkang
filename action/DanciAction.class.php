@@ -11,10 +11,28 @@ class DanciAction extends Action{
         $start = ($page-1)*$num;
         $danciben = d()->q("select * from z_danciben order by `id` desc limit ".$start.','.$num);
         $totalNum = d()->q("select count(*) as num from z_danciben ");
-        include './view/danciben.php';
+        include 'Danciben/index.php';
     }
 
     public function info(){
-        $info = d()->q("select * from z_danciben where id =".intval($_GET['id']));
+        if($_POST){
+            if($_POST['id']){
+                //modify
+                $sql = "update z_danciben set `word`='{$_POST['word']}',`translate`='{$_POST['translate']}',`sentence`='{$_POST['sentence']}' where `id`='{$_POST['id']}'";
+                $flag = d()->q($sql);
+                $_POST=null;
+            }else{
+                //insert
+                $sql = "insert into z_danciben(`word`,`translate`,`sentence`)values('{$_POST['word']}','{$_POST['translate']}','{$_POST['sentence']}')";
+                $flag = d()->q($sql);
+                $_POST=null;
+            }
+        }else{
+            if($_GET['id']){
+                $info = d()->q("select * from z_danciben where id =".intval($_GET['id']));
+            }
+
+        }
+        include 'Danciben/info.php';
     }
 }
