@@ -81,6 +81,7 @@ if(defined('ROUTE') && ROUTE){
         <ul>
             <li><a href="<?php echo U('Blog/post')?>">书写博客</a></li>
             <li><a href="<?php echo U('Site/add')?>">收藏管理</a></li>
+            <li><a href="<?php echo U('Danci/index')?>">屌丝单词本</a></li>
             <li><a href="<?php echo U('Admin/delpic')?>">删除图片</a></li>
             <li><a href="<?php echo U('Admin/links')?>">链接管理</a></li>
             <!--<li><a href="<?php /*echo U('Admin/tags')*/?>">标签管理</a></li>-->

@@ -20,7 +20,6 @@
     <div class="copyright">
         <small>
             <a href="<?php echo U('Blog/about')?>">关于博主</a>
-            <a href="<?php echo U('Danci/index')?>">屌丝单词本</a>
             <?php
             if(!$_SESSION['uid']){
                 echo '<a href="javascript:void(0)" name="login">登堂入室</a>';
