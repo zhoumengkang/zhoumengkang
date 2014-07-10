@@ -63,12 +63,12 @@ include 'header.php';
                     tmpele.attr("data-check",1);
                 }
                 tmpele.fadeIn();
-            },function(){
+            }/*,function(){
                 var tmpli = $(this);
                 setTimeout(function(){
                     tmpli.find("div").fadeOut();
                 },1000);
-            })
+            }*/)
         </script>
         <?php echo pagelist($page,$totalNum[0]['num'],$num);?>
     </div>
