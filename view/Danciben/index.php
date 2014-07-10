@@ -14,7 +14,7 @@ include 'header.php';
                     display: none;
                 }
 
-                .lidiv a{
+                .modify{
                     display: inline-block;
                     padding-left: 20px;
                     font-size: 16px;
@@ -34,7 +34,7 @@ include 'header.php';
                 blockquote p{
                     margin: 0;
                 }
-                blockquote a{
+                .from{
                     clear: both !important;
                     text-decoration: underline;
                 }
@@ -62,12 +62,12 @@ include 'header.php';
 
                             <div class="lidiv">
                                 <?php if($_SESSION['uid']){
-                                    echo '<a href="'.U('Danci/info',array('id'=>$v['id'])).'">修改</a>';
+                                    echo '<a class="modify" href="'.U('Danci/info',array('id'=>$v['id'])).'">修改</a>';
                                 }?>
                                 <p><span class="translate"><?php echo $v['translate'];?></span></p>
                                 <blockquote>
                                     <p class="sentence"><?php echo $v['sentence'];?></p>
-                                    <p>来自：<a href="<?php echo $v['from'];?>" ><?php echo $v['from'];?></a></p>
+                                    <p>来自：<a class="from" href="<?php echo $v['from'];?>" ><?php echo $v['from'];?></a></p>
                                 </blockquote>
                             </div>
 
