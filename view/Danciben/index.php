@@ -34,8 +34,9 @@ include 'header.php';
                     margin: 0;
                 }
                 .from{
+                    color: rgb(40, 186, 255)!important;
                     clear: both !important;
-                    text-decoration: underline;
+                    text-decoration: underline!important;
                 }
                 span.translate{
                     font-size: 16px;
@@ -66,7 +67,9 @@ include 'header.php';
                                 <p><span class="translate"><?php echo $v['translate'];?></span></p>
                                 <blockquote>
                                     <p class="sentence"><?php echo $v['sentence'];?></p>
-                                    <p>来自：<a class="from" href="<?php echo $v['from'];?>" ><?php echo $v['from'];?></a></p>
+                                    <?php if($v['from']){ ?>
+                                        <p>来自：<a class="from" href="<?php echo $v['from'];?>" ><?php echo $v['from'];?></a></p>
+                                    <?php }?>
                                 </blockquote>
                             </div>
 

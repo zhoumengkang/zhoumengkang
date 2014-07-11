@@ -60,6 +60,10 @@ include 'header.php';
                         <td>例句</td>
                         <td><textarea name="sentence"  cols="60" rows="10"><?php echo $info[0]['sentence']; ?></textarea></td>
                     </tr>
+                    <tr>
+                        <td>来源</td>
+                        <td><textarea name="sentence"  cols="60" rows="10"><?php echo $info[0]['from']; ?></textarea></td>
+                    </tr>
                 </table>
                 <input type="submit"/>
             </form>
@@ -67,9 +71,9 @@ include 'header.php';
                 <?php
                 if($flag){
                     if($flag>0){
-                        echo '<font color="green">修改成功</font>';
+                        echo '<font color="green">成功</font>';
                     }else{
-                        echo '<font color="red">修改失败</font>';
+                        echo '<font color="red">失败</font>';
                     }
                 }
                 ?>
