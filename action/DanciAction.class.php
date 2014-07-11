@@ -19,12 +19,12 @@ class DanciAction extends Action{
         if($_POST){
             if($_POST['id']){
                 //modify
-                $sql = "update z_danciben set `word`='{$_POST['word']}',`translate`='{$_POST['translate']}',`sentence`='{$_POST['sentence']}' where `id`='{$_POST['id']}'";
+                $sql = "update z_danciben set `word`='{$_POST['word']}',`translate`='{$_POST['translate']}',`sentence`='{$_POST['sentence']}',`from`='{$_POST['from']}' where `id`='{$_POST['id']}'";
                 $flag = d()->q($sql);
                 $_POST=null;
             }else{
                 //insert
-                $sql = "insert into z_danciben(`word`,`translate`,`sentence`)values('{$_POST['word']}','{$_POST['translate']}','{$_POST['sentence']}')";
+                $sql = "insert into z_danciben(`word`,`translate`,`sentence`)values('{$_POST['word']}','{$_POST['translate']}','{$_POST['sentence']}',`from`='{$_POST['from']}')";
                 $flag = d()->q($sql);
                 $_POST=null;
             }
