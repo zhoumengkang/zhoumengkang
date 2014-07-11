@@ -54,7 +54,7 @@ include 'header.php';
                     </tr>
                     <tr>
                         <td>翻译</td>
-                        <td></td>
+                        <td><input type="text" name="translate"  value="<?php echo $info[0]['translate']; ?>"/></td>
                     </tr>
                     <tr>
                         <td>例句</td>
