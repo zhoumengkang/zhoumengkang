@@ -54,7 +54,7 @@ include 'header.php';
                     </tr>
                     <tr>
                         <td>翻译</td>
-                        <td><input type="text" name="translate" value="<?php echo $info[0]['word']; ?>"/></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>例句</td>
@@ -62,7 +62,7 @@ include 'header.php';
                     </tr>
                     <tr>
                         <td>来源</td>
-                        <td><textarea name="sentence"  cols="60" rows="10"><?php echo $info[0]['from']; ?></textarea></td>
+                        <td><input type="text" name="from" style="width: 442px;" value="<?php echo $info[0]['from']; ?>"/></td>
                     </tr>
                 </table>
                 <input type="submit"/>
