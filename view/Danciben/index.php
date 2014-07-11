@@ -16,7 +16,6 @@ include 'header.php';
 
                 .modify{
                     display: inline-block;
-                    padding-left: 20px;
                     font-size: 16px;
                     font-weight: 500;
                     float: right;
