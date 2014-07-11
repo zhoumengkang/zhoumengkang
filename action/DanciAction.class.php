@@ -10,7 +10,7 @@ class DanciAction extends Action{
         $page = (int)$_GET['p']?(int)$_GET['p']:1;
         $start = ($page-1)*$num;
         $danciben = d()->q("select * from z_danciben order by `id` desc limit ".$start.','.$num);
-        dump($danciben);
+        //dump($danciben);
         $totalNum = d()->q("select count(*) as num from z_danciben ");
         include 'Danciben/index.php';
     }
