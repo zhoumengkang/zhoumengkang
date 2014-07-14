@@ -212,8 +212,10 @@ class BlogAction extends Action{
                 //$info = getimagesize('http:'.'//'.$_SERVER['HTTP_HOST'].$matches[2]);
                 if(strstr($matches[2],"http://")){
                     $info = getimagesize($matches[2]);
+                    $picPath = $matches[2];
                 }else{
                     $info = getimagesize(ROOT.$matches[2]);
+                    $picPath = ROOT.$matches[2];
                 }
 
                 //如果宽于480的，给480；窄于480的给实际的宽度
@@ -225,7 +227,8 @@ class BlogAction extends Action{
                     $lazyImg = "<img data-original=\"".$matches[2]."\" width=\"480\" height=\"".$_tmpHeight."\">";
                 }
                 //找一张比较小的图作为文章的缩略图，供搜索引擎抓取
-                if(($count< 1) && (filesize(ROOT.$matches[2])<240000)){
+
+                if(($count< 1) && (filesize($picPath)<240000)){
                     $lazyImg = str_replace(">"," alt=\"{$title}\" >",str_replace("data-original","src",$lazyImg));
                     $count++;
                 }
