@@ -214,6 +214,7 @@ class BlogAction extends Action{
                     $info = getimagesize($matches[2]);
                     if(preg_match('/^http:\/\/mengkang\.net/',$matches[2])){
                         $picPath = trim($matches[2],'http://mengkang.net');
+                        $picPath = ROOT .'/'.$picPath;
                     }
                 }else{
                     $info = getimagesize(ROOT.$matches[2]);
