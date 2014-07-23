@@ -2,6 +2,7 @@
 class BlogAction extends Action{
     protected $description;
     protected $keywords;
+    protected $tags = null;
 	public function __construct(){
 		parent::__construct();
 	}
@@ -116,6 +117,7 @@ class BlogAction extends Action{
 			header("Location: {$url}");
 
 		}
+        $this->tags = d()->q("SELECT a.id, a.name, COUNT( b.tag_id ) AS pinlv FROM  `z_tags` a LEFT JOIN `z_blog_to_tags` b  ON b.tag_id = a.id GROUP BY b.tag_id ORDER BY pinlv DESC LIMIT 100");
 		$action = $_GET['a'];
 		include './view/post.php';
 	}
