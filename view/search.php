@@ -5,6 +5,8 @@ include 'header.php';
         <div class="main" style="margin-bottom: 15px;">
             <span class="side_title" style=" float: left; margin-right: 20px; ">搜索</span>
             <form name="search" action="<?php echo U('Blog/search');?>" method="get">
+                <input type="hidden" name="m" value="Blog"/>
+                <input type="hidden" name="a" value="search"/>
                 <input type="text" name="keyword" value="" placeholder="输入关键词" style="height: 20px;padding: 3px 5px;font-size: 14px;" />
             </form>
         </div>
