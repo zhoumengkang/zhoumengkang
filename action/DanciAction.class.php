@@ -24,12 +24,13 @@ class DanciAction extends Action{
                 $_POST=null;
             }else{
                 //insert
-                if(!trim($_POST['word'])){
-                    $flag=0;
-                }else{
-                    $sql = "insert into z_danciben(`word`,`translate`,`sentence`,`from`)values('{$_POST['word']}','{$_POST['translate']}','".htmlspecialchars($_POST['sentence'])."','".htmlspecialchars($_POST['from'])."')";
+                if(trim($_POST['word'])){
+                    $sql = "insert into z_danciben(`word`,`translate`,`sentence`,`from`)values('{$_POST['word']}','{$_POST['translate']}','".htmlspecialchars($_POST['sentence'],ENT_QUOTES)."','".htmlspecialchars($_POST['from'],ENT_QUOTES)."')";
+                    dump($sql);
                     $flag = d()->q($sql);
                     $_POST=null;
+                }else{
+                    $flag=0;
                 }
             }
         }else{
