@@ -24,7 +24,7 @@ class DanciAction extends Action{
                 $_POST=null;
             }else{
                 //insert
-                $sql = "insert into z_danciben(`word`,`translate`,`sentence`,`from`)values('{$_POST['word']}','{$_POST['translate']}','{$_POST['sentence']}','{$_POST['from']}')";
+                $sql = "insert into z_danciben(`word`,`translate`,`sentence`,`from`)values('{$_POST['word']}','{$_POST['translate']}','".htmlspecialchars($_POST['sentence'])."','".htmlspecialchars($_POST['from'])."')";
                 $flag = d()->q($sql);
                 $_POST=null;
             }
