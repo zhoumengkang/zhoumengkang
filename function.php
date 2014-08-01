@@ -6,7 +6,11 @@ function dump($var){
 }
 function d(){
 	//这里我本来想了好就，思考是不是应该把D.class.php包含进来，但是想到我这走的是index.php，则会自动去加载D.class.php了，事实证明的确如此
-	return new D();
+    static $link = false;
+    if(!$link){
+        $link = new D();
+    }
+	return $link;
 }
 
 /**
