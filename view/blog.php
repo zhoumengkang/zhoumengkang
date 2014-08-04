@@ -120,7 +120,12 @@ include 'header.php';
     <script type="text/javascript">
         $(function(){
             //将所有的a链接都改为在新窗口打开
-            $(".content").find('a').attr({'target':'_blank'});
+            //$(".content").find('a').attr({'target':'_blank'});
+            $(".content").find('a').each(function(){
+                if(!$(this).attr('target')){
+                    $(this).attr({'target':'_blank'});
+                }
+            })
             //匹配img标签,在其外面包裹一层
             $(".content img").wrap("<span class='content_img'></span>");
             $(".content_img").each(function(){
