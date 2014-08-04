@@ -119,12 +119,9 @@ include 'header.php';
 
     <script type="text/javascript">
         $(function(){
-            //将所有的a链接都改为在新窗口打开
-            //$(".content").find('a').attr({'target':'_blank'});
+            //将除了本页锚点链接之外所有的a链接都改为在新窗口打开
             $(".content").find('a').each(function(){
-                var link = $(this).attr("href");
-                var linkArr = link.split('#');
-                if((linkArr[0]==location.origin+'/'+location.pathname) && linkArr[1]){
+                if(/^#/.test($(this).attr('href'))){
                     $(this).attr({'target':'_self'});
                 }else{
                     $(this).attr({'target':'_blank'});
