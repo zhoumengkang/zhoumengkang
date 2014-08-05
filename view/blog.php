@@ -132,6 +132,11 @@ include 'header.php';
             $(".content_img").each(function(){
                 $(this).css({'width':$(this).find('img').css('width')});
             })
+
+            //SQL里面的"`"得换回来
+            $(".prettyprint .linenums").find(".markdownTags span").each(function(){
+                $(this).html('`'+$(this).html()+'`').unwrap();
+            })
             if($(window).width()>910){
                 $(".content_img").hover(function(){
                     var img_element = $(this).find('img');
