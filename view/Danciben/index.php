@@ -79,7 +79,7 @@ include 'header.php';
             <script type="text/javascript">
                 $("li h3 span").hover(function(){
                     var tmpele = $(this).parents("li").find("div");
-                    var word = $(this).find('h3').text();
+                    var word = $(this).parents("li").find('h3').text();
                     var sentence = tmpele.find("blockquote .sentence").html();
                     if(!tmpele.attr("data-check")){
                         tmpele.find("blockquote .sentence").html(sentence.replace(word,'<span>'+word+'</span>'));
