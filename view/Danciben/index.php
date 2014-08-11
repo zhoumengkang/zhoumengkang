@@ -58,7 +58,7 @@ include 'header.php';
                 <?php if(is_array($danciben)){
                     foreach($danciben as $v){ ?>
                         <li data-id="<?php echo $v['id']?>" data-check="0">
-                            <h3><?php echo $v['word'];?></h3>
+                            <h3><span><?php echo $v['word'];?></span></h3>
 
                             <div class="lidiv">
                                 <?php if($_SESSION['uid']){
@@ -68,7 +68,7 @@ include 'header.php';
                                 <blockquote>
                                     <p class="sentence"><?php echo $v['sentence'];?></p>
                                     <?php if($v['from']){ ?>
-                                        <p>来自：<a class="from" href="<?php echo $v['from'];?>" ><?php echo $v['from'];?></a></p>
+                                        <p>来自：<a class="from" href="<?php echo $v['from'];?>" target="_blank" ><?php echo $v['from'];?></a></p>
                                     <?php }?>
                                 </blockquote>
                             </div>
@@ -77,7 +77,7 @@ include 'header.php';
                     <?php }} ?>
             </ul>
             <script type="text/javascript">
-                $("li").hover(function(){
+                $("li h3 span").hover(function(){
                     var tmpele = $(this).find("div");
                     var word = $(this).find('h3').text();
                     var sentence = tmpele.find("blockquote .sentence").html();
