@@ -78,7 +78,7 @@ include 'header.php';
             </ul>
             <script type="text/javascript">
                 $("li h3 span").hover(function(){
-                    var tmpele = $(this).find("div");
+                    var tmpele = $(this).parents("li").find("div");
                     var word = $(this).find('h3').text();
                     var sentence = tmpele.find("blockquote .sentence").html();
                     if(!tmpele.attr("data-check")){
