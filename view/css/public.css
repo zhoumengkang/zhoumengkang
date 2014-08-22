@@ -333,6 +333,7 @@ ul, ul li {
 
 /* article style */
 .list_item{display:block; *display:inline-block; clear:both; border-bottom: 1px #f2f2f2 solid;}
+.list_item:hover{background: #FAFAFA}
 .list_item:after{content:"."; display:block; height:0; clear:both; visibility:hidden;}
 .list{margin:20px 20px 0 20px;}
 
