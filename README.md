@@ -6,4 +6,4 @@
 + 首页截图
 ![首页截图](https://raw.githubusercontent.com/zhoumengkang/zhoumengkang.github.io/master/images/nothing/demo2.png)
 + 内容页截图
-![内容页截图](https://raw.githubusercontent.com/zhoumengkang/zhoumengkang.github.io/master/images/nothing/demo.png)
+<img src="https://raw.githubusercontent.com/zhoumengkang/zhoumengkang.github.io/master/images/nothing/demo.png" width="832" height="2234">
