@@ -21,7 +21,7 @@ define('SITE_URL',$_SERVER['PHP_SELF']);//不是真实的SITE_URL,这只是http:
 
 $_root = dirname(rtrim($_SERVER["SCRIPT_NAME"],'/'));
 define('SITE', 'http:'.'//'.$_SERVER['HTTP_HOST'].(($_root == '/')?'':$_root));//当前项目的URL地址
-
+define('STATIC_URL','http:'.'//static.'.$_SERVER['HTTP_HOST'].(($_root == '/')?'':$_root));
 //将模版文件目录添加大include_path中去
 set_include_path(get_include_path().PATH_SEPARATOR.dirname(__FILE__).'/view');
 

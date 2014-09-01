@@ -1,9 +1,9 @@
 <?php
 include 'header.php';
 ?>
-<link rel="stylesheet" href="<?php echo SITE;?>/editor/plugins/code/prettify.css" />
-<link rel="stylesheet" href="<?php echo SITE;?>/view/css/magnific-popup.css"/>
-<script charset="utf-8" src="<?php echo SITE;?>/editor/plugins/code/prettify.js"></script>
+<link rel="stylesheet" href="<?php echo STATIC_URL;?>/editor/plugins/code/prettify.css" />
+<link rel="stylesheet" href="<?php echo STATIC_URL;?>/view/css/magnific-popup.css"/>
+<script charset="utf-8" src="<?php echo STATIC_URL;?>/editor/plugins/code/prettify.js"></script>
 <script>
     $(function(){ prettyPrint(); });
 </script>
