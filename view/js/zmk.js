@@ -163,27 +163,6 @@ $(function() {
 		
 	})
 
-    //查看原图
-    $("img").click(function(){
-        if($(window).width()<=1000){
-            location.href = $(this).attr('src');
-            return;
-        }
-        var img = '<img src="'+$(this).attr('src')+'">';
-        ui.box('查看图片',img);
-    })
-
-    $('.magnifier').live('click',function(){
-        if($(window).width()<=1000){
-            location.href = $(this).prev('img').attr('src');
-            return;
-        }
-        var img = '<img src="'+$(this).prev('img').attr('src')+'">';
-        ui.box('查看图片',img);
-    })
-
-
-
 });
 //定义js里的U函数
 var U = function(str){

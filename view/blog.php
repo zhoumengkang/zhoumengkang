@@ -1,11 +1,13 @@
 <?php
 include 'header.php';
 ?>
-<link rel="stylesheet" href="./editor/plugins/code/prettify.css" />
-<script charset="utf-8" src="./editor/plugins/code/prettify.js"></script>
+<link rel="stylesheet" href="<?php echo SITE;?>/editor/plugins/code/prettify.css" />
+<link rel="stylesheet" href="<?php echo SITE;?>/view/css/magnific-popup.css"/>
+<script charset="utf-8" src="<?php echo SITE;?>/editor/plugins/code/prettify.js"></script>
 <script>
     $(function(){ prettyPrint(); });
 </script>
+<script type="text/javascript" src="<?php echo SITE;?>/view/js/jquery.magnific-popup.min.js"></script>
 <div id="wrap">
 	<div id="blog">
 			<?php
@@ -127,31 +129,52 @@ include 'header.php';
                     $(this).attr({'target':'_blank'});
                 }
             })
-            //匹配img标签,在其外面包裹一层
-            $(".content img").wrap("<span class='content_img'></span>");
-            $(".content_img").each(function(){
-                $(this).css({'width':$(this).find('img').css('width')});
-            })
+
 
             //SQL里面的"`"得换回来
             $(".prettyprint .linenums").find(".markdownTags span").each(function(){
                 $(this).html('`'+$(this).html()+'`').unwrap();
             })
             if($(window).width()>910){
-                $(".content_img").hover(function(){
-                    var img_element = $(this).find('img');
-                    img_element.wrap("<span class='content_img_wrap'></span>").animate({'opacity':'0.85'}).after('<a class="magnifier" alt="查看大图"><img src="./view/images/link.png"></a>');
-                    var _top = img_element.height();
-                    var _left = img_element.width();
-                    $(this).find('.magnifier').css({
-                        top:((_top-20)/2),
-                        left:((_left-20)/2)
-                    }).fadeIn('slow');
-                },function(){
-                    $(this).find('img').next('.magnifier').remove();
-                    $(this).find('img').unwrap().animate({'opacity':'1'});
+                //图片放大效果
+                $(".content img").each(function(){
+                    //获取图片的真实地址
+                    var imgscr = '';
+                    if($(this).attr('data-original')){
+                        imgscr = $(this).attr('data-original');
+                    }else{
+                        imgscr = $(this).attr('src');
+                    }
+                    $(this).wrap('<a class="image-popup-no-margins content_img" href="'+imgscr+'"></a>');
+                })
+                //图片处理
+                $('.image-popup-no-margins').magnificPopup({
+                    type: 'image',
+                    closeOnContentClick: true,
+                    closeBtnInside: false,
+                    fixedContentPos: true,
+                    mainClass: 'mfp-no-margins mfp-with-zoom',
+                    image: {
+                        verticalFit: true
+                    },
+                    zoom: {
+                        enabled: true,
+                        duration: 300
+                    }
+                });
+                $('.image-popup-no-margins').live('magnificPopup');
+
+
+            }else{
+                //屏幕太小就不放大了
+                $(".content img").each(function(){
+                    $(this).wrap("<span class='content_img'></span>");
                 })
             }
+
+            $(".content_img").each(function(){
+                $(this).css({'width':$(this).find('img').css('width')});
+            })
             //懒加载
             $(".content img").lazyload({"effect":"fadeIn"});
         })

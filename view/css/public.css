@@ -378,7 +378,7 @@ ul, ul li {
     margin: 0px auto;
     max-width: 480px;
     display: block;
-    cursor: pointer;
+    cursor: url("../images/big.cur"), auto!important;
 }
 .content a{
     color: #519DFF;
