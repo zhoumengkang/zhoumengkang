@@ -211,16 +211,21 @@ class BlogAction extends Action{
         $res[0]['content'] = preg_replace_callback(
             '/<\s*img\s+[^>]*?src\s*=\s*(\'|\")(.*?)\\1[^>]*?\/?\s*>/i',
             function($matches) use($title,&$count){
-                //$info = getimagesize('http:'.'//'.$_SERVER['HTTP_HOST'].$matches[2]);
                 if(strstr($matches[2],"http://")){
-                    $info = getimagesize($matches[2]);
-                    /*if(preg_match('/^http:\/\/mengkang\.net/',$matches[2])){
-                        $picPath = trim($matches[2],'http://mengkang.net');
-                        $picPath = ROOT .'/'.$picPath;
-                    }*/
+                    if(!$info = getimagesize($matches[2])){
+                        //无效图片
+                        $info = array(0=>360,1=>270);
+                        $matches[2] = SITE.'/view/images/nopic.jpg';
+                    }
+
                 }else{
-                    $info = getimagesize(ROOT.$matches[2]);
-                    $picPath = ROOT.$matches[2];
+                    if(file_exists(ROOT.$matches[2])){
+                        $info = getimagesize(ROOT.$matches[2]);
+                        $picPath = ROOT.$matches[2];
+                    }else{
+                        $info = array(0=>360,1=>270);
+                        $matches[2] = SITE.'/view/images/nopic.jpg';
+                    }
                 }
 
                 //如果宽于480的，给480；窄于480的给实际的宽度
