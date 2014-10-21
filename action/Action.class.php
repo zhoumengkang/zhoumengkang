@@ -20,7 +20,7 @@ class Action{
 		//$this->tags = d()->q("select * from z_tags");
 		//dump($this->tags);
 		//$this->info = d()->q("select * from z_info");
-		$this->title = '北剅轩-周梦康';
+		$this->title = '北剅沟-周梦康';
 	}
 	public function init($module){
         $this->initUser();

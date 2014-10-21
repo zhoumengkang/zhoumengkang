@@ -53,7 +53,7 @@ class ApiAction extends Action{
             "height"=>120
         );
         $data['author'] = array(
-            "display_name"=>'北剅轩',
+            "display_name"=>'北剅沟',
             "url"=>'http://mengkang.net/',
             "object_type"=>"person"
         );

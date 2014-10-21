@@ -206,7 +206,7 @@ function getKeywords($tags){
             foreach($tags as $k=>$v){
                 $keyword .=','.$v['name'];
             }
-            $keyword .= ',北剅轩,周梦康';
+            $keyword .= ',北剅沟,周梦康';
         }else{
             foreach($tags as $k=>$v){
                 $keyword .=','.$v['name'];

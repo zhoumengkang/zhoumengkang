@@ -12,7 +12,7 @@ class MailModel {
         $this->mail->Encoding = "base64"; //编码方式
         $this->mail->Username = "i@mengkang.net";  //你的邮箱
         $this->mail->Password = "xxx";  //你的密码
-        $this->mail->Subject = $title ? $title : '主人，北剅轩有人造访'; //邮件标题
+        $this->mail->Subject = $title ? $title : '主人，北剅沟有人造访'; //邮件标题
         $this->mail->From = "i@mengkang.net";  //发件人地址（也就是你的邮箱）
         $this->mail->FromName = "周梦康";  //发件人姓名
         $this->mail->AddAddress($address,$nickname);//添加收件人（地址，昵称）

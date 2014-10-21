@@ -35,7 +35,7 @@ if(defined('ROUTE') && ROUTE){
 	<title><?php echo $this->title ;?></title>
     <?php if($_GET['a'] == 'blog'){?><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><?php }?>
 	<meta name="description" content="<?php if($this->description){echo $this->description;}else{ echo '周梦康的博客，记录着我的学习笔记，也记录着我的生活琐事。';}?>"/>
-    <meta name="keywords" content="<?php if($this->keywords){echo $this->keywords;}else{ echo '周梦康,梦康,mengkang,北剅轩';}?>" />
+    <meta name="keywords" content="<?php if($this->keywords){echo $this->keywords;}else{ echo '周梦康,梦康,mengkang,北剅沟';}?>" />
     <link rel="shortcut icon" href="<?php echo STATIC_URL;?>/favicon.ico">
     <link rel="stylesheet" href="<?php echo STATIC_URL;?>/view/css/public.css" type="text/css">
 	<link rel="stylesheet" href="<?php echo STATIC_URL;?>/view/css/box.css" type="text/css">
@@ -52,7 +52,7 @@ if(defined('ROUTE') && ROUTE){
 <body>
 <header class="header">
     <div id="header">
-        <a href="<?php echo SITE;?>" id="top">北剅轩</a>
+        <a href="<?php echo SITE;?>" id="top">北剅沟</a>
         <div id="nav">
             <ul>
                 <?php
