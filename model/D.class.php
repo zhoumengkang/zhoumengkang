@@ -56,7 +56,9 @@ class D{
 	}
 	//释放结果集
 	public function free(){
-		mysql_free_result($this->queryId);
+        if(is_resource($this->queryId)){
+            mysql_free_result($this->queryId);
+        }
         $this->queryId = 0;
 	}
 	//获取最近一次执行的sql语句
